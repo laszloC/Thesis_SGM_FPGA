@@ -15,17 +15,6 @@ constexpr auto R_INDEX = 2;
 constexpr auto G_INDEX = 1;
 constexpr auto B_INDEX = 0;
 
-Mat OpenGrayscaleImage()
-{
-    char fileName[MAX_PATH];
-
-    if (!openFileDlg(fileName))
-    {
-        throw std::exception("Cannot open file");
-    }
-
-    return imread(fileName, CV_LOAD_IMAGE_GRAYSCALE);
-}
 
 int main()
 {
@@ -35,10 +24,16 @@ int main()
         auto leftImg = OpenGrayscaleImage();
         auto rightImg = OpenGrayscaleImage();
 
-        SgmMatcher matcher(leftImg, rightImg, 40);
+        int max_disparity = 50;
+
+        SgmMatcher matcher(leftImg, rightImg, max_disparity);
         Mat depthMap = matcher.ComputeDepthMap();
 
-        imshow("Depth map", depthMap * 5);
+        Scale(depthMap, 0, max_disparity, 0, 256);
+
+        MedianFilter(depthMap, 5);
+
+        imshow("Depth map", depthMap);
 
         waitKey();
     }

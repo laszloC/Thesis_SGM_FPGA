@@ -42,5 +42,7 @@ private:
     void ComputeCostInDirection(const int DI, const int DJ, const int SI, const int SJ, Mat& Cost, const int D);
 
     Mat ComputeDisparity(bool Mirrored);
+
+    void InvalidateOutliers(Mat& DspBM, Mat& DspMB);
 };
 

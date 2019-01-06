@@ -36,11 +36,13 @@ Mat SgmMatcher::ComputeDepthMap()
     AggregateCosts();
 
     // calculate new disparities
-    Mat dsp = ComputeDisparity(false);
+    Mat dspBM = ComputeDisparity(false);
+    Mat dspMB = ComputeDisparity(true);
 
     // left/right consistency check
+    InvalidateOutliers(dspBM, dspMB);
 
-    return dsp;
+    return dspBM;
 }
 
 void SgmMatcher::ComputeCensusCost()
@@ -198,4 +200,18 @@ Mat SgmMatcher::ComputeDisparity(bool Mirrored)
     }
 
     return Disparity;
+}
+
+void SgmMatcher::InvalidateOutliers(Mat& DspBM, Mat& DspMB)
+{
+    for (auto i = 0; i < DspBM.rows; i++)
+    {
+        for (auto j = 0; j < DspBM.cols; j++)
+        {
+            if (abs(DspBM.at<uchar>(i, j) - DspMB.at<uchar>(i, j)) > 1)
+            {
+                DspBM.at<uchar>(i, j) = 0;
+            }
+        }
+    }
 }

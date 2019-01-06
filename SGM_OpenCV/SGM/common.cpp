@@ -109,3 +109,77 @@ bool IsInImgRange(const int Row, const int Col, const int Rows, const int Cols)
 {
     return (Row >= 0 && Col >= 0 && Row < Rows && Col < Cols);
 }
+
+void Scale(Mat& Img, int InStart, int InEnd, int OutStart, int OutEnd)
+{
+    for (auto i = 0; i < Img.rows; i++)
+    {
+        for (auto j = 0; j < Img.cols; j++)
+        {
+            Img.at<uchar>(i, j) = OutStart + ((OutEnd - OutStart) / (InEnd - InStart)) * (Img.at<uchar>(i, j) - InStart);
+        }
+    }
+}
+
+Mat OpenGrayscaleImage()
+{
+    char fileName[MAX_PATH];
+
+    if (!openFileDlg(fileName))
+    {
+        throw std::exception("Cannot open file");
+    }
+
+    return imread(fileName, CV_LOAD_IMAGE_GRAYSCALE);
+}
+
+int compare(const void* a, const void* b)
+{
+    return (*(int*)a) - (*(int*)b);
+}
+
+void MedianFilter(Mat img, int w)
+{
+    int height = img.rows;
+    int width = img.cols;
+
+    Mat dst = Mat(height, width, CV_8UC1);
+
+    int w_2 = w / 2;
+
+    int* ord_stat = new int[w];
+
+    for (int i = w_2; i < height - w_2; ++i)
+    {
+        for (int j = w_2; j < width - w_2; ++j)
+        {
+            int k = 0;
+
+            for (int m = 0; m < w; ++m)
+            {
+                for (int n = 0; n < w; ++n)
+                {
+                    ord_stat[m + n] = 0;
+                }
+            }
+
+            // create ordered statistic
+
+            for (int x = -w_2; x <= w_2; ++x)
+            {
+                for (int y = -w_2; y <= w_2; ++y)
+                {
+                    ord_stat[k++] = img.at<uchar>(i + y, j + x);
+                }
+            }
+
+            // sort ordered statistic
+            std::qsort(ord_stat, w * w, sizeof(int), compare);
+
+            // pixel will have the median value
+            dst.at<uchar>(i, j) = ord_stat[(w * w) / 2];
+        }
+    }
+
+    img = dst;
+}
