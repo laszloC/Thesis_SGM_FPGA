@@ -30,14 +30,21 @@ Mat OpenGrayscaleImage()
 int main()
 {
     // read images
-    auto leftImg = OpenGrayscaleImage();
-    auto rightImg = OpenGrayscaleImage();
+    try
+    {
+        auto leftImg = OpenGrayscaleImage();
+        auto rightImg = OpenGrayscaleImage();
 
-    SgmMatcher matcher(leftImg, rightImg);
+        SgmMatcher matcher(leftImg, rightImg, 40);
+        Mat depthMap = matcher.ComputeDepthMap();
 
-    Mat depthMap = matcher.ComputeDepthMap() * 20;
+        imshow("Depth map", depthMap * 5);
 
-    imshow("Depth map", depthMap);
-
-    waitKey();
+        waitKey();
+    }
+    catch (const std::exception& e)
+    {
+        std::cout << e.what() << std::endl;
+        return -1;
+    }
 }
