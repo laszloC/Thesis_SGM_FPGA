@@ -37,7 +37,10 @@ Mat SgmMatcher::ComputeDepthMap()
 
     // calculate new disparities
     Mat dspBM = ComputeDisparity(false);
+    MedianFilter(dspBM, 5);
+
     Mat dspMB = ComputeDisparity(true);
+    MedianFilter(dspMB, 5);
 
     // left/right consistency check
     InvalidateOutliers(dspBM, dspMB);
@@ -57,7 +60,7 @@ void SgmMatcher::AggregateCosts()
     auto rows = m_leftImg.rows;
     auto cols = m_leftImg.cols;
 
-    Mat sCost = Mat(m_cost.rows, m_cost.cols, CV_32FC1);
+    Mat sCost = Mat(m_cost.rows, m_cost.cols, CV_32SC1);
 
     for (auto r = 0; r < 8; r++)
     {
@@ -77,60 +80,71 @@ Mat SgmMatcher::ComputeCostInDirection(const int R)
     auto j_inc = RJ[R];
 
     auto rows = m_leftImg.rows;
-    auto cols = m_rightImg.cols;
+    auto cols = m_leftImg.cols;
 
-    Mat cost = Mat::zeros(m_cost.rows, m_cost.cols, CV_32FC1);
+    Mat cost = Mat::zeros(m_cost.rows, m_cost.cols, CV_32SC1);
     std::set<std::pair<int, int>> startingPixels;
+
+    if (i_inc == -1)
+    {
+        for (auto j = 0; j < cols; j++)
+        {
+            auto p = (rows - 1) * cols + j;
+            for (auto d = 0; d < m_cost.cols; d++)
+            {
+                cost.at<int32_t>(p, d) = (int32_t)m_cost.at<uint8_t>(p, d);
+            }
+            startingPixels.emplace(std::pair<int, int>(rows - 1, j));
+        }
+    }
+
+    if (i_inc == 1)
+    {
+        for (auto j = 0; j < cols; j++)
+        {
+            auto p = 0 * cols + j;
+            for (auto d = 0; d < m_cost.cols; d++)
+            {
+                cost.at<int32_t>(p, d) = (int32_t)m_cost.at<uint8_t>(p, d);
+            }
+            startingPixels.emplace(std::pair<int, int>(0, j));
+        }
+    }
+
+    if (j_inc == -1)
+    {
+        for (auto i = 0; i < rows; i++)
+        {
+            auto p = i * cols + (cols - 1);
+            for (auto d = 0; d < m_cost.cols; d++)
+            {
+                cost.at<int32_t>(p, d) = (int32_t)m_cost.at<uint8_t>(p, d);
+            }
+            startingPixels.emplace(std::pair<int, int>(i, cols - 1));
+        }
+    }
+
+    if (j_inc == 1)
+    {
+        for (auto i = 0; i < rows; i++)
+        {
+            auto p = i * cols + 0;
+            for (auto d = 0; d < m_cost.cols; d++)
+            {
+                cost.at<int32_t>(p, d) = (int32_t)m_cost.at<uint8_t>(p, d);
+            }
+            startingPixels.emplace(std::pair<int, int>(i, 0));
+        }
+    }
 
     for (auto d = 0; d < m_cost.cols; d++)
     {
-        if (i_inc == -1)
-        {
-            for (auto j = 0; j < cols; j++)
-            {
-                auto p = (rows - 1) * cols + j;
-                cost.at<float>(p, d) = (float)m_cost.at<uint8_t>(p, d);
-                startingPixels.emplace(std::pair<int, int>(rows -1, j));
-            }
-        }
-
-        if (i_inc == 1)
-        {
-            for (auto j = 0; j < cols; j++)
-            {
-                auto p = 0 * cols + j;
-                cost.at<float>(p, d) = (float)m_cost.at<uint8_t>(p, d);
-                startingPixels.emplace(std::pair<int, int>(0, j));
-            }
-        }
-
-        if (j_inc == -1)
-        {
-            for (auto i = 0; i < rows; i++)
-            {
-                auto p = i * cols + 0;
-                cost.at<float>(p, d) = (float)m_cost.at<uint8_t>(p, d);
-                startingPixels.emplace(std::pair<int, int>(i, 0));
-            }
-        }
-
-        if (j_inc == 1)
-        {
-            for (auto i = 0; i < rows; i++)
-            {
-                auto p = i * cols + (cols - 1);
-                cost.at<float>(p, d) = (float)m_cost.at<uint8_t>(p, d);
-                startingPixels.emplace(std::pair<int, int>(i, cols - 1));
-            }
-        }
-
         std::set<std::pair<int, int>>::iterator it;
         for (it = startingPixels.begin(); it != startingPixels.end(); ++it)
         {
             ComputeCostInDirection(i_inc, j_inc, it->first, it->second, cost, d);
         }
     }
-
     return cost;
 }
 
@@ -145,16 +159,16 @@ void SgmMatcher::ComputeCostInDirection(const int DI, const int DJ, const int SI
     {
         auto currP = currI * cols + currJ;
         auto prevP = prevI * cols + prevJ;
-        auto minPrevC = FLT_MAX;
-        auto minPrevPenilezed = FLT_MAX;
+        auto minPrevC = INT32_MAX;
+        auto minPrevPenilezed = INT32_MAX;
 
         auto currC = m_cost.at<int8_t>(currP, D);
 
         for (auto d = 0; d < Cost.cols; d++)
         {
             auto disp = d - m_maxDisparity;
-            auto penalty = (abs(disp - D) != 0) ? 0 : ((abs(disp - D) > 1) ? P2 : P1);
-            auto prevC = Cost.at<float>(prevP, d);
+            auto penalty = (abs(disp - D) == 0) ? 0 : ((abs(disp - D) > 1) ? P2 : P1);
+            auto prevC = Cost.at<int32_t>(prevP, d);
             if (prevC < minPrevC)
             {
                 minPrevC = prevC;
@@ -166,7 +180,7 @@ void SgmMatcher::ComputeCostInDirection(const int DI, const int DJ, const int SI
             }
         }
 
-        Cost.at<float>(currP, D) = currC + minPrevPenilezed - minPrevC;
+        Cost.at<int32_t>(currP, D) = currC + minPrevPenilezed - minPrevC;
     }
 }
 
@@ -181,16 +195,16 @@ Mat SgmMatcher::ComputeDisparity(bool Mirrored)
     {
         for (auto j = 0; j < left.cols; j++)
         {
-            auto minCost = FLT_MAX;
+            auto minCost = INT32_MAX;
             auto minD = 0;
 
             auto p = i * left.cols + j;
 
             for (auto d = 0; d < m_cost.cols; d++)
             {
-                if (m_cost.at<float>(p, d) < minCost)
+                if (m_cost.at<int32_t>(p, d) < minCost)
                 {
-                    minCost = m_cost.at<float>(p, d);
+                    minCost = m_cost.at<int32_t>(p, d);
                     minD = d;
                 }
             }
@@ -208,7 +222,8 @@ void SgmMatcher::InvalidateOutliers(Mat& DspBM, Mat& DspMB)
     {
         for (auto j = 0; j < DspBM.cols; j++)
         {
-            if (abs(DspBM.at<uchar>(i, j) - DspMB.at<uchar>(i, j)) > 1)
+            auto disp = DspBM.at<uchar>(i, j);
+            if (abs(DspBM.at<uchar>(i, j) - DspMB.at<uchar>(i + disp , j)) > 1)
             {
                 DspBM.at<uchar>(i, j) = 0;
             }

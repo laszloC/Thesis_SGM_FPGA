@@ -27,8 +27,8 @@ private:
 
     int m_maxDisparity;
 
-    const float P1 = 1;
-    const float P2 = 2;
+    const int32_t P1 = 1;
+    const int32_t P2 = 4;
 
     const int RI[8] = { -1, -1, -1,  0, +1, +1, +1,  0 };
     const int RJ[8] = { -1,  0, +1, +1, +1,  0, -1, -1 };

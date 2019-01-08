@@ -24,18 +24,18 @@ int main()
         auto leftImg = OpenGrayscaleImage();
         auto rightImg = OpenGrayscaleImage();
 
-        int max_disparity = 50;
+        int max_disparity = 30;
 
         SgmMatcher matcher(leftImg, rightImg, max_disparity);
         Mat depthMap = matcher.ComputeDepthMap();
 
         Scale(depthMap, 0, max_disparity, 0, 256);
 
-        MedianFilter(depthMap, 5);
-
         imshow("Depth map", depthMap);
 
         waitKey();
+
+        //imwrite("D:/depthMap.jpg", depthMap);
     }
     catch (const std::exception& e)
     {
