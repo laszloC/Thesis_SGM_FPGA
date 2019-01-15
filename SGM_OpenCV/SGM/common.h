@@ -36,6 +36,8 @@ int openFolderDlg(char* folderName);
 
 void resizeImg(Mat src, Mat &dst, int maxSize, bool interpolate);
 
+bool IsInImgRange(const int Row, const int Col, const Mat& Img);
+
 bool IsInImgRange(const int Row, const int Col, const int Rows, const int Cols);
 
 void Scale(Mat& Img, int InStart, int InEnd, int OutStart, int OutEnd);
@@ -43,3 +45,11 @@ void Scale(Mat& Img, int InStart, int InEnd, int OutStart, int OutEnd);
 Mat OpenGrayscaleImage();
 
 void MedianFilter(Mat img, int w);
+
+int RowMajorIndex(const int I, const int J, const int Cols);
+
+void SetBitValue(int& BitMap, const int Bit, const bool Value);
+
+int HammingDistance(const int A, const int B);
+
+;

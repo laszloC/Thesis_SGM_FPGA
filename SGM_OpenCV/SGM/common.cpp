@@ -3,6 +3,7 @@
 #include "common.h"
 #include <CommDlg.h>
 #include <ShlObj.h>
+#include <bitset>
 
 FileGetter::FileGetter(char* folderin,char* ext){
     strcpy(folder,folderin);
@@ -105,6 +106,11 @@ void resizeImg(Mat src, Mat &dst, int maxSize, bool interpolate)
         resize(src,dst,sz,0,0,INTER_NEAREST);
 }
 
+bool IsInImgRange(const int Row, const int Col, const Mat& Img)
+{
+    return (Row >= 0 && Col >= 0 && Row < Img.rows && Col < Img.cols);
+}
+
 bool IsInImgRange(const int Row, const int Col, const int Rows, const int Cols)
 {
     return (Row >= 0 && Col >= 0 && Row < Rows && Col < Cols);
@@ -182,4 +188,20 @@ void MedianFilter(Mat img, int w)
     }
 
     img = dst;
+}
+
+int RowMajorIndex(const int I, const int J, const int Cols)
+{
+    return I * Cols + J;
+}
+
+
+void SetBitValue(int & BitMap, const int Bit, const bool Value)
+{
+    BitMap |= (Value << Bit);
+}
+
+int HammingDistance(const int A, const int B)
+{
+    return (int)std::bitset<32>(A ^ B).count();
 }
