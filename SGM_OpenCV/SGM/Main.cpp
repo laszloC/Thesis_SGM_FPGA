@@ -20,9 +20,9 @@ constexpr auto B_INDEX = 0;
 
 int main(int argc, char* argv[])
 {
-    // read images
-    /*try
-    {*/
+    std::cout << "Press Ctrl+C to exit" << std::endl;
+    while (true)
+    {
         std::cout << "Choose left image" << std::endl;
         auto leftImg = OpenGrayscaleImage();
         std::cout << "Choose right image" << std::endl;
@@ -72,6 +72,8 @@ int main(int argc, char* argv[])
         Scale(depthMapCensus, 0, maxDisparity - 1, 0, 255);
         imshow("Census", depthMapCensus);
 
+        imwrite("D:/census" + std::to_string(maxDisparity) + "_" + std::to_string(p1) + "_" + std::to_string(p2) + ".bmp", depthMapCensus);
+
         Mat depthMapLR = semi_global::ComputeDepthMap(costLR, leftImg.rows, leftImg.cols, p1, p2);
         Mat depthMapRL = semi_global::ComputeDepthMap(costRL, leftImg.rows, leftImg.cols, p1, p2);
 
@@ -81,5 +83,8 @@ int main(int argc, char* argv[])
 
         imshow("SGM", depthMapLR);
 
+        imwrite("D:/sgm" + std::to_string(maxDisparity) + "_" + std::to_string(p1) + "_" + std::to_string(p2) + ".bmp", depthMapLR);
+
         waitKey();
+    }
 }
