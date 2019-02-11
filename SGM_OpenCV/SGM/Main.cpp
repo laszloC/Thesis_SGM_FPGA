@@ -11,6 +11,7 @@
 #include <iostream>
 
 #include "census.h"
+#include "sad.h"
 #include "semi_global.h"
 
 constexpr auto R_INDEX = 2;
@@ -31,7 +32,8 @@ int main(int argc, char* argv[])
         auto method = 0;
         std::cout << "Choose cost method: " << std::endl
             << " [0] Census cost" << std::endl
-            << " [1] Mutual Information" << std::endl;
+            << " [1] Mutual Information" << std::endl
+            << " [2] Sum of Absolute Differences" << std::endl;
         std::cout << "Method: ";
         std::cin >> method;
 
@@ -61,6 +63,10 @@ int main(int argc, char* argv[])
         case 1:
             std::cerr << "Currently mutual information cost is not supported" << std::endl;
             return -1;
+        case 2:
+            costLR = sad::SadCost(leftImg, rightImg, maxDisparity, 5, -1);
+            costRL = sad::SadCost(rightImg, leftImg, maxDisparity, 5, +1);
+            break;
         default:
             std::cerr << "Option not recognized" << std::endl;
             return -1;
@@ -72,7 +78,13 @@ int main(int argc, char* argv[])
         Scale(depthMapCensus, 0, maxDisparity - 1, 0, 255);
         imshow("Census", depthMapCensus);
 
-        imwrite("D:/census" + std::to_string(maxDisparity) + "_" + std::to_string(p1) + "_" + std::to_string(p2) + ".bmp", depthMapCensus);
+        char saveFolder[MAX_PATH];
+
+        std::cout << "Choose folder to save results " << std::endl;
+
+        openFolderDlg(saveFolder);
+
+        imwrite(std::string(saveFolder) + "/census" + std::to_string(maxDisparity) + "_" + std::to_string(p1) + "_" + std::to_string(p2) + ".bmp", depthMapCensus);
 
         Mat depthMapLR = semi_global::ComputeDepthMap(costLR, leftImg.rows, leftImg.cols, p1, p2);
         Mat depthMapRL = semi_global::ComputeDepthMap(costRL, leftImg.rows, leftImg.cols, p1, p2);
@@ -83,7 +95,7 @@ int main(int argc, char* argv[])
 
         imshow("SGM", depthMapLR);
 
-        imwrite("D:/sgm" + std::to_string(maxDisparity) + "_" + std::to_string(p1) + "_" + std::to_string(p2) + ".bmp", depthMapLR);
+        imwrite(std::string(saveFolder) + "/sgm" + std::to_string(maxDisparity) + "_" + std::to_string(p1) + "_" + std::to_string(p2) + ".bmp", depthMapLR);
 
         waitKey();
     }
