@@ -20,7 +20,4 @@ namespace census
     // builds the cost matrix using the census transform
     Mat CalculateCostMatrix(const Mat& Left, const Mat& Right, const int MaxDisparity, const int DispDir);
 
-    // computes the disparity map using a given cost
-    Mat ComputeDepthMap(const Mat& Cost, const int Rows, const int Cols);
-
 } // namespace census

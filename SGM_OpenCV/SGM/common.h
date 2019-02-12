@@ -52,4 +52,4 @@ void SetBitValue(int& BitMap, const int Bit, const bool Value);
 
 int HammingDistance(const int A, const int B);
 
-;
+Mat ComputeDepthMap(const Mat& Cost, const int Rows, const int Cols);

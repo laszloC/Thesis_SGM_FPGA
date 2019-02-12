@@ -205,3 +205,29 @@ int HammingDistance(const int A, const int B)
 {
     return (int)std::bitset<32>(A ^ B).count();
 }
+
+Mat ComputeDepthMap(const Mat& Cost, const int Rows, const int Cols)
+{
+    Mat depthMap(Rows, Cols, CV_8UC1);
+
+    for (auto i = 0; i < Rows; i++)
+    {
+        for (auto j = 0; j < Cols; j++)
+        {
+            int minD = Cost.cols + 1;
+            int minCost = INT8_MAX;
+            for (auto d = 0; d < Cost.cols; d++)
+            {
+                int p = RowMajorIndex(i, j, Cols);
+                if (Cost.at<int>(p, d) < minCost)
+                {
+                    minCost = Cost.at<int>(p, d);
+                    minD = d;
+                }
+            }
+            depthMap.at<uchar>(i, j) = minD;
+        }
+    }
+
+    return depthMap;
+}

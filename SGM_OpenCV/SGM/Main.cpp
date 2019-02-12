@@ -22,6 +22,7 @@ constexpr auto B_INDEX = 0;
 int main(int argc, char* argv[])
 {
     std::cout << "Press Ctrl+C to exit" << std::endl;
+
     while (true)
     {
         std::cout << "Choose left image" << std::endl;
@@ -74,9 +75,8 @@ int main(int argc, char* argv[])
 
         std::cout << "Calculated cost matrix" << std::endl;
 
-        Mat depthMapCensus = census::ComputeDepthMap(costLR, leftImg.rows, leftImg.cols);
-        Scale(depthMapCensus, 0, maxDisparity - 1, 0, 255);
-        imshow("Census", depthMapCensus);
+        Mat depthMapRaw = ComputeDepthMap(costLR, leftImg.rows, leftImg.cols);
+        Scale(depthMapRaw, 0, maxDisparity - 1, 0, 255);
 
         char saveFolder[MAX_PATH];
 
@@ -84,7 +84,6 @@ int main(int argc, char* argv[])
 
         openFolderDlg(saveFolder);
 
-        imwrite(std::string(saveFolder) + "/census" + std::to_string(maxDisparity) + "_" + std::to_string(p1) + "_" + std::to_string(p2) + ".bmp", depthMapCensus);
 
         Mat depthMapLR = semi_global::ComputeDepthMap(costLR, leftImg.rows, leftImg.cols, p1, p2);
         Mat depthMapRL = semi_global::ComputeDepthMap(costRL, leftImg.rows, leftImg.cols, p1, p2);
@@ -93,9 +92,11 @@ int main(int argc, char* argv[])
 
         Scale(depthMapLR, 0, maxDisparity - 1, 0, 255);
 
-        imshow("SGM", depthMapLR);
-
+        imwrite(std::string(saveFolder) + "/raw" + std::to_string(maxDisparity) + "_" + std::to_string(p1) + "_" + std::to_string(p2) + ".bmp", depthMapRaw);
         imwrite(std::string(saveFolder) + "/sgm" + std::to_string(maxDisparity) + "_" + std::to_string(p1) + "_" + std::to_string(p2) + ".bmp", depthMapLR);
+
+        imshow("Unaggregated", depthMapRaw);
+        imshow("SGM", depthMapLR);
 
         waitKey();
     }
