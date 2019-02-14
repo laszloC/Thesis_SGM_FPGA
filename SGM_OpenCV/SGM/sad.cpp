@@ -3,7 +3,7 @@
 
 #include "common.h"
 
-Mat sad::SadCost(const Mat& Left, const Mat& Right, const int MaxD, const int BW, const int DispDir)
+Mat sad::SadCost(const Mat& Left, const Mat& Right, const int MaxD, const int BlockWidth, const int DispDir)
 {
     int height = Left.rows * Left.cols;
     int width = MaxD;
@@ -18,7 +18,7 @@ Mat sad::SadCost(const Mat& Left, const Mat& Right, const int MaxD, const int BW
             {
                 int cI = i * Left.cols + j, cJ = d;
                 int nI = i, nJ = j + ((DispDir) * d);
-                cost.at<int>(cI, cJ) = SadBlockCost(Left, Right, i, j, nI, nJ, BW);
+                cost.at<int>(cI, cJ) = SadBlockCost(Left, Right, i, j, nI, nJ, BlockWidth);
             }
         }
     }
