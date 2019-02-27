@@ -196,14 +196,14 @@ int RowMajorIndex(const int I, const int J, const int Cols)
 }
 
 
-void SetBitValue(int & BitMap, const int Bit, const bool Value)
+void SetBitValue(int& BitMap, const int Bit, const bool Value)
 {
     BitMap |= (Value << Bit);
 }
 
 int HammingDistance(const int A, const int B)
 {
-    return (int)std::bitset<32>(A ^ B).count();
+    return (int)std::bitset<32>((uint)A ^ (uint)B).count();
 }
 
 Mat ComputeDepthMap(const Mat& Cost, const int Rows, const int Cols)

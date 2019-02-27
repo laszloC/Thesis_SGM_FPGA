@@ -45,7 +45,7 @@ namespace semi_global
         return startingPixels;
     }
 
-    void InitializeCosts(Mat& S, const Mat& C, const std::set<std::pair<int, int>> StartingPixels,
+    void InitializeCosts(Mat& S, const Mat& C, const std::set<std::pair<int, int>>& StartingPixels,
         const int Rows, const int Cols)
     {
         for (auto& p : StartingPixels)

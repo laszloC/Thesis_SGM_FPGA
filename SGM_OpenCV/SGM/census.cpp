@@ -52,6 +52,7 @@ namespace census
     int CensusTransformPixel(const Mat& Img, const int I, const int J)
     {
         int bitMap = 0;
+        int k = 0;
 
         for (auto i = -2; i <= 2; i++)
         {
@@ -63,7 +64,10 @@ namespace census
                 auto nJ = J + j;
 
                 if (IsInImgRange(nI, nJ, Img) && (nI != I || nJ != J))
-                    SetBitValue(bitMap, (i + 2) * 2 + (j + 2), pValue > Img.at<uchar>(nI, nJ));
+                {
+                    SetBitValue(bitMap, k, pValue > Img.at<uchar>(nI, nJ));
+                }
+                k++;
             }
         }
 
