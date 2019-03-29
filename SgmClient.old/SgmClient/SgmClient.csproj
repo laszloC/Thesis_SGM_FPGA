@@ -67,9 +67,16 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Comms\IBitmapTransciever.cs" />
-    <Compile Include="Comms\FpgaMessage.cs" />
-    <Compile Include="Comms\SocketTransciever.cs" />
+    <Compile Include="Comms\Extensions\ArrayExtensions.cs" />
+    <Compile Include="Comms\Extensions\ImageSerializer.cs" />
+    <Compile Include="Comms\Extensions\MessageSerializer.cs" />
+    <Compile Include="Comms\Extensions\SocketExtensions.cs" />
+    <Compile Include="Comms\Impl\SocketConnection.cs" />
+    <Compile Include="Comms\Interfaces\IBitmapTransciever.cs" />
+    <Compile Include="Comms\Protocol\FpgaMessage.cs" />
+    <Compile Include="Comms\Interfaces\IFpgaConnection.cs" />
+    <Compile Include="Comms\Impl\FpgaBitmapTransciever.cs" />
+    <Compile Include="Comms\Protocol\MessageFactory.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -104,6 +111,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ImageProcessing\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

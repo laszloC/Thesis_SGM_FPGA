@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "src"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"platform_config.h": "c",
+			"xil_printf.h": "c",
+			"tcp.h": "c",
+			"xil_cache.h": "c"
+		}
+	}
+}

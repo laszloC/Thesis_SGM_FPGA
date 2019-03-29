@@ -14,6 +14,9 @@ namespace SgmClient
     /// </summary>
     public partial class App : Application
     {
+        private const string HOST_ADDRESS = "192.168.1.10";
+        private const int HOST_PORT = 7;
+
         private static readonly ILog Logger = LogManager.GetLogger(typeof(App));
 
         protected override void OnStartup(StartupEventArgs e)

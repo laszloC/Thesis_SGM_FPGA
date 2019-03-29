@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="common.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageTransmitter.cpp">
+      <Filter>Sources\Comms</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="common.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageTransmitter.h">
+      <Filter>Headers\Comms</Filter>
+    </ClInclude>
+    <ClInclude Include="Exceptions.h">
+      <Filter>Headers\Comms</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{922a5055-c643-4d69-b457-15f2769e9ba7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources">
+      <UniqueIdentifier>{a1537486-7b95-4450-9256-12f3ddc70fc7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Comms">
+      <UniqueIdentifier>{dfb7094b-e737-4615-ae6e-45da55af7521}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Comms">
+      <UniqueIdentifier>{a48d23b2-bcad-4f6b-b52b-ca552fe33c82}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
