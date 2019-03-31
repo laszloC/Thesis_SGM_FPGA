@@ -30,6 +30,9 @@
     <ClInclude Include="Exceptions.h">
       <Filter>Headers\Comms</Filter>
     </ClInclude>
+    <ClInclude Include="Commands.h">
+      <Filter>Headers\Comms</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Headers">

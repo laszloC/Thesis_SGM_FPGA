@@ -1,5 +1,0 @@
-19:38:18 INFO  : Registering command handlers for SDK TCF services
-19:38:19 INFO  : Launching XSCT server: xsct.bat -interactive E:\Git\Thesis_SGM_FPGA\Zedboard\temp_xsdb_launch_script.tcl
-19:38:22 INFO  : XSCT server has started successfully.
-19:38:22 INFO  : Successfully done setting XSCT server connection channel  
-19:38:22 INFO  : Successfully done setting SDK workspace  

@@ -2,6 +2,7 @@
 
 #include "ImageTransmitter.h"
 #include "Exceptions.h"
+#include "Commands.h"
 
 namespace comms
 {
@@ -33,8 +34,15 @@ namespace comms
 
         int size = height * sz;
 
+        std::cout << "Image size: 0x" << std::hex << std::setw(16) << std::setfill('0') << size << std::endl;
+
+        if (send(m_socket, (const char*)&COMMAND_SEND_IMG, sizeof(COMMAND_SEND_IMG), 0) == SOCKET_ERROR)
+            throw SocketException("Failed to send command", WSAGetLastError());
+
         if (send(m_socket, (const char*)&size, sizeof(int), 0) == SOCKET_ERROR)
             throw SocketException("Failed to send size of image", WSAGetLastError());
+
+        //Sleep(10000);
 
         for (auto i = 0; i < height; i++)
         {
@@ -43,6 +51,7 @@ namespace comms
                 const char* buf = (char*)(Img.data + sz * i + j);
                 if (send(m_socket, buf, ss, 0) == SOCKET_ERROR)
                     throw SocketException("Failed to send image", WSAGetLastError());
+                //Sleep(10000);
             }
         }
     }
