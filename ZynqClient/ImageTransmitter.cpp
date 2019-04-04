@@ -44,7 +44,7 @@ namespace comms
 
         for (auto i = 0; i < size; i += fragSize)
         {
-            //Sleep(500);
+            Sleep(1);
             const char* buf = (char*)(Img.data + i);
             int sendSize = min(fragSize, remSize);
             remSize -= fragSize;
@@ -71,8 +71,8 @@ namespace comms
 
         ZeroMemory(&hints, sizeof(hints));
         hints.ai_family = AF_INET;
-        hints.ai_socktype = SOCK_STREAM;
-        hints.ai_protocol = IPPROTO_TCP;
+        hints.ai_socktype = SOCK_DGRAM;
+        hints.ai_protocol = IPPROTO_UDP;
 
         uint32_t status = getaddrinfo(Address.c_str(), Port.c_str(), &hints, &result);
         if (status != 0)

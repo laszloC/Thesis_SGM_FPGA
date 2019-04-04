@@ -5,7 +5,7 @@
 #include <string.h>
 
 #include "lwip/err.h"
-#include "lwip/tcp.h"
+#include "lwip/udp.h"
 #include "xil_types.h"
 
 typedef enum _global_state_t
@@ -36,13 +36,13 @@ err_t srv_init();
 err_t srv_uninit();
 
 // callback used to accept a new tcp connection
-err_t accept_callback(void *arg, struct tcp_pcb *newpcb, err_t err);
+//err_t accept_callback(void *arg, struct udp_pcb *newpcb, err_t err);
 
 // callback used to receive commands
-err_t recv_callback(void *arg, struct tcp_pcb* tcp_buf, struct pbuf *p, err_t err);
+void recv_callback(void *arg, struct udp_pcb* pcb, struct pbuf *p, const ip_addr_t *addr, u16_t port);
 
 // callback used to receive and build images
-err_t img_recv_callback(void *arg, struct tcp_pcb* tcp_buf, struct pbuf* p, err_t err);
+void img_recv_callback(void *arg, struct udp_pcb* pcb, struct pbuf *p, const ip_addr_t *addr, u16_t port);
 
 // builds an image buffer by buffer
 err_t build_image(u8* img, u8* buf, int bufsize, int* built_size);

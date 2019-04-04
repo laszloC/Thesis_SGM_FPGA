@@ -5,8 +5,6 @@
 
 #include "server.h"
 
-#include "lwip/err.h"
-#include "lwip/tcp.h"
 #if defined (__arm__) || defined (__aarch64__)
 #include "xil_printf.h"
 #endif
@@ -55,32 +53,16 @@ err_t srv_uninit()
     return ERR_OK;
 }
 
-err_t accept_callback(void *arg, struct tcp_pcb *newpcb, err_t err)
-{
-    static int connection = 1;
 
-    /* set the receive callback for this connection */
-    tcp_recv(newpcb, recv_callback);
-
-    /* just use an integer number indicating the connection id as the
-       callback argument */
-    tcp_arg(newpcb, (void*)(UINTPTR)connection);
-
-    /* increment for subsequent accepted connections */
-    connection++;
-
-    return ERR_OK;
-}
-
-err_t recv_callback(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err)
+void recv_callback(void *arg, struct udp_pcb *pcb, struct pbuf *p, const ip_addr_t *addr, u16_t port)
 {
     command_t cmd;
 
     //* do not read the packet if we are not in ESTABLISHED state
     if (!p) {
-        tcp_close(tpcb);
-        tcp_recv(tpcb, NULL);
-        return ERR_OK;
+        srv_uninit();
+        udp_disconnect(pcb);
+        udp_recv(pcb, NULL, NULL);
     }
 
     // xil_printf("recv_callback received packet of size 0x%x\n\r", p->len);
@@ -92,8 +74,9 @@ err_t recv_callback(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err)
 
             if (cmd == CMD_SEND_IMG) {
                 // set the receive callback to build image
+                xil_printf("Got send image command\n\r");
                 g_state = get_next_state();
-                tcp_recv(tpcb, img_recv_callback);
+                udp_recv(pcb, img_recv_callback, NULL);
             }
 
             if (cmd == CMD_TEST_NEG) {
@@ -110,15 +93,10 @@ err_t recv_callback(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err)
             break;
     }
 
-    // indicate that the packet has been received
-    tcp_recved(tpcb, p->len);
-
     pbuf_free(p);
-
-    return ERR_OK;
 }
 
-err_t img_recv_callback(void *arg, struct tcp_pcb* tpcb, struct pbuf* p, err_t err)
+void img_recv_callback(void *arg, struct udp_pcb* pcb, struct pbuf* p, const ip_addr_t *addr, u16_t port)
 {
     static img_state_t img_state = IMG_ST_START;
     static int recv = 0;
@@ -129,9 +107,8 @@ err_t img_recv_callback(void *arg, struct tcp_pcb* tpcb, struct pbuf* p, err_t e
     // do not read the packet if we are not in ESTABLISHED state
     if (!p) {
         srv_uninit();
-        tcp_close(tpcb);
-        tcp_recv(tpcb, NULL);
-        return ERR_OK;
+        udp_disconnect(pcb);
+        udp_recv(pcb, NULL, NULL);
     }
 
     // xil_printf("img_recv_callback received packet of size 0x%x\n\r", p->len);
@@ -158,9 +135,8 @@ err_t img_recv_callback(void *arg, struct tcp_pcb* tpcb, struct pbuf* p, err_t e
             if (image == NULL) {
                 xil_printf("Failed to allocate %d bytes\n\r", size_bytes);
                 srv_uninit();
-                tcp_close(tpcb);
-                tcp_recv(tpcb, NULL);
-                return ERR_OK;
+                udp_disconnect(pcb);
+                udp_recv(pcb, NULL, NULL);
             }
 
             recv = 0;
@@ -178,17 +154,17 @@ err_t img_recv_callback(void *arg, struct tcp_pcb* tpcb, struct pbuf* p, err_t e
             else if (recv == size_bytes)
             {
                 if (!g_img_l_recv && !g_img_r_recv) {
-                	xil_printf("Received left image\n\r");
+                    xil_printf("Received left image\n\r");
                     g_img_l_recv = TRUE;
                 }
                 else if (g_img_l_recv && !g_img_r_recv) {
-                	xil_printf("Received right image\n\r");
+                    xil_printf("Received right image\n\r");
                     g_img_r_recv = TRUE;
                 }
 
                 img_state = IMG_ST_START;
                 g_state = get_next_state();
-                tcp_recv(tpcb, recv_callback);
+                udp_recv(pcb, recv_callback, NULL);
             }
             break;
 
@@ -196,13 +172,7 @@ err_t img_recv_callback(void *arg, struct tcp_pcb* tpcb, struct pbuf* p, err_t e
             break;
     }
 
-
-    // indicate that the package was received
-    tcp_recved(tpcb, p->len);
-
     pbuf_free(p);
-
-    return ERR_OK;
 }
 
 err_t build_image(u8* img, u8* buf, int bufsize, int* built_size)
@@ -260,12 +230,7 @@ global_state_t get_next_state()
 // defined for lwip
 void print_app_header()
 {
-#if (LWIP_IPV6==0)
-    xil_printf("\n\r\n\r-----lwIP TCP echo server ------\n\r");
-#else
-    xil_printf("\n\r\n\r-----lwIPv6 TCP echo server ------\n\r");
-#endif
-    xil_printf("TCP packets sent to port 6001 will be echoed back\n\r");
+    xil_printf("\n\r\n\r-----lwIP UDP sgm server ------\n\r");
 }
 
 // defined for lwip
@@ -276,40 +241,33 @@ int transfer_data() {
 // defined for lwip
 int start_application()
 {
-    struct tcp_pcb *pcb;
+    struct udp_pcb *pcb;
     err_t err;
     unsigned port = 7;
 
     srv_init();
 
     /* create new TCP PCB structure */
-    pcb = tcp_new_ip_type(IPADDR_TYPE_ANY);
+    pcb = udp_new_ip_type(IPADDR_TYPE_ANY);
     if (!pcb) {
         xil_printf("Error creating PCB. Out of Memory\n\r");
         return -1;
     }
 
     /* bind to specified @port */
-    err = tcp_bind(pcb, IP_ANY_TYPE, port);
+    err = udp_bind(pcb, IP_ANY_TYPE, port);
     if (err != ERR_OK) {
         xil_printf("Unable to bind to port %d: err = %d\n\r", port, err);
         return -2;
     }
 
     /* we do not need any arguments to callback functions */
-    tcp_arg(pcb, NULL);
+    // udp_arg(pcb, NULL);
 
-    /* listen for connections */
-    pcb = tcp_listen(pcb);
-    if (!pcb) {
-        xil_printf("Out of memory while tcp_listen\n\r");
-        return -3;
-    }
+    /* listen for data */
+    udp_recv(pcb, recv_callback, NULL);
 
-    /* specify callback to use for incoming connections */
-    tcp_accept(pcb, accept_callback);
-
-    xil_printf("TCP echo server started @ port %d\n\r", port);
+    xil_printf("Image receiver started @ port %d %d\n\r", port);
 
     return 0;
 }
