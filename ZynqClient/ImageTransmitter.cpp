@@ -26,33 +26,30 @@ namespace comms
 
     void ImageTransmitter::SendImage(const cv::Mat& Img)
     {
-        int height = Img.rows;      // rows
-        int width = Img.cols;       // cols
-        int ch = Img.channels();    // channels 3 - color, 1 - gray
-        int sz = (int)Img.step;     // number of bytes per row
-        int ss = 960;
+        int dims[2] = { Img.rows, Img.cols };
+        int stepSize = (int)Img.step[0];
+        int fragSize = 500;
 
-        int size = height * sz;
+        int size = dims[0] * stepSize;
+        int remSize = size;
 
+        Command cmd = Command::CmdSendImage;
         std::cout << "Image size: 0x" << std::hex << std::setw(16) << std::setfill('0') << size << std::endl;
 
-        if (send(m_socket, (const char*)&COMMAND_SEND_IMG, sizeof(COMMAND_SEND_IMG), 0) == SOCKET_ERROR)
+        if (send(m_socket, (const char*)&cmd, sizeof(cmd), 0) == SOCKET_ERROR)
             throw SocketException("Failed to send command", WSAGetLastError());
 
-        if (send(m_socket, (const char*)&size, sizeof(int), 0) == SOCKET_ERROR)
-            throw SocketException("Failed to send size of image", WSAGetLastError());
+        if (send(m_socket, (const char*)dims, sizeof(dims), 0) == SOCKET_ERROR)
+            throw SocketException("Failed to send image dimensions", WSAGetLastError());
 
-        //Sleep(10000);
-
-        for (auto i = 0; i < height; i++)
+        for (auto i = 0; i < size; i += fragSize)
         {
-            for (auto j = 0; j < width; j++)
-            {
-                const char* buf = (char*)(Img.data + sz * i + j);
-                if (send(m_socket, buf, ss, 0) == SOCKET_ERROR)
-                    throw SocketException("Failed to send image", WSAGetLastError());
-                //Sleep(10000);
-            }
+            //Sleep(500);
+            const char* buf = (char*)(Img.data + i);
+            int sendSize = min(fragSize, remSize);
+            remSize -= fragSize;
+            if (send(m_socket, buf, sendSize, 0) == SOCKET_ERROR)
+                throw SocketException("Failed to send image", WSAGetLastError());
         }
     }
 
