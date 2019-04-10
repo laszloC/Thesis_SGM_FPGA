@@ -5,7 +5,7 @@
 namespace comms
 {
 
-class SocketException : std::exception
+class SocketException : public std::exception
 {
 public:
 
@@ -34,6 +34,11 @@ public:
 
         return m_message.c_str();
     }
+};
+
+class ImageException : public std::exception
+{
+public: ImageException(char const* const Message) : std::exception(Message) {}
 };
 
 } // comms

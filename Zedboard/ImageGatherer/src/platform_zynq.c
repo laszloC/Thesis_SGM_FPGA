@@ -76,7 +76,7 @@ static XScuTimer TimerInstance;
 static int ResetRxCntr = 0;
 #endif
 
-extern struct netif *echo_netif;
+extern struct netif *netif;
 
 volatile int TcpFastTmrFlag = 0;
 volatile int TcpSlowTmrFlag = 0;
@@ -130,13 +130,13 @@ timer_callback(XScuTimer * TimerInstance)
 	 */
 #ifndef USE_SOFTETH_ON_ZYNQ
 	if (ResetRxCntr >= RESET_RX_CNTR_LIMIT) {
-		xemacpsif_resetrx_on_no_rxdata(echo_netif);
+		xemacpsif_resetrx_on_no_rxdata(netif);
 		ResetRxCntr = 0;
 	}
 #endif
 	/* For detecting Ethernet phy link status periodically */
 	if (DetectEthLinkStatus == ETH_LINK_DETECT_INTERVAL) {
-		eth_link_detect(echo_netif);
+		eth_link_detect(netif);
 		DetectEthLinkStatus = 0;
 	}
 

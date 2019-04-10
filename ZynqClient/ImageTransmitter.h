@@ -2,6 +2,8 @@
 
 #include "stdafx.h"
 
+#include "Commands.h"
+
 namespace comms
 {
 
@@ -13,9 +15,15 @@ public:
 
     ~ImageTransmitter();
 
+    void SendCommand(const Command& Cmd);
+
     void SendImage(const cv::Mat& Img);
 
+    cv::Mat ReceiveImage();
+
 private:
+
+    const int m_fragSize = 500;
 
     SOCKET m_socket;
 

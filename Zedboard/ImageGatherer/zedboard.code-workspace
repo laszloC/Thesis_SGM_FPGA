@@ -6,10 +6,9 @@
 	],
 	"settings": {
 		"files.associations": {
-			"platform_config.h": "c",
-			"xil_printf.h": "c",
-			"tcp.h": "c",
-			"xil_cache.h": "c"
+			"xil_types.h": "c",
+			"xparameters.h": "c",
+			"xil_printf.h": "c"
 		}
 	}
 }
