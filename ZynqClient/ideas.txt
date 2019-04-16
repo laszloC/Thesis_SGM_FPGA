@@ -1,0 +1,7 @@
+* ip config in config file
+
+* c++ class for socket
+
+* thread for listening on incoming
+
+* standalone application that sends on udp from board

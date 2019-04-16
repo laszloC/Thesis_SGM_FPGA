@@ -225,7 +225,7 @@ err_t send_img(struct udp_pcb* pcb, const u8* buf, int h, int w)
 
     xil_printf("Will send command\n\r");
     p->payload = (void*)cmd;
-    udp_sendto(pcb, p->payload, &g_pc_addr, g_pc_port);
+    udp_sendto(pcb, p, &g_pc_addr, g_pc_port);
     xil_printf("Sent command\n\r");
     pbuf_free(p);
     p = NULL;
@@ -239,7 +239,7 @@ err_t send_img(struct udp_pcb* pcb, const u8* buf, int h, int w)
 
     xil_printf("Will send image size\n\r");
     p->payload = (void*)size;
-    udp_sendto(pcb, p->payload, &g_pc_addr, g_pc_port);
+    udp_sendto(pcb, p, &g_pc_addr, g_pc_port);
     xil_printf("Sent image size\n\r");
     pbuf_free(p);
     p = NULL;
@@ -257,7 +257,7 @@ err_t send_img(struct udp_pcb* pcb, const u8* buf, int h, int w)
         pbuf_free(p);
 
         p->payload = (void*)(buf + i);
-        udp_sendto(pcb, p->payload, &g_pc_addr, g_pc_port);
+        udp_sendto(pcb, p, &g_pc_addr, g_pc_port);
         xil_printf("Sent image fragment %d\n\r", i);
     }
 

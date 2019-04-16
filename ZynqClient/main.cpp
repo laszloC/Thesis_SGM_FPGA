@@ -10,8 +10,8 @@
 const std::string m_board_host = "192.168.1.10";
 const std::string m_board_port = "50000";
 
-const std::string m_pc_host = "192.168.1.20";
-const std::string m_pc_port = "50001";
+//const std::string m_pc_host = "192.168.1.20";
+//const std::string m_pc_port = "50001";
 
 int main(int argc, char** argv)
 {
@@ -34,9 +34,9 @@ int main(int argc, char** argv)
 
         transmitter.SendImage(img_right);
 
-        Mat res = transmitter.ReceiveImage();
+        //Mat res = transmitter.ReceiveImage();
 
-        imshow("Negative", res);
+        //imshow("Negative", res);
     }
     catch (const std::exception& e)
     {

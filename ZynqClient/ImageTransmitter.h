@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 
+#include "Socket.h"
 #include "Commands.h"
 
 namespace comms
@@ -13,21 +14,22 @@ public:
 
     ImageTransmitter(const std::string& Address, const std::string& Port);
 
-    ~ImageTransmitter();
+    //~ImageTransmitter();
 
     void SendCommand(const Command& Cmd);
 
     void SendImage(const cv::Mat& Img);
 
-    cv::Mat ReceiveImage();
+    //cv::Mat ReceiveImage();
 
 private:
 
     const int m_fragSize = 500;
 
-    SOCKET m_socket;
+    Socket m_outSocket;
+    //Socket m_inSocket;
 
-    void CreateSocket(const std::string& Address, const std::string& Port);
+    //void CreateSocket(const std::string& Address, const std::string& Port);
 };
 
 } // comms

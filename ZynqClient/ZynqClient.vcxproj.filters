@@ -13,6 +13,9 @@
     <ClCompile Include="ImageTransmitter.cpp">
       <Filter>Sources\Comms</Filter>
     </ClCompile>
+    <ClCompile Include="Socket.cpp">
+      <Filter>Sources\Comms</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common.h">
@@ -33,6 +36,9 @@
     <ClInclude Include="Commands.h">
       <Filter>Headers\Comms</Filter>
     </ClInclude>
+    <ClInclude Include="Socket.h">
+      <Filter>Headers\Comms</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Headers">
@@ -47,5 +53,13 @@
     <Filter Include="Sources\Comms">
       <UniqueIdentifier>{a48d23b2-bcad-4f6b-b52b-ca552fe33c82}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{542fe43c-9256-406e-bc7f-739f87240514}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ideas.txt">
+      <Filter>Resources</Filter>
+    </Text>
   </ItemGroup>
 </Project>
