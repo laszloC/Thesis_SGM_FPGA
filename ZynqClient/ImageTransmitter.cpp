@@ -6,14 +6,14 @@
 
 namespace comms
 {
-    ImageTransmitter::ImageTransmitter(const std::string& OutAddress, const std::string& OutPort)
-        : m_outSocket(OutAddress, OutPort)
+    ImageTransmitter::ImageTransmitter()
+        : m_outSocket(OUT_ADDRESS, OUT_PORT)
     {
     }
 
     void ImageTransmitter::SendCommand(const Command& Cmd)
     {
-        m_outSocket.Send((const char*)Cmd, sizeof(Cmd));
+        m_outSocket.Send((const char*)&Cmd, sizeof(Cmd));
     }
 
     void ImageTransmitter::SendImage(const cv::Mat& Img)
@@ -26,10 +26,10 @@ namespace comms
 
         //std::cout << "Image size: 0x" << std::hex << std::setw(16) << std::setfill('0') << size << std::endl;
 
-        Command cmd = Command::CmdSendImage;
+        std::cout << "Sending image command..." << std::endl;
+        SendCommand(Command::CmdSendImage);
 
-        SendCommand(cmd);
-
+        std::cout << "Sending image size..." << std::endl;
         m_outSocket.Send((const char*)dims, sizeof(dims));
 
         for (auto i = 0; i < size; i += m_fragSize)
@@ -38,6 +38,7 @@ namespace comms
             const char* buf = (char*)(Img.data + i);
             int sendSize = min(m_fragSize, remSize);
             remSize -= m_fragSize;
+            std::cout << "Sending image fragment " << i << "..." << std::endl;
             m_outSocket.Send(buf, sendSize);
         }
     }

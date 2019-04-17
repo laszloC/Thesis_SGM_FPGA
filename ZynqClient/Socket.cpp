@@ -84,12 +84,12 @@ namespace comms
 
         freeaddrinfo(result);
 
-        std::string first = "first";
+        //std::string first = "first";
 
-        send(m_socket, first.c_str(), (int)first.size(), 0);
+        //send(m_socket, first.c_str(), (int)first.size(), 0);
 
-        if (m_socket == INVALID_SOCKET)
-            throw SocketException(ssError.str(), status);
+        //if (m_socket == INVALID_SOCKET)
+        //    throw SocketException(ssError.str(), status);
     }
 
     void Socket::CloseSocket()

@@ -12,7 +12,13 @@ class ImageTransmitter
 {
 public:
 
-    ImageTransmitter(const std::string& Address, const std::string& Port);
+    const std::string& OUT_ADDRESS = "192.168.1.10";
+    const std::string& OUT_PORT = "50000";
+
+    const std::string& IN_ADDRESS = "192.168.1.11";
+    const std::string& IN_PORT = "50001";
+
+    ImageTransmitter();
 
     //~ImageTransmitter();
 
@@ -28,8 +34,6 @@ private:
 
     Socket m_outSocket;
     //Socket m_inSocket;
-
-    //void CreateSocket(const std::string& Address, const std::string& Port);
 };
 
 } // comms

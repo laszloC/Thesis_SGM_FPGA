@@ -6,9 +6,7 @@
 
 #include "Commands.h"
 #include "ImageTransmitter.h"
-
-const std::string m_board_host = "192.168.1.10";
-const std::string m_board_port = "50000";
+#include "Exceptions.h"
 
 //const std::string m_pc_host = "192.168.1.20";
 //const std::string m_pc_port = "50001";
@@ -24,7 +22,7 @@ int main(int argc, char** argv)
 
     try
     {
-        comms::ImageTransmitter transmitter = comms::ImageTransmitter(m_board_host, m_board_port);
+        comms::ImageTransmitter transmitter = comms::ImageTransmitter();
 
         // start by sending the left image only and expect to get it back
         Mat img_left = imread(argv[1], IMREAD_GRAYSCALE);

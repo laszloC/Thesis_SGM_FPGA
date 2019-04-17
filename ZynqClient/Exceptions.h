@@ -32,7 +32,7 @@ public:
 
         ss << m_message << ". Status: 0x" << m_status;
 
-        return m_message.c_str();
+        return ss.str().c_str();
     }
 };
 
