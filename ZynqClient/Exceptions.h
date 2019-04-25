@@ -30,7 +30,7 @@ public:
     {
         std::stringstream ss;
 
-        ss << m_message << ". Status: 0x" << m_status;
+        ss << m_message << ". Status: " << m_status;
 
         return ss.str().c_str();
     }

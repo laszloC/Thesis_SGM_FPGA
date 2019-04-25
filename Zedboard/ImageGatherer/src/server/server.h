@@ -12,7 +12,7 @@ err_t srv_init();
 
 void print_app_header();
 
-int start_application();
+int start_application(ip_addr_t* in_addr, u16_t in_port, ip_addr_t* out_addr, u16_t out_port);
 
 int transfer_data();
 

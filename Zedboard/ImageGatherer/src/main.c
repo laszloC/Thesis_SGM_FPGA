@@ -41,6 +41,7 @@
 #include "lwip/udp.h"
 #include "xil_cache.h"
 #include "server/server.h"
+#include "utils/utils.h"
 
 /* missing declaration in lwIP */
 void lwip_init();
@@ -49,13 +50,6 @@ extern volatile int TcpFastTmrFlag;
 extern volatile int TcpSlowTmrFlag;
 static struct netif server_netif;
 struct netif *netif;
-
-void
-print_ip(char *msg, ip_addr_t *ip)
-{
-    print(msg);
-    xil_printf("%d.%d.%d.%d\n\r", ip4_addr1(ip), ip4_addr2(ip), ip4_addr3(ip), ip4_addr4(ip));
-}
 
 void
 print_ip_settings(ip_addr_t *ip, ip_addr_t *mask, ip_addr_t *gw)
@@ -81,7 +75,8 @@ int IicPhyReset(void);
 
 int main()
 {
-    ip_addr_t ipaddr, netmask, gw;
+    ip_addr_t in_addr, out_addr, netmask, gw;
+    u16_t in_port, out_port;
 
     /* the mac address of the board. this should be unique per board */
     unsigned char mac_ethernet_address[] = { 0x00, 0x0a, 0x35, 0x00, 0x01, 0x02 };
@@ -105,16 +100,20 @@ int main()
     init_platform();
 
     /* initiliaze IP addresses to be used */
-    IP4_ADDR(&ipaddr, 192, 168, 1, 10);
-    IP4_ADDR(&netmask, 255, 255, 255, 0);
-    IP4_ADDR(&gw, 192, 168, 1, 1);
+    IP4_ADDR(&in_addr, 172, 16, 20, 10);
+    in_port = 5000;
+    IP4_ADDR(&out_addr, 172, 16, 32, 40);
+    out_port = 5001;
+
+    IP4_ADDR(&netmask, 255, 255, 0, 0);
+    IP4_ADDR(&gw, 172, 16, 1, 1);
 
     print_app_header();
 
     lwip_init();
 
     /* Add network interface to the netif_list, and set it as default */
-    if (!xemac_add(netif, &ipaddr, &netmask, &gw, mac_ethernet_address, PLATFORM_EMAC_BASEADDR)) {
+    if (!xemac_add(netif, &in_addr, &netmask, NULL, mac_ethernet_address, PLATFORM_EMAC_BASEADDR)) {
         xil_printf("Error adding N/W interface\n\r");
         return -1;
     }
@@ -127,7 +126,7 @@ int main()
 
     srv_init();
 
-    start_application();
+    start_application(&in_addr, in_port, &out_addr, out_port);
 
     /* receive and process packets */
     while (1) {

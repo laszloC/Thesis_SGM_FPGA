@@ -7,8 +7,11 @@
 namespace comms
 {
     ImageTransmitter::ImageTransmitter()
-        : m_outSocket(OUT_ADDRESS, OUT_PORT)
+        : m_inSocket()
+        , m_outSocket()
     {
+        m_inSocket.Bind(RECV_ADDRESS, RECV_PORT);
+        m_outSocket.Connect(SEND_ADDRESS, SEND_PORT);
     }
 
     void ImageTransmitter::SendCommand(const Command& Cmd)
@@ -41,6 +44,39 @@ namespace comms
             std::cout << "Sending image fragment " << i << "..." << std::endl;
             m_outSocket.Send(buf, sendSize);
         }
+    }
+
+    cv::Mat ImageTransmitter::ReceiveImage(int H, int W)
+    {
+        SendCommand(comms::Command::CmdTestNegative);
+
+//        Command cmd{ Command::CmdUnknown };
+//
+//        std::cout << "Waiting to receive image command..." << std::endl;
+//        m_inSocket.Recv((char*)&cmd, sizeof(cmd));
+//        if (cmd != Command::CmdSendImage)
+//            throw ImageException("Did not receive image command");
+
+        int dims[2] = { H, W };
+
+//        std::cout << "Waiting to receive size of image..." << std::endl;
+//        m_inSocket.Recv((char*)&dims, sizeof(dims));
+
+        Mat img = Mat::zeros(dims[0], dims[1], CV_8UC1);
+
+        auto size = dims[0] * dims[1];
+        auto remSize = size;
+        for (auto i = 0; i < size; i += m_fragSize)
+        {
+            char* buf = ((char*)img.data + i);
+            std::cout << "Waiting for image fragment " << i << std::endl;
+            int recvSize = min(m_fragSize, remSize);
+            remSize -= recvSize;
+
+            m_inSocket.Recv(buf, recvSize);
+        }
+
+        return img;
     }
 
     //cv::Mat ImageTransmitter::ReceiveImage()

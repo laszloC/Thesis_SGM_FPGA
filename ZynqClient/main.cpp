@@ -32,9 +32,9 @@ int main(int argc, char** argv)
 
         transmitter.SendImage(img_right);
 
-        //Mat res = transmitter.ReceiveImage();
+        Mat res = transmitter.ReceiveImage(img_left.rows, img_left.cols);
 
-        //imshow("Negative", res);
+        imshow("Negative", res);
     }
     catch (const std::exception& e)
     {

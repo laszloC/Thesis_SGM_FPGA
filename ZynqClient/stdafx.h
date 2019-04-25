@@ -22,5 +22,6 @@
 #include "opencv2/imgproc/imgproc.hpp"
 
 #include <string>
+#include <thread>
 
 using namespace cv;

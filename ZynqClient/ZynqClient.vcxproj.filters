@@ -13,7 +13,7 @@
     <ClCompile Include="ImageTransmitter.cpp">
       <Filter>Sources\Comms</Filter>
     </ClCompile>
-    <ClCompile Include="Socket.cpp">
+    <ClCompile Include="UdpSocket.cpp">
       <Filter>Sources\Comms</Filter>
     </ClCompile>
   </ItemGroup>
@@ -36,7 +36,7 @@
     <ClInclude Include="Commands.h">
       <Filter>Headers\Comms</Filter>
     </ClInclude>
-    <ClInclude Include="Socket.h">
+    <ClInclude Include="UdpSocket.h">
       <Filter>Headers\Comms</Filter>
     </ClInclude>
   </ItemGroup>
@@ -61,5 +61,8 @@
     <Text Include="ideas.txt">
       <Filter>Resources</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>
