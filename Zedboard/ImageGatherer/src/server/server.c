@@ -111,7 +111,7 @@ void handle_command(const command_t cmd, struct udp_pcb* pcb)
             }
 
             xil_printf("Reversed image\n\r");
-            send_img(pcb, g_img_l, g_img_l[H_INDEX], g_img_l[W_INDEX]);
+            send_img(pcb, g_img_l, g_img_l_size[H_INDEX], g_img_l_size[W_INDEX]);
             break;
         default:
             break;
@@ -215,10 +215,12 @@ err_t send_img(struct udp_pcb* pcb, const u8* buf, int h, int w)
     err_t status;
 //    int size[2] = { h, w };
     struct pbuf* p = NULL;
-    int fragment_size = 1400;
+    int fragment_size = 400;
     int size_bytes = h * w;
     int rem_size = size_bytes;
     int send_size = 0;
+
+    xil_printf("Image Size in bytes: %d\n\r", size_bytes);
 
     // send command
 //    p = pbuf_alloc(PBUF_TRANSPORT, sizeof(cmd), PBUF_RAM);
@@ -266,9 +268,10 @@ err_t send_img(struct udp_pcb* pcb, const u8* buf, int h, int w)
 //    asm(" cpsid  I");
 
     // send image fragments
-    for(int i = 0; i < size_bytes; i += fragment_size) {
+    int i = 0;
+    while(rem_size > 0) {
         send_size = min(fragment_size, rem_size);
-        rem_size -= fragment_size;
+        rem_size -= send_size;
 
         p = pbuf_alloc(PBUF_TRANSPORT, send_size, PBUF_REF);
         if (p == NULL) {
@@ -287,7 +290,7 @@ err_t send_img(struct udp_pcb* pcb, const u8* buf, int h, int w)
 		xil_printf("Sent image fragment %d of size %d\n\r", i, send_size);
 
         pbuf_free(p);
-
+        i += send_size;
     }
 
 //    platform_enable_interrupts();

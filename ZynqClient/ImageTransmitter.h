@@ -28,7 +28,7 @@ public:
 
 private:
 
-    const int m_fragSize = 1400;
+    const int m_fragSize = 400;
 
     UdpSocket m_outSocket;
     UdpSocket m_inSocket;

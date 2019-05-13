@@ -65,6 +65,8 @@ namespace comms
         Mat img = Mat::zeros(dims[0], dims[1], CV_8UC1);
 
         auto size = dims[0] * dims[1];
+
+        std::cout << "Waiting for image of size " << size << std::endl;
         auto remSize = size;
         for (auto i = 0; i < size; i += m_fragSize)
         {
