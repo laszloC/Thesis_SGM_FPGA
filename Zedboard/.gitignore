@@ -58,3 +58,10 @@ local.properties
 /RemoteSystemTempFiles
 /zed_hw_platform
 .vscode
+
+*.swp
+*.swo
+bin
+binaries
+build.log
+out_*
