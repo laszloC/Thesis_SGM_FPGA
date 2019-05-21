@@ -228,9 +228,14 @@ BEGIN LIBRARY
  PARAMETER LIBRARY_VER = 1.2
  PARAMETER PROC_INSTANCE = ps7_cortexa9_0
  PARAMETER api_mode = SOCKET_API
- PARAMETER dhcp_does_arp_check = true
- PARAMETER lwip_dhcp = true
+ PARAMETER lwip_tcp_keepalive = true
+ PARAMETER memp_n_tcp_seg = 1024
+ PARAMETER memp_num_api_msg = 64
+ PARAMETER memp_num_netbuf = 32
+ PARAMETER memp_num_netconn = 8
+ PARAMETER memp_num_tcpip_msg = 256
  PARAMETER pbuf_pool_size = 2048
+ PARAMETER tcp_queue_ooseq = 0
 END
 
 

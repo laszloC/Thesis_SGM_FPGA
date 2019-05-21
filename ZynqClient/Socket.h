@@ -5,11 +5,16 @@
 namespace comms
 {
 
-class UdpSocket
+enum class SocketType {
+    UdpSocket,
+    TcpSocket
+};
+
+class Socket
 {
 public:
 
-    UdpSocket();
+    Socket(SocketType Type);
 
     void Bind(const std::string& LocalAddress, const uint16_t LocalPort);
 
@@ -19,7 +24,7 @@ public:
 
     void Recv(char* Buf, const int Len);
 
-    ~UdpSocket();
+    ~Socket();
 
 private:
 
@@ -27,7 +32,7 @@ private:
     SOCKADDR_IN m_localAddress;
     SOCKET m_socket;
 
-    void CreateSocket();
+    void CreateSocket(SocketType Type);
 
     void CloseSocket();
 

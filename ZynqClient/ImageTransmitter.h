@@ -2,7 +2,7 @@
 
 #include "stdafx.h"
 
-#include "UdpSocket.h"
+#include "Socket.h"
 #include "Commands.h"
 
 namespace comms
@@ -12,11 +12,11 @@ class ImageTransmitter
 {
 public:
 
-    const std::string SEND_ADDRESS = "172.16.20.10";
-    const uint16_t SEND_PORT = 5000;
+    const std::string SEND_ADDRESS = "192.168.1.10";
+    const uint16_t SEND_PORT = 50000;
 
-    const std::string RECV_ADDRESS = "172.16.32.40";
-    const uint16_t RECV_PORT = 5001;
+    const std::string RECV_ADDRESS = "192.168.1.20";
+    const uint16_t RECV_PORT = 8;
 
     ImageTransmitter();
 
@@ -28,10 +28,10 @@ public:
 
 private:
 
-    const int m_fragSize = 400;
+    const int m_fragSize = 1000;
 
-    UdpSocket m_outSocket;
-    UdpSocket m_inSocket;
+    Socket m_outSocket;
+    Socket m_inSocket;
 };
 
 } // comms

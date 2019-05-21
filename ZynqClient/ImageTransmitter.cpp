@@ -7,8 +7,8 @@
 namespace comms
 {
     ImageTransmitter::ImageTransmitter()
-        : m_inSocket()
-        , m_outSocket()
+        : m_inSocket(comms::SocketType::TcpSocket)
+        , m_outSocket(comms::SocketType::TcpSocket)
     {
         m_inSocket.Bind(RECV_ADDRESS, RECV_PORT);
         m_outSocket.Connect(SEND_ADDRESS, SEND_PORT);
@@ -21,7 +21,7 @@ namespace comms
 
     void ImageTransmitter::SendImage(const cv::Mat& Img)
     {
-        int dims[2] = { Img.rows, Img.cols };
+        uint32_t dims[2] = { (uint32_t)Img.rows, (uint32_t)Img.cols };
         int stepSize = (int)Img.step[0];
 
         int size = dims[0] * stepSize;
@@ -30,25 +30,38 @@ namespace comms
         //std::cout << "Image size: 0x" << std::hex << std::setw(16) << std::setfill('0') << size << std::endl;
 
         std::cout << "Sending image command..." << std::endl;
-        SendCommand(Command::CmdSendImage);
+        SendCommand(Command::CmdSendImg);
 
         std::cout << "Sending image size..." << std::endl;
         m_outSocket.Send((const char*)dims, sizeof(dims));
 
+        Command recv_cmd;
         for (auto i = 0; i < size; i += m_fragSize)
         {
-            //Sleep(10);
+            //Sleep(100);
             const char* buf = (char*)(Img.data + i);
             int sendSize = min(m_fragSize, remSize);
-            remSize -= m_fragSize;
-            std::cout << "Sending image fragment " << i << "..." << std::endl;
+            remSize -= sendSize;
+            std::cout << "Sending image fragment " << i << " of size "<< sendSize << "..." << std::endl;
             m_outSocket.Send(buf, sendSize);
+            m_outSocket.Recv((char*)&recv_cmd, sizeof(recv_cmd));
+            if (recv_cmd != Command::CmdRecvFrag)
+                throw ImageException("Did not receive acknowledgment");
         }
+
+        std::cout << "Waiting to receive acknowledgment of image transmission" << std::endl;
+
+        m_outSocket.Recv((char*)&recv_cmd, sizeof(recv_cmd));
+
+        if (recv_cmd != Command::CmdRecvImg)
+            throw ImageException("Did not receive acknowledgment command");
+
+        std::cout << "Image was successfully transmitted" << std::endl;
     }
 
     cv::Mat ImageTransmitter::ReceiveImage(int H, int W)
     {
-        SendCommand(comms::Command::CmdTestNegative);
+        SendCommand(comms::Command::CmdTestNeg);
 
 //        Command cmd{ Command::CmdUnknown };
 //
