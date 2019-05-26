@@ -24,14 +24,13 @@ public:
 
     void SendImage(const cv::Mat& Img);
 
-    cv::Mat ReceiveImage(int H, int W);
+    cv::Mat ReceiveImage(uint32_t H, uint32_t W);
 
 private:
 
-    const int m_fragSize = 1000;
+    const uint32_t m_fragSize = 1000;
 
-    Socket m_outSocket;
-    Socket m_inSocket;
+    Socket m_socket;
 };
 
 } // comms

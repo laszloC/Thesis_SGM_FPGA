@@ -45,6 +45,8 @@ void TestImageTransmission(const std::string& left, const std::string& right)
        Mat res = transmitter.ReceiveImage(img_left.rows, img_left.cols);
 
        imshow("Negative", res);
+
+       waitKey(10000);
 }
 
 int main(int argc, char** argv)

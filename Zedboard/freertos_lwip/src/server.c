@@ -43,22 +43,21 @@
 
 typedef enum _command_t
 {
-	CMD_UNKNOWN 	= 0x0,
-	CMD_SEND_IMG	= 0x1,
-	CMD_TEST_NEG 	= 0x2,
-	CMD_STOP		= 0x3,
-	CMD_RECV_IMG	= 0x4,
-	CMD_RECV_FRAG	= 0x5
+	CMD_UNKNOWN 		= 0x0,
+	CMD_SEND_IMG		= 0x1,
+	CMD_TEST_NEG 		= 0x2,
+	CMD_STOP			= 0x3,
+	CMD_RECV_IMG		= 0x4,
+	CMD_RECV_FRAG		= 0x5,
+	CMD_READY_TO_RECV	= 0x6,
+	CMD_CANNOT_RECV		= 0x7
 } command_t;
 
 u16_t server_port = 50000;
 
 void print_echo_app_header()
 {
-    xil_printf("%20s %6d %s\r\n", "echo server",
-                        server_port,
-                        "$ telnet <board_ip> 7");
-
+	xil_printf("FreeRTOS with lwip receiver\r\n");
 }
 
 static u32 g_img_l_size[2];
@@ -71,6 +70,9 @@ u8 g_img_r_recv;
 
 void cleanup()
 {
+	g_img_l_recv = 0;
+	g_img_r_recv = 0;
+
 	if (g_img_l != NULL) {
 		free(g_img_l);
 	}
@@ -82,13 +84,13 @@ void cleanup()
 
 int build_image(int sd, u8** img, u32* size)
 {
-	int bytes = size[0] * size[1];
-	int rem_bytes = bytes;
-	int recv_size = 0;
+	u32 bytes = size[0] * size[1];
+	u32 rem_bytes = bytes;
+	u32 recv_size = 0;
 	u8* buf = NULL;
-	int32_t cmd = CMD_RECV_FRAG;
+	u32 cmd = 0;
 
-	*img = malloc(sizeof(bytes));
+	*img = malloc(bytes);
 	if (*img == NULL) {
 		xil_printf("%s: failed to allocate %d bytes\r\n", __FUNCTION__, bytes);
 		return -1;
@@ -96,22 +98,30 @@ int build_image(int sd, u8** img, u32* size)
 
 	xil_printf("%s: allocated image of size %d\r\n", __FUNCTION__, bytes);
 
+	cmd = CMD_READY_TO_RECV;
+	if (write(sd, &cmd, sizeof(cmd)) < 0) {
+		xil_printf("%s: error writing to socket %d\r\n", __FUNCTION__, sd);
+		return -1;
+	}
+
+
 	for (int i = 0; i < bytes; i += FRAG_SIZE) {
 		buf = *img + i;
 		recv_size = MIN(FRAG_SIZE, rem_bytes);
 		rem_bytes -= recv_size;
 
-		if (read(sd, buf, recv_size) != recv_size) {
+		if (read(sd, buf, (size_t)recv_size) != (size_t)recv_size) {
 			xil_printf("%s: error reading from socket %d", __FUNCTION__, sd);
 			return -1;
 		}
 
-		if (write(sd, &cmd, sizeof(cmd)) < 0) {
-			xil_printf("%s: error sending fragment acknowledgment", __FUNCTION__, sd);
-			return -1;
-		}
+		 cmd = CMD_RECV_FRAG;
+		 if (write(sd, &cmd, sizeof(cmd)) < 0) {
+		 	xil_printf("%s: error sending fragment acknowledgment", __FUNCTION__, sd);
+		 	return -1;
+		 }
 
-		xil_printf("%s: received fragment %d of size %d\r\n", __FUNCTION__, i, recv_size);
+//		xil_printf("%s: received fragment %d of size %d\r\n", __FUNCTION__, i, recv_size);
 	}
 
 	return 0;
@@ -122,6 +132,7 @@ int receive_image(int sd)
 	u32* img_size = NULL;
 	u8** img = NULL;
 	u8* img_recv = NULL;
+	u32 cmd = 0;
 
 	if (!g_img_l_recv && !g_img_r_recv) {
 		xil_printf("%s: preparing to receive left image\r\n", __FUNCTION__);
@@ -146,14 +157,14 @@ int receive_image(int sd)
 	}
 
 	xil_printf("%s: read image size [%d %d]\r\n", __FUNCTION__, img_size[0], img_size[1]);
-
+	
 	if (build_image(sd, img, img_size) < 0) {
 		return -1;
 	}
 
 	xil_printf("%s: received image, sending recv command\r\n", __FUNCTION__);
 
-	u32 cmd = CMD_RECV_IMG;
+	cmd = CMD_RECV_IMG;
 	if (write(sd, &cmd, sizeof(cmd)) < 0) {
 		xil_printf("%s: error writing to socket %d\r\n", __FUNCTION__, sd);
 		return -1;
@@ -164,17 +175,64 @@ int receive_image(int sd)
 	return 0;
 }
 
-send_image(int sd, u8* img, int size)
+int send_image(int sd, u8* img, u32 h, u32 w)
 {
 	// send image command
+	u32 cmd = CMD_SEND_IMG;
+	u32 send_size = 0;
+	u32 sizes[2] = { h, w };
+	u32 size = h * w;
+	u32 rem_size = size;
+
+	if (write(sd, &cmd, sizeof(u32)) < 0) {
+		xil_printf("%s: failed to send image command %d\r\n", __FUNCTION__);
+		return -1;
+	}
 
 	// send image size
+	if (write(sd, sizes, sizeof(sizes)) < 0) {
+		xil_printf("%s: failed to send size\r\n", __FUNCTION__);
+		return -1;
+	}
 
 	// send fragments and wait for ack
+	for (u32 i = 0; i < size; i += FRAG_SIZE) {
+		u8* buf = img + i;
+		send_size = MIN(rem_size, FRAG_SIZE);
+		rem_size -= send_size;
+
+//		xil_printf("%s: sending fragment %d of size %d\r\n", __FUNCTION__, i, send_size);
+		if (write(sd, buf, (size_t)send_size) < 0) {
+			xil_printf("%s: failed to send image fragment\r\n", __FUNCTION__);
+			return -1;
+		}
+
+		if (read(sd, &cmd, sizeof(cmd)) != sizeof(cmd)) {
+			xil_printf("%s: failed to read from socket\r\n", __FUNCTION__);
+			return -1;
+		}
+		if (cmd != CMD_RECV_FRAG) {
+			xil_printf("%s: did not receive fragment acknowledgment\r\n", __FUNCTION__);
+			return -1;
+		}
+	}
+
+//	xil_printf("%s: waiting to receive acknowledgment of image transmission\r\n", __FUNCTION__);
+	if (read(sd, &cmd, sizeof(cmd)) != sizeof(cmd)) {
+		xil_printf("%s: failed to read from socket\r\n", __FUNCTION__);
+		return -1;
+	}
+	if (cmd != CMD_RECV_IMG) {
+		xil_printf("%s: did not receive image acknowledgment\r\n", __FUNCTION__);
+		return -1;
+	}
+	xil_printf("%s: Image was successfully transmitted\r\n", __FUNCTION__);
+
+	return 0;
 }
 
 /* thread spawned for each connection */
-void process_echo_request(void *p)
+void process_request(void *p)
 {
 	int sd = (int)p;
 	u32 cmd = 0;
@@ -203,17 +261,18 @@ void process_echo_request(void *p)
 				finish = 1;
 			}
 
-			u8* rev_img = malloc(g_img_l_size);
+			u32 bytes = g_img_l_size[0] * g_img_l_size[1];
+			u8* rev_img = malloc(bytes);
 			if (rev_img == NULL) {
 				xil_printf("%s: failed to allocate %u bytes for negative image\r\n", __FUNCTION__, g_img_l_size);
 			}
 
-			for (int i = 0; i < g_img_l_size; i++)
+			for (u32 i = 0; i < bytes; i++)
 			{
 				rev_img[i] = 255 - g_img_l[i];
 			}
 
-			send_image(sd, rev_img, g_img_l_size);
+			send_image(sd, rev_img, g_img_l_size[0], g_img_l_size[1]);
 
 			if (rev_img != NULL) {
 				free(rev_img);
@@ -221,7 +280,7 @@ void process_echo_request(void *p)
 
 			break;
 		case CMD_STOP:
-				xil_printf("%s: communcatinon finished, closing socket\r\n", __FUNCTION__);
+				xil_printf("%s: communication finished, closing socket\r\n", __FUNCTION__);
 				finish = 1;
 			break;
 		default:
@@ -238,7 +297,7 @@ void process_echo_request(void *p)
 	vTaskDelete(NULL);
 }
 
-void echo_application_thread()
+void application_thread()
 {
 	int sock, new_sd;
 	int size;
@@ -277,7 +336,7 @@ void echo_application_thread()
 
 	while (1) {
 		if ((new_sd = lwip_accept(sock, (struct sockaddr *)&remote, (socklen_t *)&size)) > 0) {
-			sys_thread_new("echos", process_echo_request,
+			sys_thread_new("echos", process_request,
 				(void*)new_sd,
 				THREAD_STACKSIZE,
 				DEFAULT_THREAD_PRIO);
