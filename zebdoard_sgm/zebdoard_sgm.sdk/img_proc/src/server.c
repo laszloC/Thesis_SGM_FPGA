@@ -69,6 +69,34 @@ static u32 g_img_r_size[2];
 static u8* g_img_r;
 u8 g_img_r_recv;
 
+// HW image inverser instance
+XInverse_img g_inverser;
+
+int inverse_img_init(XInverse_img *Instance)
+{
+	XInverse_img_Config *cfgPtr;
+	int status;
+
+	cfgPtr = XInverse_img_LookupConfig(XPAR_XINVERSE_IMG_0_DEVICE_ID);
+	if (!cfgPtr) {
+		xil_printf("ERROR: Lookup of image inverser configuration failed.\n\r");
+		return XST_FAILURE;
+	}
+	status = XInverse_img_CfgInitialize(Instance, cfgPtr);
+	if (status != XST_SUCCESS) {
+		xil_printf("ERROR: Could not initialize image inverser.\n\r");
+		return XST_FAILURE;
+	}
+	return status;
+}
+
+void inverse_img_start(void *InstancePtr) {
+	XInverse_img *pInvImg = (XInverse_img*) InstancePtr;
+	XInverse_img_InterruptEnable(pInvImg, 1);
+	XInverse_img_InterruptGlobalEnable(pInvImg);
+	XInverse_img_Start(pInvImg);
+}
+
 void cleanup()
 {
 	g_img_l_recv = 0;
@@ -268,10 +296,20 @@ void process_request(void *p)
 				xil_printf("%s: failed to allocate %u bytes for negative image\r\n", __FUNCTION__, g_img_l_size);
 			}
 
-			for (u32 i = 0; i < bytes; i++)
-			{
-				rev_img[i] = 255 - g_img_l[i];
-			}
+			// compute negative in hw
+			// setup input parameters of hw inverser
+			XInverse_img_Set_img_in(&g_inverser, (u32)g_img_l);
+			XInverse_img_Set_img_out(&g_inverser, (u32)rev_img);
+
+			inverse_img_start(&g_inverser);
+			while(!XInverse_img_IsReady(&g_inverser));
+			xil_printf("Finished to compute image negative in HW\n\r");
+
+
+//			for (u32 i = 0; i < bytes; i++)
+//			{
+//				rev_img[i] = 255 - g_img_l[i];
+//			}
 
 			send_image(sd, rev_img, g_img_l_size[0], g_img_l_size[1]);
 
@@ -302,8 +340,16 @@ void application_thread()
 {
 	int sock, new_sd;
 	int size;
+	int status;
 #if LWIP_IPV6==0
 	struct sockaddr_in address, remote;
+
+	// setup hw inverser
+	status = inverse_img_init(&g_inverser);
+	if (status != XST_SUCCESS) {
+		print("HLS peripheral setup failed\n\r");
+		exit(-1);
+	}
 
 	memset(&address, 0, sizeof(address));
 
