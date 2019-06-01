@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="inv.cpp" path="E:\Git\Thesis_SGM_FPGA\hw_inverser\hw_inverser\inv.cpp"/>
+    <originFiles name="inv.h" path="E:\Git\Thesis_SGM_FPGA\hw_inverser\hw_inverser\inv.h"/>
+  </source>
+  <testbench>
+    <originFiles name="inv_test.cpp" path="E:\Git\Thesis_SGM_FPGA\hw_inverser\hw_inverser\inv_test.cpp"/>
+  </testbench>
+</autopilotfilemapping:AutoPilotFileMapping>

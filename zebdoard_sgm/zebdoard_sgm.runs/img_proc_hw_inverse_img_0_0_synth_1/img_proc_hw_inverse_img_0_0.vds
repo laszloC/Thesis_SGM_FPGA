@@ -1,0 +1,1169 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Sat Jun  1 11:38:15 2019
+# Process ID: 18244
+# Current directory: E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.runs/img_proc_hw_inverse_img_0_0_synth_1
+# Command line: vivado.exe -log img_proc_hw_inverse_img_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source img_proc_hw_inverse_img_0_0.tcl
+# Log file: E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.runs/img_proc_hw_inverse_img_0_0_synth_1/img_proc_hw_inverse_img_0_0.vds
+# Journal file: E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.runs/img_proc_hw_inverse_img_0_0_synth_1\vivado.jou
+#-----------------------------------------------------------
+source img_proc_hw_inverse_img_0_0.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'e:/Git/Thesis_SGM_FPGA'.
+WARNING: [IP_Flow 19-3656] If you move the project, the path for repository 'e:/Git/Thesis_SGM_FPGA' may become invalid. A better location for the repository would be in a path adjacent to the project. (Current project location is 'e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.runs/img_proc_hw_inverse_img_0_0_synth_1'.)
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'E:/Programs/Xilinx/Vivado/2018.3/data/ip'.
+update_ip_catalog: Time (s): cpu = 00:00:03 ; elapsed = 00:00:05 . Memory (MB): peak = 351.105 ; gain = 32.480
+Command: synth_design -top img_proc_hw_inverse_img_0_0 -part xc7z020clg484-1 -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 22276 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:05 . Memory (MB): peak = 470.324 ; gain = 96.664
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'img_proc_hw_inverse_img_0_0' [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ip/img_proc_hw_inverse_img_0_0/synth/img_proc_hw_inverse_img_0_0.vhd:116]
+	Parameter C_S_AXI_D_BUS_ADDR_WIDTH bound to: 5 - type: integer 
+	Parameter C_S_AXI_D_BUS_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_M_AXI_D_BUS_ID_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_D_BUS_ADDR_WIDTH bound to: 32 - type: integer 
+	Parameter C_M_AXI_D_BUS_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_M_AXI_D_BUS_AWUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_D_BUS_ARUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_D_BUS_WUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_D_BUS_RUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_D_BUS_BUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_D_BUS_USER_VALUE bound to: 0 - type: integer 
+	Parameter C_M_AXI_D_BUS_PROT_VALUE bound to: 0 - type: integer 
+	Parameter C_M_AXI_D_BUS_CACHE_VALUE bound to: 3 - type: integer 
+INFO: [Synth 8-3491] module 'inverse_img' declared at 'e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img.vhd:12' bound to instance 'U0' of component 'inverse_img' [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ip/img_proc_hw_inverse_img_0_0/synth/img_proc_hw_inverse_img_0_0.vhd:278]
+INFO: [Synth 8-638] synthesizing module 'inverse_img' [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img.vhd:96]
+	Parameter C_S_AXI_D_BUS_ADDR_WIDTH bound to: 5 - type: integer 
+	Parameter C_S_AXI_D_BUS_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_M_AXI_D_BUS_ADDR_WIDTH bound to: 32 - type: integer 
+	Parameter C_M_AXI_D_BUS_ID_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_D_BUS_AWUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_D_BUS_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_M_AXI_D_BUS_WUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_D_BUS_ARUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_D_BUS_RUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_D_BUS_BUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_D_BUS_USER_VALUE bound to: 0 - type: integer 
+	Parameter C_M_AXI_D_BUS_PROT_VALUE bound to: 0 - type: integer 
+	Parameter C_M_AXI_D_BUS_CACHE_VALUE bound to: 3 - type: integer 
+	Parameter C_S_AXI_ADDR_WIDTH bound to: 5 - type: integer 
+	Parameter C_S_AXI_DATA_WIDTH bound to: 32 - type: integer 
+INFO: [Synth 8-3491] module 'inverse_img_D_BUS_s_axi' declared at 'e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_s_axi.vhd:12' bound to instance 'inverse_img_D_BUS_s_axi_U' of component 'inverse_img_D_BUS_s_axi' [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img.vhd:392]
+INFO: [Synth 8-638] synthesizing module 'inverse_img_D_BUS_s_axi' [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_s_axi.vhd:76]
+	Parameter C_S_AXI_ADDR_WIDTH bound to: 5 - type: integer 
+	Parameter C_S_AXI_DATA_WIDTH bound to: 32 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'inverse_img_D_BUS_s_axi' (1#1) [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_s_axi.vhd:76]
+	Parameter CONSERVATIVE bound to: 0 - type: integer 
+	Parameter USER_DW bound to: 8 - type: integer 
+	Parameter USER_AW bound to: 32 - type: integer 
+	Parameter USER_MAXREQS bound to: 5 - type: integer 
+	Parameter NUM_READ_OUTSTANDING bound to: 16 - type: integer 
+	Parameter NUM_WRITE_OUTSTANDING bound to: 16 - type: integer 
+	Parameter MAX_READ_BURST_LENGTH bound to: 16 - type: integer 
+	Parameter MAX_WRITE_BURST_LENGTH bound to: 16 - type: integer 
+	Parameter C_M_AXI_ID_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_ADDR_WIDTH bound to: 32 - type: integer 
+	Parameter C_M_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_M_AXI_AWUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_ARUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_WUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_RUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_BUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_USER_VALUE bound to: 0 - type: integer 
+	Parameter C_PROT_VALUE bound to: 0 - type: integer 
+	Parameter C_CACHE_VALUE bound to: 3 - type: integer 
+INFO: [Synth 8-3491] module 'inverse_img_D_BUS_m_axi' declared at 'e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:12' bound to instance 'inverse_img_D_BUS_m_axi_U' of component 'inverse_img_D_BUS_m_axi' [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img.vhd:425]
+INFO: [Synth 8-638] synthesizing module 'inverse_img_D_BUS_m_axi' [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:143]
+	Parameter CONSERVATIVE bound to: 0 - type: integer 
+	Parameter NUM_READ_OUTSTANDING bound to: 16 - type: integer 
+	Parameter NUM_WRITE_OUTSTANDING bound to: 16 - type: integer 
+	Parameter MAX_READ_BURST_LENGTH bound to: 16 - type: integer 
+	Parameter MAX_WRITE_BURST_LENGTH bound to: 16 - type: integer 
+	Parameter C_M_AXI_ID_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_ADDR_WIDTH bound to: 32 - type: integer 
+	Parameter C_TARGET_ADDR bound to: 0 - type: integer 
+	Parameter C_M_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_M_AXI_AWUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_ARUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_WUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_RUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_BUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_USER_VALUE bound to: 0 - type: integer 
+	Parameter C_PROT_VALUE bound to: 0 - type: integer 
+	Parameter C_CACHE_VALUE bound to: 3 - type: integer 
+	Parameter USER_DW bound to: 8 - type: integer 
+	Parameter USER_AW bound to: 32 - type: integer 
+	Parameter USER_MAXREQS bound to: 5 - type: integer 
+	Parameter USED_FIX bound to: 0 - type: bool 
+	Parameter FIX_VALUE bound to: 4 - type: integer 
+	Parameter ADDR_WIDTH bound to: 32 - type: integer 
+	Parameter DATA_WIDTH bound to: 32 - type: integer 
+	Parameter DEPTH bound to: 16 - type: integer 
+	Parameter USER_MAXREQS bound to: 16 - type: integer 
+	Parameter CONSERVATIVE bound to: 0 - type: integer 
+	Parameter AVERAGE_MODE bound to: 0 - type: bool 
+INFO: [Synth 8-3491] module 'inverse_img_D_BUS_m_axi_throttl' declared at 'e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:956' bound to instance 'wreq_throttl' of component 'inverse_img_D_BUS_m_axi_throttl' [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:310]
+INFO: [Synth 8-638] synthesizing module 'inverse_img_D_BUS_m_axi_throttl' [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:1013]
+	Parameter USED_FIX bound to: 0 - type: bool 
+	Parameter FIX_VALUE bound to: 4 - type: integer 
+	Parameter ADDR_WIDTH bound to: 32 - type: integer 
+	Parameter DATA_WIDTH bound to: 32 - type: integer 
+	Parameter DEPTH bound to: 16 - type: integer 
+	Parameter USER_MAXREQS bound to: 16 - type: integer 
+	Parameter CONSERVATIVE bound to: 0 - type: integer 
+	Parameter AVERAGE_MODE bound to: 0 - type: bool 
+INFO: [Synth 8-256] done synthesizing module 'inverse_img_D_BUS_m_axi_throttl' (2#1) [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:1013]
+	Parameter NUM_WRITE_OUTSTANDING bound to: 16 - type: integer 
+	Parameter MAX_WRITE_BURST_LENGTH bound to: 16 - type: integer 
+	Parameter C_M_AXI_ID_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_ADDR_WIDTH bound to: 32 - type: integer 
+	Parameter C_TARGET_ADDR bound to: 0 - type: integer 
+	Parameter C_M_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_M_AXI_AWUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_WUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_BUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_USER_VALUE bound to: 0 - type: integer 
+	Parameter C_PROT_VALUE bound to: 0 - type: integer 
+	Parameter C_CACHE_VALUE bound to: 3 - type: integer 
+	Parameter USER_DW bound to: 8 - type: integer 
+	Parameter USER_AW bound to: 32 - type: integer 
+	Parameter USER_MAXREQS bound to: 5 - type: integer 
+INFO: [Synth 8-3491] module 'inverse_img_D_BUS_m_axi_write' declared at 'e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:2144' bound to instance 'bus_write' of component 'inverse_img_D_BUS_m_axi_write' [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:349]
+INFO: [Synth 8-638] synthesizing module 'inverse_img_D_BUS_m_axi_write' [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:2232]
+	Parameter NUM_WRITE_OUTSTANDING bound to: 16 - type: integer 
+	Parameter MAX_WRITE_BURST_LENGTH bound to: 16 - type: integer 
+	Parameter C_M_AXI_ID_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_ADDR_WIDTH bound to: 32 - type: integer 
+	Parameter C_TARGET_ADDR bound to: 0 - type: integer 
+	Parameter C_M_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_M_AXI_AWUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_WUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_BUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_USER_VALUE bound to: 0 - type: integer 
+	Parameter C_PROT_VALUE bound to: 0 - type: integer 
+	Parameter C_CACHE_VALUE bound to: 3 - type: integer 
+	Parameter USER_DW bound to: 8 - type: integer 
+	Parameter USER_AW bound to: 32 - type: integer 
+	Parameter USER_MAXREQS bound to: 5 - type: integer 
+	Parameter N bound to: 64 - type: integer 
+INFO: [Synth 8-3491] module 'inverse_img_D_BUS_m_axi_reg_slice' declared at 'e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:473' bound to instance 'rs_wreq' of component 'inverse_img_D_BUS_m_axi_reg_slice' [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:2368]
+INFO: [Synth 8-638] synthesizing module 'inverse_img_D_BUS_m_axi_reg_slice' [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:490]
+	Parameter N bound to: 64 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'inverse_img_D_BUS_m_axi_reg_slice' (3#1) [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:490]
+	Parameter DATA_BITS bound to: 64 - type: integer 
+	Parameter DEPTH bound to: 5 - type: integer 
+	Parameter DEPTH_BITS bound to: 3 - type: integer 
+INFO: [Synth 8-3491] module 'inverse_img_D_BUS_m_axi_fifo' declared at 'e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:597' bound to instance 'fifo_wreq' of component 'inverse_img_D_BUS_m_axi_fifo' [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:2381]
+INFO: [Synth 8-638] synthesizing module 'inverse_img_D_BUS_m_axi_fifo' [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:614]
+	Parameter DATA_BITS bound to: 64 - type: integer 
+	Parameter DEPTH bound to: 5 - type: integer 
+	Parameter DEPTH_BITS bound to: 3 - type: integer 
+WARNING: [Synth 8-614] signal 'sclk_en' is read in the process but is not in the sensitivity list [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:707]
+INFO: [Synth 8-256] done synthesizing module 'inverse_img_D_BUS_m_axi_fifo' (4#1) [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:614]
+	Parameter MEM_STYLE bound to: block - type: string 
+	Parameter DATA_WIDTH bound to: 9 - type: integer 
+	Parameter ADDR_WIDTH bound to: 8 - type: integer 
+	Parameter DEPTH bound to: 256 - type: integer 
+INFO: [Synth 8-3491] module 'inverse_img_D_BUS_m_axi_buffer' declared at 'e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:724' bound to instance 'buff_wdata' of component 'inverse_img_D_BUS_m_axi_buffer' [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:2780]
+INFO: [Synth 8-638] synthesizing module 'inverse_img_D_BUS_m_axi_buffer' [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:746]
+	Parameter MEM_STYLE bound to: block - type: string 
+	Parameter DATA_WIDTH bound to: 9 - type: integer 
+	Parameter ADDR_WIDTH bound to: 8 - type: integer 
+	Parameter DEPTH bound to: 256 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'inverse_img_D_BUS_m_axi_buffer' (5#1) [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:746]
+	Parameter DATA_BITS bound to: 12 - type: integer 
+	Parameter DEPTH bound to: 5 - type: integer 
+	Parameter DEPTH_BITS bound to: 3 - type: integer 
+INFO: [Synth 8-3491] module 'inverse_img_D_BUS_m_axi_fifo' declared at 'e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:597' bound to instance 'fifo_burst' of component 'inverse_img_D_BUS_m_axi_fifo' [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:3076]
+INFO: [Synth 8-638] synthesizing module 'inverse_img_D_BUS_m_axi_fifo__parameterized1' [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:614]
+	Parameter DATA_BITS bound to: 12 - type: integer 
+	Parameter DEPTH bound to: 5 - type: integer 
+	Parameter DEPTH_BITS bound to: 3 - type: integer 
+WARNING: [Synth 8-614] signal 'sclk_en' is read in the process but is not in the sensitivity list [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:707]
+INFO: [Synth 8-256] done synthesizing module 'inverse_img_D_BUS_m_axi_fifo__parameterized1' (5#1) [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:614]
+	Parameter DIN_WIDTH bound to: 2 - type: integer 
+INFO: [Synth 8-3491] module 'inverse_img_D_BUS_m_axi_decoder' declared at 'e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:933' bound to instance 'head_pad_decoder' of component 'inverse_img_D_BUS_m_axi_decoder' [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:3099]
+INFO: [Synth 8-638] synthesizing module 'inverse_img_D_BUS_m_axi_decoder' [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:941]
+	Parameter DIN_WIDTH bound to: 2 - type: integer 
+INFO: [Synth 8-6054] Found Dynamic range expression with variable size [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:947]
+WARNING: [Synth 8-614] signal 'dout' is read in the process but is not in the sensitivity list [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:943]
+INFO: [Synth 8-256] done synthesizing module 'inverse_img_D_BUS_m_axi_decoder' (6#1) [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:941]
+	Parameter DIN_WIDTH bound to: 2 - type: integer 
+INFO: [Synth 8-3491] module 'inverse_img_D_BUS_m_axi_decoder' declared at 'e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:933' bound to instance 'tail_pad_decoder' of component 'inverse_img_D_BUS_m_axi_decoder' [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:3106]
+WARNING: [Synth 8-614] signal 'ACLK_EN' is read in the process but is not in the sensitivity list [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:3181]
+WARNING: [Synth 8-614] signal 'ACLK_EN' is read in the process but is not in the sensitivity list [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:3181]
+WARNING: [Synth 8-614] signal 'ACLK_EN' is read in the process but is not in the sensitivity list [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:3181]
+WARNING: [Synth 8-614] signal 'ACLK_EN' is read in the process but is not in the sensitivity list [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:3181]
+	Parameter DATA_BITS bound to: 2 - type: integer 
+	Parameter DEPTH bound to: 15 - type: integer 
+	Parameter DEPTH_BITS bound to: 4 - type: integer 
+INFO: [Synth 8-3491] module 'inverse_img_D_BUS_m_axi_fifo' declared at 'e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:597' bound to instance 'fifo_resp' of component 'inverse_img_D_BUS_m_axi_fifo' [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:3244]
+INFO: [Synth 8-638] synthesizing module 'inverse_img_D_BUS_m_axi_fifo__parameterized3' [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:614]
+	Parameter DATA_BITS bound to: 2 - type: integer 
+	Parameter DEPTH bound to: 15 - type: integer 
+	Parameter DEPTH_BITS bound to: 4 - type: integer 
+WARNING: [Synth 8-614] signal 'sclk_en' is read in the process but is not in the sensitivity list [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:707]
+INFO: [Synth 8-256] done synthesizing module 'inverse_img_D_BUS_m_axi_fifo__parameterized3' (6#1) [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:614]
+	Parameter DATA_BITS bound to: 2 - type: integer 
+	Parameter DEPTH bound to: 5 - type: integer 
+	Parameter DEPTH_BITS bound to: 3 - type: integer 
+INFO: [Synth 8-3491] module 'inverse_img_D_BUS_m_axi_fifo' declared at 'e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:597' bound to instance 'fifo_resp_to_user' of component 'inverse_img_D_BUS_m_axi_fifo' [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:3260]
+INFO: [Synth 8-638] synthesizing module 'inverse_img_D_BUS_m_axi_fifo__parameterized5' [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:614]
+	Parameter DATA_BITS bound to: 2 - type: integer 
+	Parameter DEPTH bound to: 5 - type: integer 
+	Parameter DEPTH_BITS bound to: 3 - type: integer 
+WARNING: [Synth 8-614] signal 'sclk_en' is read in the process but is not in the sensitivity list [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:707]
+INFO: [Synth 8-256] done synthesizing module 'inverse_img_D_BUS_m_axi_fifo__parameterized5' (6#1) [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:614]
+INFO: [Synth 8-256] done synthesizing module 'inverse_img_D_BUS_m_axi_write' (7#1) [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:2232]
+	Parameter NUM_READ_OUTSTANDING bound to: 16 - type: integer 
+	Parameter MAX_READ_BURST_LENGTH bound to: 16 - type: integer 
+	Parameter C_M_AXI_ID_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_ADDR_WIDTH bound to: 32 - type: integer 
+	Parameter C_TARGET_ADDR bound to: 0 - type: integer 
+	Parameter C_M_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_M_AXI_ARUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_RUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_USER_VALUE bound to: 0 - type: integer 
+	Parameter C_PROT_VALUE bound to: 0 - type: integer 
+	Parameter C_CACHE_VALUE bound to: 3 - type: integer 
+	Parameter USER_DW bound to: 8 - type: integer 
+	Parameter USER_AW bound to: 32 - type: integer 
+	Parameter USER_MAXREQS bound to: 5 - type: integer 
+INFO: [Synth 8-3491] module 'inverse_img_D_BUS_m_axi_read' declared at 'e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:1201' bound to instance 'bus_read' of component 'inverse_img_D_BUS_m_axi_read' [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:413]
+INFO: [Synth 8-638] synthesizing module 'inverse_img_D_BUS_m_axi_read' [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:1279]
+	Parameter NUM_READ_OUTSTANDING bound to: 16 - type: integer 
+	Parameter MAX_READ_BURST_LENGTH bound to: 16 - type: integer 
+	Parameter C_M_AXI_ID_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_ADDR_WIDTH bound to: 32 - type: integer 
+	Parameter C_TARGET_ADDR bound to: 0 - type: integer 
+	Parameter C_M_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_M_AXI_ARUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_RUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_USER_VALUE bound to: 0 - type: integer 
+	Parameter C_PROT_VALUE bound to: 0 - type: integer 
+	Parameter C_CACHE_VALUE bound to: 3 - type: integer 
+	Parameter USER_DW bound to: 8 - type: integer 
+	Parameter USER_AW bound to: 32 - type: integer 
+	Parameter USER_MAXREQS bound to: 5 - type: integer 
+	Parameter N bound to: 64 - type: integer 
+INFO: [Synth 8-3491] module 'inverse_img_D_BUS_m_axi_reg_slice' declared at 'e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:473' bound to instance 'rs_rreq' of component 'inverse_img_D_BUS_m_axi_reg_slice' [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:1412]
+	Parameter DATA_BITS bound to: 64 - type: integer 
+	Parameter DEPTH bound to: 5 - type: integer 
+	Parameter DEPTH_BITS bound to: 3 - type: integer 
+INFO: [Synth 8-3491] module 'inverse_img_D_BUS_m_axi_fifo' declared at 'e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:597' bound to instance 'fifo_rreq' of component 'inverse_img_D_BUS_m_axi_fifo' [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:1425]
+	Parameter MEM_STYLE bound to: block - type: string 
+	Parameter DATA_WIDTH bound to: 35 - type: integer 
+	Parameter ADDR_WIDTH bound to: 8 - type: integer 
+	Parameter DEPTH bound to: 256 - type: integer 
+INFO: [Synth 8-3491] module 'inverse_img_D_BUS_m_axi_buffer' declared at 'e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:724' bound to instance 'fifo_rdata' of component 'inverse_img_D_BUS_m_axi_buffer' [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:1802]
+INFO: [Synth 8-638] synthesizing module 'inverse_img_D_BUS_m_axi_buffer__parameterized1' [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:746]
+	Parameter MEM_STYLE bound to: block - type: string 
+	Parameter DATA_WIDTH bound to: 35 - type: integer 
+	Parameter ADDR_WIDTH bound to: 8 - type: integer 
+	Parameter DEPTH bound to: 256 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'inverse_img_D_BUS_m_axi_buffer__parameterized1' (7#1) [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:746]
+	Parameter N bound to: 10 - type: integer 
+INFO: [Synth 8-3491] module 'inverse_img_D_BUS_m_axi_reg_slice' declared at 'e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:473' bound to instance 'rs_rdata' of component 'inverse_img_D_BUS_m_axi_reg_slice' [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:1820]
+INFO: [Synth 8-638] synthesizing module 'inverse_img_D_BUS_m_axi_reg_slice__parameterized2' [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:490]
+	Parameter N bound to: 10 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'inverse_img_D_BUS_m_axi_reg_slice__parameterized2' (7#1) [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:490]
+	Parameter DATA_BITS bound to: 2 - type: integer 
+	Parameter DEPTH bound to: 15 - type: integer 
+	Parameter DEPTH_BITS bound to: 4 - type: integer 
+INFO: [Synth 8-3491] module 'inverse_img_D_BUS_m_axi_fifo' declared at 'e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:597' bound to instance 'fifo_rctl' of component 'inverse_img_D_BUS_m_axi_fifo' [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:1833]
+	Parameter DATA_BITS bound to: 12 - type: integer 
+	Parameter DEPTH bound to: 5 - type: integer 
+	Parameter DEPTH_BITS bound to: 3 - type: integer 
+INFO: [Synth 8-3491] module 'inverse_img_D_BUS_m_axi_fifo' declared at 'e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:597' bound to instance 'fifo_burst' of component 'inverse_img_D_BUS_m_axi_fifo' [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:1926]
+WARNING: [Synth 8-6014] Unused sequential element invalid_len_event_1_reg was removed.  [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:1579]
+WARNING: [Synth 8-6014] Unused sequential element invalid_len_event_2_reg was removed.  [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:1647]
+INFO: [Synth 8-256] done synthesizing module 'inverse_img_D_BUS_m_axi_read' (8#1) [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:1279]
+INFO: [Synth 8-256] done synthesizing module 'inverse_img_D_BUS_m_axi' (9#1) [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:143]
+INFO: [Synth 8-3491] module 'Loop_1_proc' declared at 'e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/Loop_1_proc.vhd:12' bound to instance 'Loop_1_proc_U0' of component 'Loop_1_proc' [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img.vhd:541]
+INFO: [Synth 8-638] synthesizing module 'Loop_1_proc' [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/Loop_1_proc.vhd:71]
+INFO: [Synth 8-5534] Detected attribute (* fsm_encoding = "none" *) [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/Loop_1_proc.vhd:110]
+INFO: [Synth 8-5534] Detected attribute (* fsm_encoding = "none" *) [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/Loop_1_proc.vhd:113]
+INFO: [Synth 8-5534] Detected attribute (* fsm_encoding = "none" *) [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/Loop_1_proc.vhd:116]
+INFO: [Synth 8-5534] Detected attribute (* fsm_encoding = "none" *) [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/Loop_1_proc.vhd:119]
+INFO: [Synth 8-5534] Detected attribute (* fsm_encoding = "none" *) [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/Loop_1_proc.vhd:122]
+INFO: [Synth 8-5534] Detected attribute (* fsm_encoding = "none" *) [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/Loop_1_proc.vhd:125]
+INFO: [Synth 8-5534] Detected attribute (* fsm_encoding = "none" *) [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/Loop_1_proc.vhd:128]
+INFO: [Synth 8-5534] Detected attribute (* fsm_encoding = "none" *) [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/Loop_1_proc.vhd:137]
+INFO: [Synth 8-256] done synthesizing module 'Loop_1_proc' (10#1) [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/Loop_1_proc.vhd:71]
+INFO: [Synth 8-256] done synthesizing module 'inverse_img' (11#1) [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img.vhd:96]
+INFO: [Synth 8-256] done synthesizing module 'img_proc_hw_inverse_img_0_0' (12#1) [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ip/img_proc_hw_inverse_img_0_0/synth/img_proc_hw_inverse_img_0_0.vhd:116]
+WARNING: [Synth 8-3331] design Loop_1_proc has unconnected port m_axi_img_in_RLAST
+WARNING: [Synth 8-3331] design Loop_1_proc has unconnected port m_axi_img_in_RID[0]
+WARNING: [Synth 8-3331] design Loop_1_proc has unconnected port m_axi_img_in_RUSER[0]
+WARNING: [Synth 8-3331] design Loop_1_proc has unconnected port m_axi_img_in_RRESP[1]
+WARNING: [Synth 8-3331] design Loop_1_proc has unconnected port m_axi_img_in_RRESP[0]
+WARNING: [Synth 8-3331] design Loop_1_proc has unconnected port m_axi_img_in_BRESP[1]
+WARNING: [Synth 8-3331] design Loop_1_proc has unconnected port m_axi_img_in_BRESP[0]
+WARNING: [Synth 8-3331] design Loop_1_proc has unconnected port m_axi_img_in_BID[0]
+WARNING: [Synth 8-3331] design Loop_1_proc has unconnected port m_axi_img_in_BUSER[0]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi_read has unconnected port RID[0]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi_read has unconnected port RUSER[0]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi_read has unconnected port rreq_cache[3]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi_read has unconnected port rreq_cache[2]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi_read has unconnected port rreq_cache[1]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi_read has unconnected port rreq_cache[0]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi_read has unconnected port rreq_prot[2]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi_read has unconnected port rreq_prot[1]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi_read has unconnected port rreq_prot[0]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi_read has unconnected port rreq_user[0]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi_write has unconnected port BID[0]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi_write has unconnected port BUSER[0]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi_write has unconnected port wreq_cache[3]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi_write has unconnected port wreq_cache[2]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi_write has unconnected port wreq_cache[1]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi_write has unconnected port wreq_cache[0]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi_write has unconnected port wreq_prot[2]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi_write has unconnected port wreq_prot[1]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi_write has unconnected port wreq_prot[0]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi_write has unconnected port wreq_user[0]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi_write has unconnected port wdata_user[0]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi has unconnected port I_AWID[0]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi has unconnected port I_AWSIZE[2]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi has unconnected port I_AWSIZE[1]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi has unconnected port I_AWSIZE[0]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi has unconnected port I_AWBURST[1]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi has unconnected port I_AWBURST[0]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi has unconnected port I_AWLOCK[1]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi has unconnected port I_AWLOCK[0]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi has unconnected port I_WID[0]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi has unconnected port I_WLAST
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi has unconnected port I_ARID[0]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi has unconnected port I_ARSIZE[2]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi has unconnected port I_ARSIZE[1]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi has unconnected port I_ARSIZE[0]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi has unconnected port I_ARBURST[1]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi has unconnected port I_ARBURST[0]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi has unconnected port I_ARLOCK[1]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi has unconnected port I_ARLOCK[0]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:08 . Memory (MB): peak = 536.195 ; gain = 162.535
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 536.195 ; gain = 162.535
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 536.195 ; gain = 162.535
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7z020clg484-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ip/img_proc_hw_inverse_img_0_0/constraints/inverse_img_ooc.xdc] for cell 'U0'
+Finished Parsing XDC File [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ip/img_proc_hw_inverse_img_0_0/constraints/inverse_img_ooc.xdc] for cell 'U0'
+Parsing XDC File [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.runs/img_proc_hw_inverse_img_0_0_synth_1/dont_touch.xdc]
+Finished Parsing XDC File [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.runs/img_proc_hw_inverse_img_0_0_synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 906.133 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 907.023 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.079 . Memory (MB): peak = 908.590 ; gain = 2.457
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:16 ; elapsed = 00:00:21 . Memory (MB): peak = 908.590 ; gain = 534.930
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg484-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:16 ; elapsed = 00:00:21 . Memory (MB): peak = 908.590 ; gain = 534.930
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property DONT_TOUCH = true for U0. (constraint file  E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.runs/img_proc_hw_inverse_img_0_0_synth_1/dont_touch.xdc, line 9).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:16 ; elapsed = 00:00:21 . Memory (MB): peak = 908.590 ; gain = 534.930
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'wstate_reg' in module 'inverse_img_D_BUS_s_axi'
+INFO: [Synth 8-802] inferred FSM for state register 'rstate_reg' in module 'inverse_img_D_BUS_s_axi'
+INFO: [Synth 8-5544] ROM "BVALID" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "WREADY_t" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "AWREADY_t" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "wnext" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "wnext" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "RVALID_t" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "ARREADY_t" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "rnext" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "rnext" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "req_en" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'inverse_img_D_BUS_m_axi_reg_slice'
+INFO: [Synth 8-5544] ROM "load_p1_from_p2" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next_st" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next_st" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next_st" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:806]
+INFO: [Synth 8-5546] ROM "full_n" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "empty_n" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:698]
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/0c9f/hdl/vhdl/inverse_img_D_BUS_m_axi.vhd:806]
+INFO: [Synth 8-5546] ROM "full_n" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "empty_n" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'inverse_img_D_BUS_m_axi_reg_slice__parameterized2'
+INFO: [Synth 8-5544] ROM "load_p1_from_p2" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next_st" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next_st" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next_st" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-4490] FSM extraction disabled for register 'ap_CS_fsm_reg' through user attribute
+INFO: [Synth 8-5546] ROM "tmp_i_fu_109_p2" won't be mapped to RAM because it is too sparse
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                             0001 |                              011
+*
+                  wridle |                             0010 |                              000
+                  wrdata |                             0100 |                              001
+                  wrresp |                             1000 |                              010
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'wstate_reg' using encoding 'one-hot' in module 'inverse_img_D_BUS_s_axi'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                              001 |                              110
+*
+                  rdidle |                              010 |                              100
+                  rddata |                              100 |                              101
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'rstate_reg' using encoding 'one-hot' in module 'inverse_img_D_BUS_s_axi'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    zero |                               00 |                               10
+                     one |                               10 |                               11
+                     two |                               01 |                               01
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'inverse_img_D_BUS_m_axi_reg_slice'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    zero |                               00 |                               10
+                     one |                               10 |                               11
+                     two |                               01 |                               01
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'inverse_img_D_BUS_m_axi_reg_slice__parameterized2'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:18 ; elapsed = 00:00:23 . Memory (MB): peak = 908.590 ; gain = 534.930
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     33 Bit       Adders := 2     
+	   2 Input     32 Bit       Adders := 6     
+	   2 Input     20 Bit       Adders := 2     
+	   2 Input     16 Bit       Adders := 1     
+	   2 Input     12 Bit       Adders := 2     
+	   2 Input      9 Bit       Adders := 2     
+	   2 Input      8 Bit       Adders := 9     
+	   2 Input      6 Bit       Adders := 2     
+	   2 Input      4 Bit       Adders := 2     
+	   2 Input      3 Bit       Adders := 12    
+	   2 Input      2 Bit       Adders := 1     
++---XORs : 
+	   2 Input      8 Bit         XORs := 1     
+	   2 Input      1 Bit         XORs := 2     
++---Registers : 
+	               64 Bit    Registers := 6     
+	               35 Bit    Registers := 3     
+	               33 Bit    Registers := 2     
+	               32 Bit    Registers := 18    
+	               20 Bit    Registers := 2     
+	               17 Bit    Registers := 1     
+	               16 Bit    Registers := 2     
+	               12 Bit    Registers := 2     
+	               10 Bit    Registers := 6     
+	                9 Bit    Registers := 3     
+	                8 Bit    Registers := 13    
+	                6 Bit    Registers := 2     
+	                5 Bit    Registers := 1     
+	                4 Bit    Registers := 5     
+	                3 Bit    Registers := 5     
+	                2 Bit    Registers := 12    
+	                1 Bit    Registers := 66    
++---RAMs : 
+	               8K Bit         RAMs := 1     
+	               2K Bit         RAMs := 1     
++---Muxes : 
+	   2 Input     64 Bit        Muxes := 2     
+	   2 Input     35 Bit        Muxes := 1     
+	   2 Input     32 Bit        Muxes := 12    
+	   2 Input     20 Bit        Muxes := 2     
+	   2 Input     17 Bit        Muxes := 1     
+	  18 Input     17 Bit        Muxes := 1     
+	   2 Input     13 Bit        Muxes := 1     
+	   4 Input     12 Bit        Muxes := 2     
+	   2 Input     12 Bit        Muxes := 1     
+	   2 Input     11 Bit        Muxes := 1     
+	   2 Input     10 Bit        Muxes := 5     
+	   2 Input      9 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 9     
+	   4 Input      4 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 15    
+	   3 Input      4 Bit        Muxes := 1     
+	   3 Input      3 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 8     
+	   2 Input      2 Bit        Muxes := 43    
+	   3 Input      2 Bit        Muxes := 9     
+	   5 Input      2 Bit        Muxes := 3     
+	   2 Input      1 Bit        Muxes := 88    
+	   3 Input      1 Bit        Muxes := 4     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module inverse_img_D_BUS_s_axi 
+Detailed RTL Component Info : 
++---XORs : 
+	   2 Input      1 Bit         XORs := 2     
++---Registers : 
+	               32 Bit    Registers := 3     
+	                5 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 8     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 2     
+	   4 Input      4 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 3     
+	   3 Input      3 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 1     
+Module inverse_img_D_BUS_m_axi_throttl 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      8 Bit       Adders := 1     
++---Registers : 
+	                8 Bit    Registers := 1     
++---Muxes : 
+	   2 Input      8 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 2     
+Module inverse_img_D_BUS_m_axi_reg_slice 
+Detailed RTL Component Info : 
++---Registers : 
+	               64 Bit    Registers := 2     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     64 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 10    
+	   3 Input      2 Bit        Muxes := 3     
+	   5 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 4     
+Module inverse_img_D_BUS_m_axi_fifo 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      3 Bit       Adders := 2     
++---Registers : 
+	               64 Bit    Registers := 1     
+	                3 Bit    Registers := 1     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   2 Input      3 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+Module inverse_img_D_BUS_m_axi_buffer 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      8 Bit       Adders := 3     
++---Registers : 
+	                9 Bit    Registers := 3     
+	                8 Bit    Registers := 2     
+	                1 Bit    Registers := 4     
++---RAMs : 
+	               2K Bit         RAMs := 1     
++---Muxes : 
+	   2 Input      9 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 4     
+	   2 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+	   3 Input      1 Bit        Muxes := 2     
+Module inverse_img_D_BUS_m_axi_fifo__parameterized3 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      4 Bit       Adders := 1     
++---Registers : 
+	                4 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   2 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+Module inverse_img_D_BUS_m_axi_fifo__parameterized5 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      3 Bit       Adders := 2     
++---Registers : 
+	                3 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   2 Input      3 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+Module inverse_img_D_BUS_m_axi_fifo__parameterized1 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      3 Bit       Adders := 2     
++---Registers : 
+	               12 Bit    Registers := 1     
+	                3 Bit    Registers := 1     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   2 Input      3 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+Module inverse_img_D_BUS_m_axi_decoder 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      3 Bit       Adders := 1     
++---Muxes : 
+	   2 Input      4 Bit        Muxes := 2     
+Module inverse_img_D_BUS_m_axi_write 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 3     
+	   2 Input     20 Bit       Adders := 1     
+	   2 Input     12 Bit       Adders := 1     
+	   2 Input      9 Bit       Adders := 1     
+	   2 Input      8 Bit       Adders := 1     
+	   2 Input      6 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 6     
+	               20 Bit    Registers := 1     
+	               10 Bit    Registers := 2     
+	                8 Bit    Registers := 5     
+	                6 Bit    Registers := 1     
+	                4 Bit    Registers := 2     
+	                2 Bit    Registers := 2     
+	                1 Bit    Registers := 16    
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 4     
+	   2 Input     20 Bit        Muxes := 1     
+	   4 Input     12 Bit        Muxes := 1     
+	   2 Input     10 Bit        Muxes := 2     
+	   2 Input      4 Bit        Muxes := 5     
+	   3 Input      4 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 4     
+	   2 Input      1 Bit        Muxes := 21    
+Module inverse_img_D_BUS_m_axi_buffer__parameterized1 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      8 Bit       Adders := 3     
++---Registers : 
+	               35 Bit    Registers := 3     
+	                8 Bit    Registers := 2     
+	                1 Bit    Registers := 4     
++---RAMs : 
+	               8K Bit         RAMs := 1     
++---Muxes : 
+	   2 Input     35 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 4     
+	   2 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+	   3 Input      1 Bit        Muxes := 2     
+Module inverse_img_D_BUS_m_axi_reg_slice__parameterized2 
+Detailed RTL Component Info : 
++---Registers : 
+	               10 Bit    Registers := 2     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     10 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 10    
+	   3 Input      2 Bit        Muxes := 3     
+	   5 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 4     
+Module inverse_img_D_BUS_m_axi_read 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 3     
+	   2 Input     20 Bit       Adders := 1     
+	   2 Input     12 Bit       Adders := 1     
+	   2 Input      9 Bit       Adders := 1     
+	   2 Input      8 Bit       Adders := 1     
+	   2 Input      6 Bit       Adders := 1     
+	   2 Input      2 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 7     
+	               20 Bit    Registers := 1     
+	               10 Bit    Registers := 2     
+	                8 Bit    Registers := 1     
+	                6 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                2 Bit    Registers := 3     
+	                1 Bit    Registers := 6     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 6     
+	   2 Input     20 Bit        Muxes := 1     
+	   4 Input     12 Bit        Muxes := 1     
+	   2 Input     10 Bit        Muxes := 2     
+	   2 Input      4 Bit        Muxes := 2     
+	   2 Input      2 Bit        Muxes := 4     
+	   2 Input      1 Bit        Muxes := 13    
+Module Loop_1_proc 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     33 Bit       Adders := 2     
+	   2 Input     16 Bit       Adders := 1     
++---XORs : 
+	   2 Input      8 Bit         XORs := 1     
++---Registers : 
+	               33 Bit    Registers := 2     
+	               32 Bit    Registers := 2     
+	               17 Bit    Registers := 1     
+	               16 Bit    Registers := 2     
+	                8 Bit    Registers := 2     
+	                1 Bit    Registers := 4     
++---Muxes : 
+	   2 Input     17 Bit        Muxes := 1     
+	  18 Input     17 Bit        Muxes := 1     
+	   2 Input     13 Bit        Muxes := 1     
+	   2 Input     12 Bit        Muxes := 1     
+	   2 Input     11 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 12    
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+Warning: Parallel synthesis criteria is not met 
+INFO: [Synth 8-5546] ROM "req_en" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "Loop_1_proc_U0/tmp_i_fu_109_p2" won't be mapped to RAM because it is too sparse
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi_read has unconnected port RID[0]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi_read has unconnected port RUSER[0]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi_read has unconnected port rreq_cache[3]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi_read has unconnected port rreq_cache[2]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi_read has unconnected port rreq_cache[1]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi_read has unconnected port rreq_cache[0]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi_read has unconnected port rreq_prot[2]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi_read has unconnected port rreq_prot[1]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi_read has unconnected port rreq_prot[0]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi_read has unconnected port rreq_user[0]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi_write has unconnected port BID[0]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi_write has unconnected port BUSER[0]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi_write has unconnected port wreq_cache[3]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi_write has unconnected port wreq_cache[2]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi_write has unconnected port wreq_cache[1]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi_write has unconnected port wreq_cache[0]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi_write has unconnected port wreq_prot[2]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi_write has unconnected port wreq_prot[1]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi_write has unconnected port wreq_prot[0]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi_write has unconnected port wreq_user[0]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi_write has unconnected port wdata_user[0]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi has unconnected port I_AWID[0]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi has unconnected port I_AWSIZE[2]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi has unconnected port I_AWSIZE[1]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi has unconnected port I_AWSIZE[0]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi has unconnected port I_AWBURST[1]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi has unconnected port I_AWBURST[0]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi has unconnected port I_AWLOCK[1]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi has unconnected port I_AWLOCK[0]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi has unconnected port I_WID[0]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi has unconnected port I_WLAST
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi has unconnected port I_ARID[0]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi has unconnected port I_ARSIZE[2]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi has unconnected port I_ARSIZE[1]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi has unconnected port I_ARSIZE[0]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi has unconnected port I_ARBURST[1]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi has unconnected port I_ARBURST[0]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi has unconnected port I_ARLOCK[1]
+WARNING: [Synth 8-3331] design inverse_img_D_BUS_m_axi has unconnected port I_ARLOCK[0]
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[62]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[61]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[60]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[59]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[58]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[57]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[56]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[55]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[54]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[53]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[52]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[51]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[50]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[49]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[48]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[47]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[46]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[45]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[44]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[43]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[42]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[41]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[40]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[39]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[38]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[37]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[36]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[35]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[34]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[33]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[63]'
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (U0/\inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[32] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0/\inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p2_reg[63] )
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[62]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[61]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[60]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[59]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[58]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[57]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[56]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[55]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[54]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[53]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[52]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[51]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[50]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[49]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[48]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[47]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[46]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[45]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[44]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[43]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[42]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[41]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[40]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[39]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[38]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[37]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[36]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[35]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[34]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[33]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[63]'
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (U0/\inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[32] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0/\inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p2_reg[63] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0/\inverse_img_D_BUS_m_axi_U/bus_write/bus_wide_gen.pad_oh_reg_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0/\Loop_1_proc_U0/ap_done_reg_reg )
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/could_multi_bursts.araddr_buf_reg[0]' (FDRE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/could_multi_bursts.araddr_buf_reg[1]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0/\inverse_img_D_BUS_m_axi_U/bus_read/could_multi_bursts.araddr_buf_reg[1] )
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_write/could_multi_bursts.awaddr_buf_reg[0]' (FDRE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_write/could_multi_bursts.awaddr_buf_reg[1]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0/\inverse_img_D_BUS_m_axi_U/bus_write/could_multi_bursts.awaddr_buf_reg[1] )
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[62]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[61]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[60]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[59]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[58]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[57]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[56]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[55]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[54]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[53]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[52]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[51]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[50]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[49]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[48]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[47]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[46]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[45]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[44]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[43]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[42]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[41]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[40]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[39]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[38]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[37]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[36]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[35]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[34]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[33]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[63]'
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (U0/\inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[32] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0/\inverse_img_D_BUS_m_axi_U/bus_read/rs_rreq/data_p1_reg[63] )
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p1_reg[62]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p1_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p1_reg[61]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p1_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p1_reg[60]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p1_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p1_reg[59]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p1_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p1_reg[58]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p1_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p1_reg[57]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p1_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p1_reg[56]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p1_reg[33]'
+INFO: [Synth 8-3886] merging instance 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p1_reg[55]' (FDE) to 'U0/inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p1_reg[33]'
+INFO: [Common 17-14] Message 'Synth 8-3886' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (U0/\inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p1_reg[32] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0/\inverse_img_D_BUS_m_axi_U/bus_write/rs_wreq/data_p1_reg[63] )
+WARNING: [Synth 8-3332] Sequential element (inverse_img_D_BUS_s_axi_U/FSM_onehot_wstate_reg[0]) is unused and will be removed from module inverse_img.
+WARNING: [Synth 8-3332] Sequential element (inverse_img_D_BUS_s_axi_U/FSM_onehot_rstate_reg[0]) is unused and will be removed from module inverse_img.
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0/\inverse_img_D_BUS_m_axi_U/bus_read/fifo_rreq/q_reg[63] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0/\inverse_img_D_BUS_m_axi_U/bus_write/fifo_wreq/q_reg[63] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0/\inverse_img_D_BUS_m_axi_U/bus_read/bus_wide_gen.fifo_burst/q_reg[5] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0/\inverse_img_D_BUS_m_axi_U/bus_write/bus_wide_gen.fifo_burst/q_reg[5] )
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:25 ; elapsed = 00:00:31 . Memory (MB): peak = 908.590 ; gain = 534.930
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Preliminary Mapping  Report (see note below)
++------------------------------------------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name                                     | RTL Object | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++------------------------------------------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|inverse_img_D_BUS_m_axi_buffer:                 | mem_reg    | 256 x 9(READ_FIRST)    | W |   | 256 x 9(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
+|inverse_img_D_BUS_m_axi_buffer__parameterized1: | mem_reg    | 256 x 35(READ_FIRST)   | W |   | 256 x 35(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 
++------------------------------------------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+Note: The table above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6837] The timing for the instance U0/i_1_1/inverse_img_D_BUS_m_axi_U/bus_write/buff_wdata/mem_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance U0/i_1_69/inverse_img_D_BUS_m_axi_U/bus_read/fifo_rdata/mem_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:35 ; elapsed = 00:00:42 . Memory (MB): peak = 908.590 ; gain = 534.930
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:40 ; elapsed = 00:00:48 . Memory (MB): peak = 987.352 ; gain = 613.691
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Final Mapping  Report
++------------------------------------------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name                                     | RTL Object | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++------------------------------------------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|inverse_img_D_BUS_m_axi_buffer:                 | mem_reg    | 256 x 9(READ_FIRST)    | W |   | 256 x 9(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
+|inverse_img_D_BUS_m_axi_buffer__parameterized1: | mem_reg    | 256 x 35(READ_FIRST)   | W |   | 256 x 35(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 
++------------------------------------------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6837] The timing for the instance U0/inverse_img_D_BUS_m_axi_U/bus_write/buff_wdata/mem_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance U0/inverse_img_D_BUS_m_axi_U/bus_read/fifo_rdata/mem_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:41 ; elapsed = 00:00:50 . Memory (MB): peak = 988.258 ; gain = 614.598
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:43 ; elapsed = 00:00:51 . Memory (MB): peak = 988.258 ; gain = 614.598
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:43 ; elapsed = 00:00:51 . Memory (MB): peak = 988.258 ; gain = 614.598
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:43 ; elapsed = 00:00:51 . Memory (MB): peak = 988.258 ; gain = 614.598
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:43 ; elapsed = 00:00:51 . Memory (MB): peak = 988.258 ; gain = 614.598
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:43 ; elapsed = 00:00:52 . Memory (MB): peak = 988.258 ; gain = 614.598
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:43 ; elapsed = 00:00:52 . Memory (MB): peak = 988.258 ; gain = 614.598
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Dynamic Shift Register Report:
++------------+-------------+--------+------------+--------+---------+--------+--------+--------+
+|Module Name | RTL Name    | Length | Data Width | SRL16E | SRLC32E | Mux F7 | Mux F8 | Mux F9 | 
++------------+-------------+--------+------------+--------+---------+--------+--------+--------+
+|dsrl        | mem_reg[4]  | 64     | 64         | 64     | 0       | 0      | 0      | 0      | 
+|dsrl__1     | mem_reg[14] | 2      | 2          | 2      | 0       | 0      | 0      | 0      | 
+|dsrl__2     | mem_reg[4]  | 2      | 2          | 2      | 0       | 0      | 0      | 0      | 
+|dsrl__3     | mem_reg[4]  | 12     | 12         | 12     | 0       | 0      | 0      | 0      | 
++------------+-------------+--------+------------+--------+---------+--------+--------+--------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-----------+------+
+|      |Cell       |Count |
++------+-----------+------+
+|1     |CARRY4     |    80|
+|2     |LUT1       |    21|
+|3     |LUT2       |   192|
+|4     |LUT3       |   307|
+|5     |LUT4       |   173|
+|6     |LUT5       |   111|
+|7     |LUT6       |   179|
+|8     |RAMB18E1   |     1|
+|9     |RAMB18E1_1 |     1|
+|10    |SRL16E     |    84|
+|11    |FDRE       |  1266|
+|12    |FDSE       |     7|
++------+-----------+------+
+
+Report Instance Areas: 
++------+----------------------------------+--------------------------------------------------+------+
+|      |Instance                          |Module                                            |Cells |
++------+----------------------------------+--------------------------------------------------+------+
+|1     |top                               |                                                  |  2422|
+|2     |  U0                              |inverse_img                                       |  2422|
+|3     |    Loop_1_proc_U0                |Loop_1_proc                                       |   275|
+|4     |    inverse_img_D_BUS_m_axi_U     |inverse_img_D_BUS_m_axi                           |  1905|
+|5     |      bus_read                    |inverse_img_D_BUS_m_axi_read                      |   990|
+|6     |        \bus_wide_gen.fifo_burst  |inverse_img_D_BUS_m_axi_fifo__parameterized1_0    |   117|
+|7     |        fifo_rctl                 |inverse_img_D_BUS_m_axi_fifo__parameterized3_1    |    22|
+|8     |        fifo_rdata                |inverse_img_D_BUS_m_axi_buffer__parameterized1    |   190|
+|9     |        fifo_rreq                 |inverse_img_D_BUS_m_axi_fifo_2                    |    92|
+|10    |        rs_rdata                  |inverse_img_D_BUS_m_axi_reg_slice__parameterized2 |    39|
+|11    |        rs_rreq                   |inverse_img_D_BUS_m_axi_reg_slice_3               |   108|
+|12    |      bus_write                   |inverse_img_D_BUS_m_axi_write                     |   892|
+|13    |        buff_wdata                |inverse_img_D_BUS_m_axi_buffer                    |   100|
+|14    |        \bus_wide_gen.fifo_burst  |inverse_img_D_BUS_m_axi_fifo__parameterized1      |    95|
+|15    |        fifo_resp                 |inverse_img_D_BUS_m_axi_fifo__parameterized3      |    28|
+|16    |        fifo_resp_to_user         |inverse_img_D_BUS_m_axi_fifo__parameterized5      |    15|
+|17    |        fifo_wreq                 |inverse_img_D_BUS_m_axi_fifo                      |   109|
+|18    |        rs_wreq                   |inverse_img_D_BUS_m_axi_reg_slice                 |   108|
+|19    |      wreq_throttl                |inverse_img_D_BUS_m_axi_throttl                   |    23|
+|20    |    inverse_img_D_BUS_s_axi_U     |inverse_img_D_BUS_s_axi                           |   242|
++------+----------------------------------+--------------------------------------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:43 ; elapsed = 00:00:52 . Memory (MB): peak = 988.258 ; gain = 614.598
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 41 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:30 ; elapsed = 00:00:42 . Memory (MB): peak = 988.258 ; gain = 242.203
+Synthesis Optimization Complete : Time (s): cpu = 00:00:43 ; elapsed = 00:00:52 . Memory (MB): peak = 988.258 ; gain = 614.598
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 82 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 988.258 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+236 Infos, 101 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:46 ; elapsed = 00:00:56 . Memory (MB): peak = 988.258 ; gain = 626.066
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 988.258 ; gain = 0.000
+WARNING: [Constraints 18-5210] No constraints selected for write.
+Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
+INFO: [Common 17-1381] The checkpoint 'E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.runs/img_proc_hw_inverse_img_0_0_synth_1/img_proc_hw_inverse_img_0_0.dcp' has been generated.
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP img_proc_hw_inverse_img_0_0, cache-ID = ac949008143563bf
+INFO: [Coretcl 2-1174] Renamed 19 cell refs.
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 988.258 ; gain = 0.000
+WARNING: [Constraints 18-5210] No constraints selected for write.
+Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
+INFO: [Common 17-1381] The checkpoint 'E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.runs/img_proc_hw_inverse_img_0_0_synth_1/img_proc_hw_inverse_img_0_0.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file img_proc_hw_inverse_img_0_0_utilization_synth.rpt -pb img_proc_hw_inverse_img_0_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sat Jun  1 11:39:24 2019...
