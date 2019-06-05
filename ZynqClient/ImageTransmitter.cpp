@@ -59,7 +59,7 @@ namespace comms
 
     cv::Mat ImageTransmitter::ReceiveImage(uint32_t H, uint32_t W)
     {
-        SendCommand(comms::Command::CmdTestNeg);
+        SendCommand(comms::Command::CmdCompDepthMap);
 
         Command cmd{ Command::CmdUnknown };
 

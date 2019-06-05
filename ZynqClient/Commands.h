@@ -13,6 +13,7 @@ enum class Command : uint32_t
     CmdRecvFrag     = 0x5,
     CmdReadyToRecv  = 0x6,
     CmdCannotRecv   = 0x7,
+    CmdCompDepthMap = 0x8,
 };
 
 } // comms

@@ -35,10 +35,11 @@
 #include "xil_printf.h"
 #include "FreeRTOS.h"
 #include "task.h"
-#include "xinverse_img.h"
+#include "xcomp_d_map.h"
 
 #define THREAD_STACKSIZE 1024
 #define FRAG_SIZE 1000
+#define MAX_DISPARITY 30
 
 #define MIN(A, B) ((A) < (B) ? (A) : (B))
 
@@ -51,7 +52,8 @@ typedef enum _command_t
 	CMD_RECV_IMG		= 0x4,
 	CMD_RECV_FRAG		= 0x5,
 	CMD_READY_TO_RECV	= 0x6,
-	CMD_CANNOT_RECV		= 0x7
+	CMD_CANNOT_RECV		= 0x7,
+	CMD_COMP_DEPTH_MAP	= 0x8,
 } command_t;
 
 u16_t server_port = 50000;
@@ -70,31 +72,31 @@ static u8* g_img_r;
 u8 g_img_r_recv;
 
 // HW image inverser instance
-XInverse_img g_inverser;
+XComp_d_map depth_map_computer;
 
-int inverse_img_init(XInverse_img *Instance)
+int depth_map_computer_init(XComp_d_map *Instance)
 {
-	XInverse_img_Config *cfgPtr;
+	XComp_d_map_Config *cfgPtr;
 	int status;
 
-	cfgPtr = XInverse_img_LookupConfig(XPAR_XINVERSE_IMG_0_DEVICE_ID);
+	cfgPtr = XComp_d_map_LookupConfig(XPAR_XDMAPS_0_DEVICE_ID);
 	if (!cfgPtr) {
-		xil_printf("ERROR: Lookup of image inverser configuration failed.\n\r");
+		xil_printf("ERROR: Lookup of depth map computer configuration failed.\n\r");
 		return XST_FAILURE;
 	}
-	status = XInverse_img_CfgInitialize(Instance, cfgPtr);
+	status = XComp_d_map_CfgInitialize(Instance, cfgPtr);
 	if (status != XST_SUCCESS) {
-		xil_printf("ERROR: Could not initialize image inverser.\n\r");
+		xil_printf("ERROR: Could not initialize depth mpa computer.\n\r");
 		return XST_FAILURE;
 	}
 	return status;
 }
 
-void inverse_img_start(void *InstancePtr) {
-	XInverse_img *pInvImg = (XInverse_img*) InstancePtr;
-	XInverse_img_InterruptEnable(pInvImg, 1);
-	XInverse_img_InterruptGlobalEnable(pInvImg);
-	XInverse_img_Start(pInvImg);
+void comp_depth_map_start(void *InstancePtr) {
+	XComp_d_map *pInvImg = (XComp_d_map*) InstancePtr;
+	XComp_d_map_InterruptEnable(pInvImg, 1);
+	XComp_d_map_InterruptGlobalEnable(pInvImg);
+	XComp_d_map_Start(pInvImg);
 }
 
 void cleanup()
@@ -260,6 +262,86 @@ int send_image(int sd, u8* img, u32 h, u32 w)
 	return 0;
 }
 
+void compute_and_send_negative(int sd)
+{
+	u32 bytes = g_img_l_size[0] * g_img_l_size[1];
+	u8* rev_img = malloc(bytes);
+	if (rev_img == NULL) {
+		xil_printf("%s: failed to allocate %u bytes for negative image\r\n", __FUNCTION__, g_img_l_size);
+		goto cleanup;
+	}
+
+	// compute negative in sw
+	for (u32 i = 0; i < bytes; i++)
+	{
+		rev_img[i] = 255 - g_img_l[i];
+	}
+
+	// compute negative in hw
+
+	// setup input parameters of hw inverser
+	// XInverse_img_Set_img_in(&depth_map_computer, (u32)g_img_l);
+	// XInverse_img_Set_img_out(&depth_map_computer, (u32)rev_img);
+	//
+	// inverse_img_start(&depth_map_computer);
+	// while(!XInverse_img_IsReady(&depth_map_computer));
+	// xil_printf("Finished to compute image negative in HW\n\r");
+
+	send_image(sd, rev_img, g_img_l_size[0], g_img_l_size[1]);
+
+cleanup:
+	if (rev_img != NULL) {
+		free(rev_img);
+	}
+
+}
+
+
+void compute_and_send_depth_map(int sd)
+{
+	u32 dm_bytes = g_img_l_size[0] * g_img_l_size[1];
+	u32 cost_bytes = dm_bytes * MAX_DISPARITY;
+
+	xil_printf("Will compute depth map in HW\r\n");
+
+	u8* cost_matrix = malloc(cost_bytes * sizeof(u8));
+	if (cost_matrix == NULL) {
+		xil_printf("%s: failed to allocate %d bytes\r\n", __FUNCTION__, cost_bytes);
+		goto cleanup;
+	}
+
+	u8* depth_map = malloc(dm_bytes * sizeof(u8));
+	if (depth_map == NULL) {
+		xil_printf("%s: failed to allocate %d bytes\r\n", __FUNCTION__, dm_bytes);
+		goto cleanup;
+	}
+
+	// compute depth map in HW
+
+	// setup input parameters for depth map computer
+	XComp_d_map_Set_img_left(&depth_map_computer, (u32)g_img_l);
+	XComp_d_map_Set_img_right(&depth_map_computer, (u32)g_img_r);
+	XComp_d_map_Set_disp_out(&depth_map_computer, (u32)depth_map);
+	XComp_d_map_Set_img_cost(&depth_map_computer, (u32)cost_matrix);
+
+	comp_depth_map_start(&depth_map_computer);
+	while(!XComp_d_map_IsReady(&depth_map_computer));
+
+	xil_printf("Finished to compute depth map in HW\r\n");
+
+	send_image(sd, depth_map, g_img_l_size[0], g_img_l_size[1]);
+
+cleanup:
+	if (depth_map != NULL) {
+		free(depth_map);
+	}
+
+	if (cost_matrix != NULL) {
+		free(cost_matrix);
+	}
+}
+
+
 /* thread spawned for each connection */
 void process_request(void *p)
 {
@@ -285,42 +367,22 @@ void process_request(void *p)
 			}
 			break;
 		case CMD_TEST_NEG:
-			if (!g_img_l_recv && g_img_r_recv) {
+			if (!g_img_l_recv) {
 				xil_printf("%s: did not receive image, cannot send negative\r\n", __FUNCTION__);
 				finish = 1;
 			}
-
-			u32 bytes = g_img_l_size[0] * g_img_l_size[1];
-			u8* rev_img = malloc(bytes);
-			if (rev_img == NULL) {
-				xil_printf("%s: failed to allocate %u bytes for negative image\r\n", __FUNCTION__, g_img_l_size);
-			}
-
-			// compute negative in hw
-			// setup input parameters of hw inverser
-			XInverse_img_Set_img_in(&g_inverser, (u32)g_img_l);
-			XInverse_img_Set_img_out(&g_inverser, (u32)rev_img);
-
-			inverse_img_start(&g_inverser);
-			while(!XInverse_img_IsReady(&g_inverser));
-			xil_printf("Finished to compute image negative in HW\n\r");
-
-
-//			for (u32 i = 0; i < bytes; i++)
-//			{
-//				rev_img[i] = 255 - g_img_l[i];
-//			}
-
-			send_image(sd, rev_img, g_img_l_size[0], g_img_l_size[1]);
-
-			if (rev_img != NULL) {
-				free(rev_img);
-			}
-
+			compute_and_send_negative(sd);
 			break;
 		case CMD_STOP:
 				xil_printf("%s: communication finished, closing socket\r\n", __FUNCTION__);
 				finish = 1;
+			break;
+		case CMD_COMP_DEPTH_MAP:
+			if (!g_img_l_recv && !g_img_r_recv) {
+				xil_printf("%s: did not receive left and right images, cannot compute depth map\r\n", __FUNCTION__);
+				finish = 1;
+			}
+			compute_and_send_depth_map(sd);
 			break;
 		default:
 			xil_printf("%s: command unrecognized, closing socket\r\n", __FUNCTION__);
@@ -345,7 +407,7 @@ void application_thread()
 	struct sockaddr_in address, remote;
 
 	// setup hw inverser
-	status = inverse_img_init(&g_inverser);
+	status = depth_map_computer_init(&depth_map_computer);
 	if (status != XST_SUCCESS) {
 		print("HLS peripheral setup failed\n\r");
 		exit(-1);
