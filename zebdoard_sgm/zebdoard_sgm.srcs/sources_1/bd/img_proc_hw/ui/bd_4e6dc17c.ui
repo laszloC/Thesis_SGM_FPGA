@@ -4,28 +4,33 @@
 #  -string -flagsOSRD
 preplace port DDR -pg 1 -y 150 -defaultsOSRD
 preplace port FIXED_IO -pg 1 -y 170 -defaultsOSRD
-preplace inst xlconstant_0 -pg 1 -lvl 4 -y 410 -defaultsOSRD
-preplace inst xlconstant_1 -pg 1 -lvl 4 -y 310 -defaultsOSRD
+preplace inst xlconstant_0 -pg 1 -lvl 4 -y 430 -defaultsOSRD
+preplace inst xlconstant_1 -pg 1 -lvl 4 -y 330 -defaultsOSRD
 preplace inst axi_smc -pg 1 -lvl 4 -y 170 -defaultsOSRD
-preplace inst inverse_img_0 -pg 1 -lvl 3 -y 160 -defaultsOSRD
 preplace inst ps7_0_axi_periph -pg 1 -lvl 2 -y 140 -defaultsOSRD
+preplace inst comp_d_map_0 -pg 1 -lvl 3 -y 120 -defaultsOSRD
 preplace inst rst_ps7_0_100M -pg 1 -lvl 1 -y 200 -defaultsOSRD
 preplace inst processing_system7_0 -pg 1 -lvl 5 -y 230 -defaultsOSRD
+preplace netloc comp_d_map_0_m_axi_IMG_BUS 1 3 1 1120
 preplace netloc processing_system7_0_DDR 1 5 1 NJ
-preplace netloc xlconstant_1_dout 1 4 1 1340
-preplace netloc inverse_img_0_m_axi_D_BUS 1 3 1 N
-preplace netloc processing_system7_0_M_AXI_GP0 1 1 5 380 10 NJ 10 NJ 10 NJ 10 1870
-preplace netloc rst_ps7_0_100M_peripheral_aresetn 1 1 3 370 20 680 80 1050
+preplace netloc xlconstant_1_dout 1 4 1 1400
+preplace netloc comp_d_map_0_m_axi_COST_BUS 1 3 1 1100
+preplace netloc processing_system7_0_M_AXI_GP0 1 1 5 380 280 680J 30 NJ 30 NJ 30 1920
+preplace netloc rst_ps7_0_100M_peripheral_aresetn 1 1 3 370 300 720 230 N
 preplace netloc axi_smc_M00_AXI 1 4 1 N
-preplace netloc processing_system7_0_FCLK_RESET0_N 1 0 6 20 470 NJ 470 NJ 470 NJ 470 NJ 470 1860
-preplace netloc xlconstant_0_dout 1 4 1 1360
+preplace netloc processing_system7_0_FCLK_RESET0_N 1 0 6 20 310 NJ 310 700J 20 NJ 20 NJ 20 1930
+preplace netloc ps7_0_axi_periph_M01_AXI 1 2 1 690
+preplace netloc xlconstant_0_dout 1 4 1 1420
 preplace netloc processing_system7_0_FIXED_IO 1 5 1 NJ
-preplace netloc processing_system7_0_FCLK_CLK0 1 0 6 20 100 360 260 690 240 1060 250 1350 90 1860
+preplace netloc comp_d_map_0_m_axi_DC_BUS 1 3 1 N
+preplace netloc comp_d_map_0_m_axi_DC_BUS1 1 3 1 N
+preplace netloc processing_system7_0_FCLK_CLK0 1 0 6 20 100 360 290 710 40 1110 50 1410 370 1920
 preplace netloc ps7_0_axi_periph_M00_AXI 1 2 1 N
-levelinfo -pg 1 0 190 530 870 1200 1610 1890 -top 0 -bot 480
+preplace netloc comp_d_map_0_m_axi_DC_BUS2 1 3 1 N
+levelinfo -pg 1 0 190 530 910 1260 1670 1950 -top 0 -bot 490
 "
 }
 {
-   "da_axi4_cnt":"2",
+   "da_axi4_cnt":"11",
    "da_ps7_cnt":"1"
 }

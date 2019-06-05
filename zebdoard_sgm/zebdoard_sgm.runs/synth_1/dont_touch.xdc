@@ -7,9 +7,6 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==img_proc_hw || 
 # IP: bd/img_proc_hw/ip/img_proc_hw_processing_system7_0_0/img_proc_hw_processing_system7_0_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==img_proc_hw_processing_system7_0_0 || ORIG_REF_NAME==img_proc_hw_processing_system7_0_0} -quiet] -quiet
 
-# IP: bd/img_proc_hw/ip/img_proc_hw_inverse_img_0_0/img_proc_hw_inverse_img_0_0.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==img_proc_hw_inverse_img_0_0 || ORIG_REF_NAME==img_proc_hw_inverse_img_0_0} -quiet] -quiet
-
 # IP: bd/img_proc_hw/ip/img_proc_hw_axi_smc_0/img_proc_hw_axi_smc_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==img_proc_hw_axi_smc_0 || ORIG_REF_NAME==img_proc_hw_axi_smc_0} -quiet] -quiet
 
@@ -18,6 +15,21 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==img_proc_hw_rst
 
 # IP: bd/img_proc_hw/ip/img_proc_hw_ps7_0_axi_periph_0/img_proc_hw_ps7_0_axi_periph_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==img_proc_hw_ps7_0_axi_periph_0 || ORIG_REF_NAME==img_proc_hw_ps7_0_axi_periph_0} -quiet] -quiet
+
+# IP: bd/img_proc_hw/ip/img_proc_hw_xlconstant_0_0/img_proc_hw_xlconstant_0_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==img_proc_hw_xlconstant_0_0 || ORIG_REF_NAME==img_proc_hw_xlconstant_0_0} -quiet] -quiet
+
+# IP: bd/img_proc_hw/ip/img_proc_hw_xlconstant_0_1/img_proc_hw_xlconstant_0_1.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==img_proc_hw_xlconstant_0_1 || ORIG_REF_NAME==img_proc_hw_xlconstant_0_1} -quiet] -quiet
+
+# IP: bd/img_proc_hw/ip/img_proc_hw_comp_d_map_0_1/img_proc_hw_comp_d_map_0_1.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==img_proc_hw_comp_d_map_0_1 || ORIG_REF_NAME==img_proc_hw_comp_d_map_0_1} -quiet] -quiet
+
+# IP: bd/img_proc_hw/ip/img_proc_hw_xbar_0/img_proc_hw_xbar_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==img_proc_hw_xbar_0 || ORIG_REF_NAME==img_proc_hw_xbar_0} -quiet] -quiet
+
+# IP: bd/img_proc_hw/ip/img_proc_hw_auto_pc_1/img_proc_hw_auto_pc_1.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==img_proc_hw_auto_pc_1 || ORIG_REF_NAME==img_proc_hw_auto_pc_1} -quiet] -quiet
 
 # IP: bd/img_proc_hw/ip/img_proc_hw_auto_pc_0/img_proc_hw_auto_pc_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==img_proc_hw_auto_pc_0 || ORIG_REF_NAME==img_proc_hw_auto_pc_0} -quiet] -quiet

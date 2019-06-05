@@ -1,0 +1,9 @@
+{
+	"version": "1.0",
+	"modules": {
+		"comp_d_map": {
+			"proto_instances": {
+			}
+		}
+	}
+}

@@ -1,0 +1,625 @@
+
+
+================================================================
+== Vivado HLS Report for 'comp_d_map'
+================================================================
+* Date:           Wed Jun  5 20:42:07 2019
+
+* Version:        2018.3 (Build 2405991 on Thu Dec 06 23:56:15 MST 2018)
+* Project:        hw_sgm
+* Solution:       solution1
+* Product family: zynq
+* Target device:  xc7z020clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  10.00|     8.750|        1.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----------+-----------+-----------+-----------+---------+
+    |        Latency        |        Interval       | Pipeline|
+    |    min    |    max    |    min    |    max    |   Type  |
+    +-----------+-----------+-----------+-----------+---------+
+    |  367506352|  367506352|  367506352|  367506352|   none  |
+    +-----------+-----------+-----------+-----------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-------------------------+-----------+-----------+----------+-----------+-----------+------+----------+
+        |                         |        Latency        | Iteration|  Initiation Interval  | Trip |          |
+        |        Loop Name        |    min    |    max    |  Latency |  achieved |   target  | Count| Pipelined|
+        +-------------------------+-----------+-----------+----------+-----------+-----------+------+----------+
+        |- Loop 1                 |  364499476|  364499476|   1938827|          -|          -|   188|    no    |
+        | + Loop 1.1              |    1938825|    1938825|      8617|          -|          -|   225|    no    |
+        |  ++ Loop 1.1.1          |       8610|       8610|       287|          -|          -|    30|    no    |
+        |   +++ Loop 1.1.1.1      |        285|        285|        57|          -|          -|     5|    no    |
+        |    ++++ Loop 1.1.1.1.1  |         55|         55|        11|          -|          -|     5|    no    |
+        |- Loop 2                 |      87044|      87044|       463|          -|          -|   188|    no    |
+        | + Loop 2.1              |        450|        450|         2|          -|          -|   225|    no    |
+        +-------------------------+-----------+-----------+----------+-----------+-----------+------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 1
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 36
+* Pipeline : 0
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+	2  / true
+2 --> 
+	22  / (exitcond3_i)
+	3  / (!exitcond3_i)
+3 --> 
+	4  / (!exitcond2_i)
+	2  / (exitcond2_i)
+4 --> 
+	5  / true
+5 --> 
+	18  / (exitcond_i)
+	6  / (!exitcond_i)
+6 --> 
+	7  / (!exitcond1_i_i)
+	5  / (exitcond1_i_i)
+7 --> 
+	8  / (!exitcond_i_i)
+	6  / (exitcond_i_i)
+8 --> 
+	9  / true
+9 --> 
+	10  / true
+10 --> 
+	11  / true
+11 --> 
+	12  / true
+12 --> 
+	13  / true
+13 --> 
+	14  / true
+14 --> 
+	15  / true
+15 --> 
+	16  / true
+16 --> 
+	17  / true
+17 --> 
+	7  / true
+18 --> 
+	19  / true
+19 --> 
+	20  / true
+20 --> 
+	21  / true
+21 --> 
+	3  / true
+22 --> 
+	23  / true
+23 --> 
+	24  / (!exitcond1)
+24 --> 
+	25  / true
+25 --> 
+	26  / true
+26 --> 
+	27  / true
+27 --> 
+	28  / true
+28 --> 
+	29  / true
+29 --> 
+	30  / true
+30 --> 
+	31  / true
+31 --> 
+	32  / (!exitcond)
+	33  / (exitcond)
+32 --> 
+	31  / true
+33 --> 
+	34  / true
+34 --> 
+	35  / true
+35 --> 
+	36  / true
+36 --> 
+	23  / true
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 1.76>
+ST_1 : Operation 37 [1/1] (1.00ns)   --->   "%disp_out_read = call i32 @_ssdm_op_Read.s_axilite.i32(i32 %disp_out)"   --->   Operation 37 'read' 'disp_out_read' <Predicate = true> <Delay = 1.00> <Core = "s_axilite">   --->   Core 10 's_axilite' <Latency = 0> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write'>
+ST_1 : Operation 38 [1/1] (1.00ns)   --->   "%img_right_read = call i32 @_ssdm_op_Read.s_axilite.i32(i32 %img_right)"   --->   Operation 38 'read' 'img_right_read' <Predicate = true> <Delay = 1.00> <Core = "s_axilite">   --->   Core 10 's_axilite' <Latency = 0> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write'>
+ST_1 : Operation 39 [1/1] (1.00ns)   --->   "%img_left_read = call i32 @_ssdm_op_Read.s_axilite.i32(i32 %img_left)"   --->   Operation 39 'read' 'img_left_read' <Predicate = true> <Delay = 1.00> <Core = "s_axilite">   --->   Core 10 's_axilite' <Latency = 0> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write'>
+ST_1 : Operation 40 [1/1] (0.00ns)   --->   "%tmp_1_cast = sext i32 %disp_out_read to i33"   --->   Operation 40 'sext' 'tmp_1_cast' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 41 [1/1] (0.00ns)   --->   "%tmp_2_cast = sext i32 %img_right_read to i33"   --->   Operation 41 'sext' 'tmp_2_cast' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 42 [1/1] (0.00ns)   --->   "%tmp_3_cast = sext i32 %img_left_read to i33"   --->   Operation 42 'sext' 'tmp_3_cast' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 43 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i32* %COST_BUS), !map !52"   --->   Operation 43 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 44 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i8* %IMG_BUS), !map !58"   --->   Operation 44 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 45 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecTopModule([11 x i8]* @comp_d_map_str) nounwind"   --->   Operation 45 'spectopmodule' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 46 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i32 0, [10 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str1, i32 0, i32 0, [8 x i8]* @p_str2, [1 x i8]* @p_str1, [1 x i8]* @p_str1, i32 0, i32 0, i32 0, i32 0, [1 x i8]* @p_str1, [1 x i8]* @p_str1) nounwind" [hw_sgm/sgm.cpp:8]   --->   Operation 46 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 47 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i32 %disp_out, [10 x i8]* @mode3, i32 0, i32 0, [1 x i8]* @p_str1, i32 0, i32 42300, [1 x i8]* @bundle4, [6 x i8]* @p_str4, [1 x i8]* @p_str1, i32 16, i32 16, i32 16, i32 16, [1 x i8]* @p_str1, [1 x i8]* @p_str1) nounwind" [hw_sgm/sgm.cpp:9]   --->   Operation 47 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 48 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i32 %img_right, [10 x i8]* @mode1, i32 0, i32 0, [1 x i8]* @p_str1, i32 0, i32 42300, [1 x i8]* @bundle2, [6 x i8]* @p_str4, [1 x i8]* @p_str1, i32 16, i32 16, i32 16, i32 16, [1 x i8]* @p_str1, [1 x i8]* @p_str1) nounwind" [hw_sgm/sgm.cpp:10]   --->   Operation 48 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 49 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i8* %IMG_BUS, [6 x i8]* @p_str3, i32 0, i32 0, [1 x i8]* @p_str1, i32 0, i32 42300, [8 x i8]* @p_str2, [6 x i8]* @p_str4, [1 x i8]* @p_str1, i32 16, i32 16, i32 16, i32 16, [1 x i8]* @p_str1, [1 x i8]* @p_str1) nounwind" [hw_sgm/sgm.cpp:11]   --->   Operation 49 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 50 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i32 %img_left, [10 x i8]* @mode, i32 0, i32 0, [1 x i8]* @p_str1, i32 0, i32 42300, [1 x i8]* @bundle, [6 x i8]* @p_str4, [1 x i8]* @p_str1, i32 16, i32 16, i32 16, i32 16, [1 x i8]* @p_str1, [1 x i8]* @p_str1) nounwind" [hw_sgm/sgm.cpp:11]   --->   Operation 50 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 51 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i32* %COST_BUS, [6 x i8]* @p_str3, i32 0, i32 0, [1 x i8]* @p_str1, i32 0, i32 1269000, [9 x i8]* @p_str5, [6 x i8]* @p_str4, [1 x i8]* @p_str1, i32 16, i32 16, i32 16, i32 16, [1 x i8]* @p_str1, [1 x i8]* @p_str1) nounwind" [hw_sgm/sgm.cpp:12]   --->   Operation 51 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 52 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i32 %img_cost, [10 x i8]* @mode5, i32 0, i32 0, [1 x i8]* @p_str1, i32 0, i32 1269000, [1 x i8]* @bundle6, [6 x i8]* @p_str4, [1 x i8]* @p_str1, i32 16, i32 16, i32 16, i32 16, [1 x i8]* @p_str1, [1 x i8]* @p_str1) nounwind" [hw_sgm/sgm.cpp:12]   --->   Operation 52 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 53 [1/1] (1.76ns)   --->   "br label %.loopexit" [hw_sgm/sad.cpp:15]   --->   Operation 53 'br' <Predicate = true> <Delay = 1.76>
+
+State 2 <SV = 1> <Delay = 2.07>
+ST_2 : Operation 54 [1/1] (0.00ns)   --->   "%ni = phi i8 [ 0, %0 ], [ %i_1, %.loopexit.loopexit ]"   --->   Operation 54 'phi' 'ni' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 55 [1/1] (0.00ns)   --->   "%phi_mul = phi i16 [ 0, %0 ], [ %next_mul, %.loopexit.loopexit ]"   --->   Operation 55 'phi' 'phi_mul' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 56 [1/1] (2.07ns)   --->   "%next_mul = add i16 %phi_mul, 225"   --->   Operation 56 'add' 'next_mul' <Predicate = true> <Delay = 2.07> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.91> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 57 [1/1] (0.00ns)   --->   "%empty = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 188, i64 188, i64 188) nounwind"   --->   Operation 57 'speclooptripcount' 'empty' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 58 [1/1] (1.55ns)   --->   "%exitcond3_i = icmp eq i8 %ni, -68" [hw_sgm/sad.cpp:15]   --->   Operation 58 'icmp' 'exitcond3_i' <Predicate = true> <Delay = 1.55> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.55> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 59 [1/1] (1.91ns)   --->   "%i_1 = add i8 %ni, 1" [hw_sgm/sad.cpp:15]   --->   Operation 59 'add' 'i_1' <Predicate = true> <Delay = 1.91> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.91> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 60 [1/1] (0.00ns)   --->   "br i1 %exitcond3_i, label %comp_sad_cost.exit, label %.preheader1.i.preheader" [hw_sgm/sad.cpp:15]   --->   Operation 60 'br' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 61 [1/1] (1.76ns)   --->   "br label %.preheader1.i"   --->   Operation 61 'br' <Predicate = (!exitcond3_i)> <Delay = 1.76>
+ST_2 : Operation 62 [2/2] (0.00ns)   --->   "call fastcc void @comp_disps(i32* %COST_BUS, i8* %IMG_BUS) nounwind"   --->   Operation 62 'call' <Predicate = (exitcond3_i)> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 3 <SV = 2> <Delay = 4.30>
+ST_3 : Operation 63 [1/1] (0.00ns)   --->   "%j_i = phi i8 [ %j_1, %5 ], [ 0, %.preheader1.i.preheader ]"   --->   Operation 63 'phi' 'j_i' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 64 [1/1] (0.00ns)   --->   "%j_cast5_i = zext i8 %j_i to i16" [hw_sgm/sad.cpp:16]   --->   Operation 64 'zext' 'j_cast5_i' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 65 [1/1] (0.00ns)   --->   "%j_cast_i = zext i8 %j_i to i9" [hw_sgm/sad.cpp:16]   --->   Operation 65 'zext' 'j_cast_i' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 66 [1/1] (0.00ns)   --->   "%empty_4 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 225, i64 225, i64 225) nounwind"   --->   Operation 66 'speclooptripcount' 'empty_4' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 67 [1/1] (1.55ns)   --->   "%exitcond2_i = icmp eq i8 %j_i, -31" [hw_sgm/sad.cpp:16]   --->   Operation 67 'icmp' 'exitcond2_i' <Predicate = true> <Delay = 1.55> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.55> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 68 [1/1] (1.91ns)   --->   "%j_1 = add i8 %j_i, 1" [hw_sgm/sad.cpp:16]   --->   Operation 68 'add' 'j_1' <Predicate = true> <Delay = 1.91> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.91> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 69 [1/1] (0.00ns)   --->   "br i1 %exitcond2_i, label %.loopexit.loopexit, label %.preheader.preheader.i" [hw_sgm/sad.cpp:16]   --->   Operation 69 'br' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 70 [1/1] (2.07ns)   --->   "%ci = add i16 %phi_mul, %j_cast5_i" [hw_sgm/sad.cpp:19]   --->   Operation 70 'add' 'ci' <Predicate = (!exitcond2_i)> <Delay = 2.07> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.91> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 71 [1/1] (0.00ns)   --->   "%p_shl_i = call i21 @_ssdm_op_BitConcatenate.i21.i16.i5(i16 %ci, i5 0) nounwind" [hw_sgm/common.h:39->hw_sgm/sad.cpp:22]   --->   Operation 71 'bitconcatenate' 'p_shl_i' <Predicate = (!exitcond2_i)> <Delay = 0.00>
+ST_3 : Operation 72 [1/1] (0.00ns)   --->   "%p_shl_cast_i = zext i21 %p_shl_i to i22" [hw_sgm/common.h:39->hw_sgm/sad.cpp:22]   --->   Operation 72 'zext' 'p_shl_cast_i' <Predicate = (!exitcond2_i)> <Delay = 0.00>
+ST_3 : Operation 73 [1/1] (0.00ns)   --->   "%p_shl1_i = call i17 @_ssdm_op_BitConcatenate.i17.i16.i1(i16 %ci, i1 false) nounwind" [hw_sgm/common.h:39->hw_sgm/sad.cpp:22]   --->   Operation 73 'bitconcatenate' 'p_shl1_i' <Predicate = (!exitcond2_i)> <Delay = 0.00>
+ST_3 : Operation 74 [1/1] (0.00ns)   --->   "%p_shl1_cast_i = zext i17 %p_shl1_i to i22" [hw_sgm/common.h:39->hw_sgm/sad.cpp:22]   --->   Operation 74 'zext' 'p_shl1_cast_i' <Predicate = (!exitcond2_i)> <Delay = 0.00>
+ST_3 : Operation 75 [1/1] (2.22ns)   --->   "%tmp_4_i9 = sub i22 %p_shl_cast_i, %p_shl1_cast_i" [hw_sgm/common.h:39->hw_sgm/sad.cpp:22]   --->   Operation 75 'sub' 'tmp_4_i9' <Predicate = (!exitcond2_i)> <Delay = 2.22> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.91> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 76 [1/1] (0.00ns)   --->   "br label %.loopexit"   --->   Operation 76 'br' <Predicate = (exitcond2_i)> <Delay = 0.00>
+
+State 4 <SV = 3> <Delay = 8.75>
+ST_4 : Operation 77 [1/1] (0.00ns)   --->   "%tmp_6 = sext i22 %tmp_4_i9 to i32" [hw_sgm/common.h:39->hw_sgm/sad.cpp:22]   --->   Operation 77 'sext' 'tmp_6' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 78 [1/1] (0.00ns)   --->   "%tmp_7 = zext i32 %tmp_6 to i64" [hw_sgm/common.h:39->hw_sgm/sad.cpp:22]   --->   Operation 78 'zext' 'tmp_7' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 79 [1/1] (0.00ns)   --->   "%COST_BUS_addr = getelementptr inbounds i32* %COST_BUS, i64 %tmp_7" [hw_sgm/common.h:39->hw_sgm/sad.cpp:22]   --->   Operation 79 'getelementptr' 'COST_BUS_addr' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 80 [1/1] (8.75ns)   --->   "%p_wr_req = call i1 @_ssdm_op_WriteReq.m_axi.i32P(i32* %COST_BUS_addr, i32 30)" [hw_sgm/sad.cpp:22]   --->   Operation 80 'writereq' 'p_wr_req' <Predicate = true> <Delay = 8.75> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+ST_4 : Operation 81 [1/1] (1.76ns)   --->   "br label %.preheader.i10" [hw_sgm/sad.cpp:17]   --->   Operation 81 'br' <Predicate = true> <Delay = 1.76>
+
+State 5 <SV = 4> <Delay = 8.75>
+ST_5 : Operation 82 [1/1] (0.00ns)   --->   "%cj = phi i5 [ %d, %sad_block_cost.exit.i ], [ 0, %.preheader.preheader.i ]"   --->   Operation 82 'phi' 'cj' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 83 [1/1] (0.00ns)   --->   "%cj_cast1_i = zext i5 %cj to i9" [hw_sgm/sad.cpp:17]   --->   Operation 83 'zext' 'cj_cast1_i' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 84 [1/1] (0.00ns)   --->   "%empty_5 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 30, i64 30, i64 30) nounwind"   --->   Operation 84 'speclooptripcount' 'empty_5' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 85 [1/1] (1.36ns)   --->   "%exitcond_i = icmp eq i5 %cj, -2" [hw_sgm/sad.cpp:17]   --->   Operation 85 'icmp' 'exitcond_i' <Predicate = true> <Delay = 1.36> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.55> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 86 [1/1] (1.78ns)   --->   "%d = add i5 %cj, 1" [hw_sgm/sad.cpp:17]   --->   Operation 86 'add' 'd' <Predicate = true> <Delay = 1.78> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.91> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 87 [1/1] (0.00ns)   --->   "br i1 %exitcond_i, label %5, label %1" [hw_sgm/sad.cpp:17]   --->   Operation 87 'br' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 88 [1/1] (1.91ns)   --->   "%nj = sub i9 %j_cast_i, %cj_cast1_i" [hw_sgm/sad.cpp:20]   --->   Operation 88 'sub' 'nj' <Predicate = (!exitcond_i)> <Delay = 1.91> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.91> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 89 [1/1] (0.00ns)   --->   "%li_cast_i_i = zext i8 %ni to i9" [hw_sgm/sad.cpp:35->hw_sgm/sad.cpp:22]   --->   Operation 89 'zext' 'li_cast_i_i' <Predicate = (!exitcond_i)> <Delay = 0.00>
+ST_5 : Operation 90 [1/1] (1.76ns)   --->   "br label %2" [hw_sgm/sad.cpp:33->hw_sgm/sad.cpp:22]   --->   Operation 90 'br' <Predicate = (!exitcond_i)> <Delay = 1.76>
+ST_5 : Operation 91 [5/5] (8.75ns)   --->   "%p_wr_resp = call i1 @_ssdm_op_WriteResp.m_axi.i32P(i32* %COST_BUS_addr)" [hw_sgm/sad.cpp:22]   --->   Operation 91 'writeresp' 'p_wr_resp' <Predicate = (exitcond_i)> <Delay = 8.75> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+
+State 6 <SV = 5> <Delay = 8.75>
+ST_6 : Operation 92 [1/1] (0.00ns)   --->   "%sum_i_i = phi i32 [ 0, %1 ], [ %sum_1_i_i, %4 ]" [hw_sgm/common.h:33->hw_sgm/sad.cpp:38->hw_sgm/sad.cpp:22]   --->   Operation 92 'phi' 'sum_i_i' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 93 [1/1] (0.00ns)   --->   "%di_i_i = phi i3 [ -2, %1 ], [ %di, %4 ]"   --->   Operation 93 'phi' 'di_i_i' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 94 [1/1] (0.00ns)   --->   "%di_cast_i_i = sext i3 %di_i_i to i9" [hw_sgm/sad.cpp:33->hw_sgm/sad.cpp:22]   --->   Operation 94 'sext' 'di_cast_i_i' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 95 [1/1] (1.13ns)   --->   "%exitcond1_i_i = icmp eq i3 %di_i_i, 3" [hw_sgm/sad.cpp:33->hw_sgm/sad.cpp:22]   --->   Operation 95 'icmp' 'exitcond1_i_i' <Predicate = true> <Delay = 1.13> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.55> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 96 [1/1] (0.00ns)   --->   "%empty_6 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 5, i64 5, i64 5) nounwind"   --->   Operation 96 'speclooptripcount' 'empty_6' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 97 [1/1] (0.00ns)   --->   "br i1 %exitcond1_i_i, label %sad_block_cost.exit.i, label %.preheader.i.i" [hw_sgm/sad.cpp:33->hw_sgm/sad.cpp:22]   --->   Operation 97 'br' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 98 [1/1] (1.91ns)   --->   "%cli = add i9 %di_cast_i_i, %li_cast_i_i" [hw_sgm/sad.cpp:35->hw_sgm/sad.cpp:22]   --->   Operation 98 'add' 'cli' <Predicate = (!exitcond1_i_i)> <Delay = 1.91> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.91> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 99 [1/1] (0.00ns)   --->   "%cli_cast_cast_i_i = sext i9 %cli to i17" [hw_sgm/sad.cpp:34->hw_sgm/sad.cpp:22]   --->   Operation 99 'sext' 'cli_cast_cast_i_i' <Predicate = (!exitcond1_i_i)> <Delay = 0.00>
+ST_6 : Operation 100 [1/1] (1.66ns)   --->   "%tmp_7_i_i_i = icmp slt i9 %cli, 188" [hw_sgm/common.h:33->hw_sgm/sad.cpp:38->hw_sgm/sad.cpp:22]   --->   Operation 100 'icmp' 'tmp_7_i_i_i' <Predicate = (!exitcond1_i_i)> <Delay = 1.66> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.55> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 101 [1/1] (4.35ns)   --->   "%tmp_9_i_i = mul i17 %cli_cast_cast_i_i, 225" [hw_sgm/sad.cpp:34->hw_sgm/sad.cpp:22]   --->   Operation 101 'mul' 'tmp_9_i_i' <Predicate = (!exitcond1_i_i)> <Delay = 4.35> <Core = "Mul">   --->   Core 16 'Mul' <Latency = 0> <II = 1> <Delay = 4.35> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 102 [1/1] (1.76ns)   --->   "br label %3" [hw_sgm/sad.cpp:34->hw_sgm/sad.cpp:22]   --->   Operation 102 'br' <Predicate = (!exitcond1_i_i)> <Delay = 1.76>
+ST_6 : Operation 103 [1/1] (8.75ns)   --->   "call void @_ssdm_op_Write.m_axi.i32P(i32* %COST_BUS_addr, i32 %sum_i_i, i4 -1)" [hw_sgm/sad.cpp:22]   --->   Operation 103 'write' <Predicate = (exitcond1_i_i)> <Delay = 8.75> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+ST_6 : Operation 104 [1/1] (0.00ns)   --->   "br label %.preheader.i10" [hw_sgm/sad.cpp:17]   --->   Operation 104 'br' <Predicate = (exitcond1_i_i)> <Delay = 0.00>
+
+State 7 <SV = 6> <Delay = 6.57>
+ST_7 : Operation 105 [1/1] (0.00ns)   --->   "%sum_1_i_i = phi i32 [ %sum_2, %_ifconv.i.i ], [ %sum_i_i, %.preheader.i.i ]"   --->   Operation 105 'phi' 'sum_1_i_i' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 106 [1/1] (0.00ns)   --->   "%dj_i_i = phi i3 [ %dj, %_ifconv.i.i ], [ -2, %.preheader.i.i ]"   --->   Operation 106 'phi' 'dj_i_i' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 107 [1/1] (0.00ns)   --->   "%dj_cast_i_i = sext i3 %dj_i_i to i9" [hw_sgm/sad.cpp:34->hw_sgm/sad.cpp:22]   --->   Operation 107 'sext' 'dj_cast_i_i' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 108 [1/1] (1.13ns)   --->   "%exitcond_i_i = icmp eq i3 %dj_i_i, 3" [hw_sgm/sad.cpp:34->hw_sgm/sad.cpp:22]   --->   Operation 108 'icmp' 'exitcond_i_i' <Predicate = true> <Delay = 1.13> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.55> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 109 [1/1] (0.00ns)   --->   "%empty_7 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 5, i64 5, i64 5) nounwind"   --->   Operation 109 'speclooptripcount' 'empty_7' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 110 [1/1] (0.00ns)   --->   "br i1 %exitcond_i_i, label %4, label %_ifconv.i.i" [hw_sgm/sad.cpp:34->hw_sgm/sad.cpp:22]   --->   Operation 110 'br' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 111 [1/1] (1.91ns)   --->   "%clj = add i9 %j_cast_i, %dj_cast_i_i" [hw_sgm/sad.cpp:35->hw_sgm/sad.cpp:22]   --->   Operation 111 'add' 'clj' <Predicate = (!exitcond_i_i)> <Delay = 1.91> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.91> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 112 [1/1] (0.00ns)   --->   "%clj_cast6_i_i = sext i9 %clj to i17" [hw_sgm/sad.cpp:35->hw_sgm/sad.cpp:22]   --->   Operation 112 'sext' 'clj_cast6_i_i' <Predicate = (!exitcond_i_i)> <Delay = 0.00>
+ST_7 : Operation 113 [1/1] (1.82ns)   --->   "%crj = add i9 %nj, %dj_cast_i_i" [hw_sgm/sad.cpp:36->hw_sgm/sad.cpp:22]   --->   Operation 113 'add' 'crj' <Predicate = (!exitcond_i_i)> <Delay = 1.82> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.91> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 114 [1/1] (0.00ns)   --->   "%crj_cast5_i_i = sext i9 %crj to i17" [hw_sgm/sad.cpp:36->hw_sgm/sad.cpp:22]   --->   Operation 114 'sext' 'crj_cast5_i_i' <Predicate = (!exitcond_i_i)> <Delay = 0.00>
+ST_7 : Operation 115 [1/1] (0.00ns) (grouped into LUT with out node tmp_8_i_i_i_8)   --->   "%tmp_i_i_i = or i9 %clj, %cli" [hw_sgm/common.h:33->hw_sgm/sad.cpp:38->hw_sgm/sad.cpp:22]   --->   Operation 115 'or' 'tmp_i_i_i' <Predicate = (!exitcond_i_i)> <Delay = 0.00> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 116 [1/1] (0.00ns) (grouped into LUT with out node tmp_8_i_i_i_8)   --->   "%tmp_9 = call i1 @_ssdm_op_BitSelect.i1.i9.i32(i9 %tmp_i_i_i, i32 8)" [hw_sgm/common.h:33->hw_sgm/sad.cpp:38->hw_sgm/sad.cpp:22]   --->   Operation 116 'bitselect' 'tmp_9' <Predicate = (!exitcond_i_i)> <Delay = 0.00>
+ST_7 : Operation 117 [1/1] (0.00ns) (grouped into LUT with out node tmp_8_i_i_i_8)   --->   "%rev = xor i1 %tmp_9, true" [hw_sgm/common.h:33->hw_sgm/sad.cpp:38->hw_sgm/sad.cpp:22]   --->   Operation 117 'xor' 'rev' <Predicate = (!exitcond_i_i)> <Delay = 0.00> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 118 [1/1] (1.66ns)   --->   "%tmp_8_i_i_i = icmp slt i9 %clj, 225" [hw_sgm/common.h:33->hw_sgm/sad.cpp:38->hw_sgm/sad.cpp:22]   --->   Operation 118 'icmp' 'tmp_8_i_i_i' <Predicate = (!exitcond_i_i)> <Delay = 1.66> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.55> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 119 [1/1] (0.00ns) (grouped into LUT with out node tmp_8_i_i_i_8)   --->   "%tmp_i_i = and i1 %tmp_7_i_i_i, %tmp_8_i_i_i" [hw_sgm/common.h:33->hw_sgm/sad.cpp:38->hw_sgm/sad.cpp:22]   --->   Operation 119 'and' 'tmp_i_i' <Predicate = (!exitcond_i_i)> <Delay = 0.00> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 120 [1/1] (0.99ns) (out node of the LUT)   --->   "%tmp_8_i_i_i_8 = and i1 %tmp_i_i, %rev" [hw_sgm/common.h:33->hw_sgm/sad.cpp:38->hw_sgm/sad.cpp:22]   --->   Operation 120 'and' 'tmp_8_i_i_i_8' <Predicate = (!exitcond_i_i)> <Delay = 0.99> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 121 [1/1] (2.10ns)   --->   "%tmp_i_i_9 = add i17 %clj_cast6_i_i, %tmp_9_i_i" [hw_sgm/common.h:39->hw_sgm/sad.cpp:39->hw_sgm/sad.cpp:22]   --->   Operation 121 'add' 'tmp_i_i_9' <Predicate = (!exitcond_i_i)> <Delay = 2.10> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.91> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 122 [1/1] (0.00ns)   --->   "%tmp_1_i_i_cast = sext i17 %tmp_i_i_9 to i33" [hw_sgm/common.h:39->hw_sgm/sad.cpp:39->hw_sgm/sad.cpp:22]   --->   Operation 122 'sext' 'tmp_1_i_i_cast' <Predicate = (!exitcond_i_i)> <Delay = 0.00>
+ST_7 : Operation 123 [1/1] (2.55ns)   --->   "%left_m_img_sum = add i33 %tmp_1_i_i_cast, %tmp_3_cast" [hw_sgm/common.h:39->hw_sgm/sad.cpp:39->hw_sgm/sad.cpp:22]   --->   Operation 123 'add' 'left_m_img_sum' <Predicate = (!exitcond_i_i)> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.91> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 124 [1/1] (0.00ns)   --->   "%left_m_img_sum_cast = sext i33 %left_m_img_sum to i64" [hw_sgm/common.h:39->hw_sgm/sad.cpp:39->hw_sgm/sad.cpp:22]   --->   Operation 124 'sext' 'left_m_img_sum_cast' <Predicate = (!exitcond_i_i)> <Delay = 0.00>
+ST_7 : Operation 125 [1/1] (0.00ns)   --->   "%IMG_BUS_addr_1 = getelementptr inbounds i8* %IMG_BUS, i64 %left_m_img_sum_cast" [hw_sgm/common.h:39->hw_sgm/sad.cpp:39->hw_sgm/sad.cpp:22]   --->   Operation 125 'getelementptr' 'IMG_BUS_addr_1' <Predicate = (!exitcond_i_i)> <Delay = 0.00>
+ST_7 : Operation 126 [1/1] (2.10ns)   --->   "%tmp_3_i_i = add i17 %crj_cast5_i_i, %tmp_9_i_i" [hw_sgm/common.h:39->hw_sgm/sad.cpp:40->hw_sgm/sad.cpp:22]   --->   Operation 126 'add' 'tmp_3_i_i' <Predicate = (!exitcond_i_i)> <Delay = 2.10> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.91> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 127 [1/1] (0.00ns)   --->   "%tmp_4_i_i_cast = sext i17 %tmp_3_i_i to i33" [hw_sgm/common.h:39->hw_sgm/sad.cpp:40->hw_sgm/sad.cpp:22]   --->   Operation 127 'sext' 'tmp_4_i_i_cast' <Predicate = (!exitcond_i_i)> <Delay = 0.00>
+ST_7 : Operation 128 [1/1] (2.55ns)   --->   "%right_m_img_sum = add i33 %tmp_4_i_i_cast, %tmp_2_cast" [hw_sgm/common.h:39->hw_sgm/sad.cpp:40->hw_sgm/sad.cpp:22]   --->   Operation 128 'add' 'right_m_img_sum' <Predicate = (!exitcond_i_i)> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.91> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 129 [1/1] (0.00ns)   --->   "%right_m_img_sum_cast = sext i33 %right_m_img_sum to i64" [hw_sgm/common.h:39->hw_sgm/sad.cpp:40->hw_sgm/sad.cpp:22]   --->   Operation 129 'sext' 'right_m_img_sum_cast' <Predicate = (!exitcond_i_i)> <Delay = 0.00>
+ST_7 : Operation 130 [1/1] (0.00ns)   --->   "%IMG_BUS_addr_2 = getelementptr inbounds i8* %IMG_BUS, i64 %right_m_img_sum_cast" [hw_sgm/common.h:39->hw_sgm/sad.cpp:40->hw_sgm/sad.cpp:22]   --->   Operation 130 'getelementptr' 'IMG_BUS_addr_2' <Predicate = (!exitcond_i_i)> <Delay = 0.00>
+ST_7 : Operation 131 [1/1] (1.65ns)   --->   "%dj = add i3 %dj_i_i, 1" [hw_sgm/sad.cpp:34->hw_sgm/sad.cpp:22]   --->   Operation 131 'add' 'dj' <Predicate = (!exitcond_i_i)> <Delay = 1.65> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.91> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 132 [1/1] (1.65ns)   --->   "%di = add i3 %di_i_i, 1" [hw_sgm/sad.cpp:33->hw_sgm/sad.cpp:22]   --->   Operation 132 'add' 'di' <Predicate = (exitcond_i_i)> <Delay = 1.65> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.91> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 133 [1/1] (0.00ns)   --->   "br label %2" [hw_sgm/sad.cpp:33->hw_sgm/sad.cpp:22]   --->   Operation 133 'br' <Predicate = (exitcond_i_i)> <Delay = 0.00>
+
+State 8 <SV = 7> <Delay = 8.75>
+ST_8 : Operation 134 [7/7] (8.75ns)   --->   "%left_m_img_load_req = call i1 @_ssdm_op_ReadReq.m_axi.i8P(i8* %IMG_BUS_addr_1, i32 1)" [hw_sgm/sad.cpp:39->hw_sgm/sad.cpp:22]   --->   Operation 134 'readreq' 'left_m_img_load_req' <Predicate = true> <Delay = 8.75> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+
+State 9 <SV = 8> <Delay = 8.75>
+ST_9 : Operation 135 [6/7] (8.75ns)   --->   "%left_m_img_load_req = call i1 @_ssdm_op_ReadReq.m_axi.i8P(i8* %IMG_BUS_addr_1, i32 1)" [hw_sgm/sad.cpp:39->hw_sgm/sad.cpp:22]   --->   Operation 135 'readreq' 'left_m_img_load_req' <Predicate = true> <Delay = 8.75> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+ST_9 : Operation 136 [7/7] (8.75ns)   --->   "%right_m_img_load_req = call i1 @_ssdm_op_ReadReq.m_axi.i8P(i8* %IMG_BUS_addr_2, i32 1)" [hw_sgm/sad.cpp:40->hw_sgm/sad.cpp:22]   --->   Operation 136 'readreq' 'right_m_img_load_req' <Predicate = true> <Delay = 8.75> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+
+State 10 <SV = 9> <Delay = 8.75>
+ST_10 : Operation 137 [5/7] (8.75ns)   --->   "%left_m_img_load_req = call i1 @_ssdm_op_ReadReq.m_axi.i8P(i8* %IMG_BUS_addr_1, i32 1)" [hw_sgm/sad.cpp:39->hw_sgm/sad.cpp:22]   --->   Operation 137 'readreq' 'left_m_img_load_req' <Predicate = true> <Delay = 8.75> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+ST_10 : Operation 138 [6/7] (8.75ns)   --->   "%right_m_img_load_req = call i1 @_ssdm_op_ReadReq.m_axi.i8P(i8* %IMG_BUS_addr_2, i32 1)" [hw_sgm/sad.cpp:40->hw_sgm/sad.cpp:22]   --->   Operation 138 'readreq' 'right_m_img_load_req' <Predicate = true> <Delay = 8.75> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+
+State 11 <SV = 10> <Delay = 8.75>
+ST_11 : Operation 139 [4/7] (8.75ns)   --->   "%left_m_img_load_req = call i1 @_ssdm_op_ReadReq.m_axi.i8P(i8* %IMG_BUS_addr_1, i32 1)" [hw_sgm/sad.cpp:39->hw_sgm/sad.cpp:22]   --->   Operation 139 'readreq' 'left_m_img_load_req' <Predicate = true> <Delay = 8.75> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+ST_11 : Operation 140 [5/7] (8.75ns)   --->   "%right_m_img_load_req = call i1 @_ssdm_op_ReadReq.m_axi.i8P(i8* %IMG_BUS_addr_2, i32 1)" [hw_sgm/sad.cpp:40->hw_sgm/sad.cpp:22]   --->   Operation 140 'readreq' 'right_m_img_load_req' <Predicate = true> <Delay = 8.75> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+
+State 12 <SV = 11> <Delay = 8.75>
+ST_12 : Operation 141 [3/7] (8.75ns)   --->   "%left_m_img_load_req = call i1 @_ssdm_op_ReadReq.m_axi.i8P(i8* %IMG_BUS_addr_1, i32 1)" [hw_sgm/sad.cpp:39->hw_sgm/sad.cpp:22]   --->   Operation 141 'readreq' 'left_m_img_load_req' <Predicate = true> <Delay = 8.75> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+ST_12 : Operation 142 [4/7] (8.75ns)   --->   "%right_m_img_load_req = call i1 @_ssdm_op_ReadReq.m_axi.i8P(i8* %IMG_BUS_addr_2, i32 1)" [hw_sgm/sad.cpp:40->hw_sgm/sad.cpp:22]   --->   Operation 142 'readreq' 'right_m_img_load_req' <Predicate = true> <Delay = 8.75> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+
+State 13 <SV = 12> <Delay = 8.75>
+ST_13 : Operation 143 [2/7] (8.75ns)   --->   "%left_m_img_load_req = call i1 @_ssdm_op_ReadReq.m_axi.i8P(i8* %IMG_BUS_addr_1, i32 1)" [hw_sgm/sad.cpp:39->hw_sgm/sad.cpp:22]   --->   Operation 143 'readreq' 'left_m_img_load_req' <Predicate = true> <Delay = 8.75> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+ST_13 : Operation 144 [3/7] (8.75ns)   --->   "%right_m_img_load_req = call i1 @_ssdm_op_ReadReq.m_axi.i8P(i8* %IMG_BUS_addr_2, i32 1)" [hw_sgm/sad.cpp:40->hw_sgm/sad.cpp:22]   --->   Operation 144 'readreq' 'right_m_img_load_req' <Predicate = true> <Delay = 8.75> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+
+State 14 <SV = 13> <Delay = 8.75>
+ST_14 : Operation 145 [1/7] (8.75ns)   --->   "%left_m_img_load_req = call i1 @_ssdm_op_ReadReq.m_axi.i8P(i8* %IMG_BUS_addr_1, i32 1)" [hw_sgm/sad.cpp:39->hw_sgm/sad.cpp:22]   --->   Operation 145 'readreq' 'left_m_img_load_req' <Predicate = true> <Delay = 8.75> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+ST_14 : Operation 146 [2/7] (8.75ns)   --->   "%right_m_img_load_req = call i1 @_ssdm_op_ReadReq.m_axi.i8P(i8* %IMG_BUS_addr_2, i32 1)" [hw_sgm/sad.cpp:40->hw_sgm/sad.cpp:22]   --->   Operation 146 'readreq' 'right_m_img_load_req' <Predicate = true> <Delay = 8.75> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+
+State 15 <SV = 14> <Delay = 8.75>
+ST_15 : Operation 147 [1/1] (8.75ns)   --->   "%IMG_BUS_addr_1_read = call i8 @_ssdm_op_Read.m_axi.i8P(i8* %IMG_BUS_addr_1)" [hw_sgm/sad.cpp:39->hw_sgm/sad.cpp:22]   --->   Operation 147 'read' 'IMG_BUS_addr_1_read' <Predicate = true> <Delay = 8.75> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+ST_15 : Operation 148 [1/7] (8.75ns)   --->   "%right_m_img_load_req = call i1 @_ssdm_op_ReadReq.m_axi.i8P(i8* %IMG_BUS_addr_2, i32 1)" [hw_sgm/sad.cpp:40->hw_sgm/sad.cpp:22]   --->   Operation 148 'readreq' 'right_m_img_load_req' <Predicate = true> <Delay = 8.75> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+
+State 16 <SV = 15> <Delay = 8.75>
+ST_16 : Operation 149 [1/1] (8.75ns)   --->   "%IMG_BUS_addr_2_read = call i8 @_ssdm_op_Read.m_axi.i8P(i8* %IMG_BUS_addr_2)" [hw_sgm/sad.cpp:40->hw_sgm/sad.cpp:22]   --->   Operation 149 'read' 'IMG_BUS_addr_2_read' <Predicate = true> <Delay = 8.75> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+
+State 17 <SV = 16> <Delay = 7.97>
+ST_17 : Operation 150 [1/1] (0.00ns) (grouped into LUT with out node sum_1)   --->   "%tmp_i1_i_i = or i9 %crj, %cli" [hw_sgm/common.h:33->hw_sgm/sad.cpp:38->hw_sgm/sad.cpp:22]   --->   Operation 150 'or' 'tmp_i1_i_i' <Predicate = (tmp_8_i_i_i_8)> <Delay = 0.00> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_17 : Operation 151 [1/1] (0.00ns) (grouped into LUT with out node sum_1)   --->   "%tmp_10 = call i1 @_ssdm_op_BitSelect.i1.i9.i32(i9 %tmp_i1_i_i, i32 8)" [hw_sgm/common.h:33->hw_sgm/sad.cpp:38->hw_sgm/sad.cpp:22]   --->   Operation 151 'bitselect' 'tmp_10' <Predicate = (tmp_8_i_i_i_8)> <Delay = 0.00>
+ST_17 : Operation 152 [1/1] (0.00ns) (grouped into LUT with out node sum_1)   --->   "%rev1 = xor i1 %tmp_10, true" [hw_sgm/common.h:33->hw_sgm/sad.cpp:38->hw_sgm/sad.cpp:22]   --->   Operation 152 'xor' 'rev1' <Predicate = (tmp_8_i_i_i_8)> <Delay = 0.00> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_17 : Operation 153 [1/1] (1.66ns)   --->   "%tmp_8_i5_i_i = icmp slt i9 %crj, 225" [hw_sgm/common.h:33->hw_sgm/sad.cpp:38->hw_sgm/sad.cpp:22]   --->   Operation 153 'icmp' 'tmp_8_i5_i_i' <Predicate = (tmp_8_i_i_i_8)> <Delay = 1.66> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.55> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_17 : Operation 154 [1/1] (0.00ns)   --->   "%l_cast_i_i = zext i8 %IMG_BUS_addr_1_read to i9" [hw_sgm/sad.cpp:39->hw_sgm/sad.cpp:22]   --->   Operation 154 'zext' 'l_cast_i_i' <Predicate = (tmp_8_i_i_i_8)> <Delay = 0.00>
+ST_17 : Operation 155 [1/1] (0.00ns)   --->   "%r_cast_i_i = zext i8 %IMG_BUS_addr_2_read to i9" [hw_sgm/sad.cpp:40->hw_sgm/sad.cpp:22]   --->   Operation 155 'zext' 'r_cast_i_i' <Predicate = (tmp_8_i_i_i_8)> <Delay = 0.00>
+ST_17 : Operation 156 [1/1] (1.91ns)   --->   "%a_assign_i_i = sub i9 %l_cast_i_i, %r_cast_i_i" [hw_sgm/sad.cpp:42->hw_sgm/sad.cpp:22]   --->   Operation 156 'sub' 'a_assign_i_i' <Predicate = (tmp_8_i_i_i_8)> <Delay = 1.91> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.91> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_17 : Operation 157 [1/1] (0.00ns) (grouped into LUT with out node sum)   --->   "%tmp_11 = call i1 @_ssdm_op_BitSelect.i1.i9.i32(i9 %a_assign_i_i, i32 8)" [hw_sgm/sad.cpp:4->hw_sgm/sad.cpp:42->hw_sgm/sad.cpp:22]   --->   Operation 157 'bitselect' 'tmp_11' <Predicate = (tmp_8_i_i_i_8)> <Delay = 0.00>
+ST_17 : Operation 158 [1/1] (1.82ns)   --->   "%tmp_i8_i_i = sub i9 0, %a_assign_i_i" [hw_sgm/sad.cpp:4->hw_sgm/sad.cpp:42->hw_sgm/sad.cpp:22]   --->   Operation 158 'sub' 'tmp_i8_i_i' <Predicate = (tmp_8_i_i_i_8)> <Delay = 1.82> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.91> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_17 : Operation 159 [1/1] (0.00ns) (grouped into LUT with out node sum)   --->   "%a_assign_1_i_i = select i1 %tmp_11, i9 %tmp_i8_i_i, i9 %a_assign_i_i" [hw_sgm/sad.cpp:4->hw_sgm/sad.cpp:42->hw_sgm/sad.cpp:22]   --->   Operation 159 'select' 'a_assign_1_i_i' <Predicate = (tmp_8_i_i_i_8)> <Delay = 0.00> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_17 : Operation 160 [1/1] (0.00ns) (grouped into LUT with out node sum)   --->   "%a_assign_1_cast_i_i = sext i9 %a_assign_1_i_i to i32" [hw_sgm/sad.cpp:4->hw_sgm/sad.cpp:42->hw_sgm/sad.cpp:22]   --->   Operation 160 'sext' 'a_assign_1_cast_i_i' <Predicate = (tmp_8_i_i_i_8)> <Delay = 0.00>
+ST_17 : Operation 161 [1/1] (2.55ns) (out node of the LUT)   --->   "%sum = add nsw i32 %sum_1_i_i, %a_assign_1_cast_i_i" [hw_sgm/sad.cpp:42->hw_sgm/sad.cpp:22]   --->   Operation 161 'add' 'sum' <Predicate = (tmp_8_i_i_i_8)> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.91> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_17 : Operation 162 [1/1] (0.00ns) (grouped into LUT with out node sum_1)   --->   "%tmp4_i_i = and i1 %tmp_8_i5_i_i, %tmp_8_i_i_i_8" [hw_sgm/common.h:33->hw_sgm/sad.cpp:38->hw_sgm/sad.cpp:22]   --->   Operation 162 'and' 'tmp4_i_i' <Predicate = (tmp_8_i_i_i_8)> <Delay = 0.00> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_17 : Operation 163 [1/1] (0.00ns) (grouped into LUT with out node sum_1)   --->   "%sel_tmp_i_i = and i1 %tmp4_i_i, %rev1" [hw_sgm/common.h:33->hw_sgm/sad.cpp:38->hw_sgm/sad.cpp:22]   --->   Operation 163 'and' 'sel_tmp_i_i' <Predicate = (tmp_8_i_i_i_8)> <Delay = 0.00> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_17 : Operation 164 [1/1] (0.99ns) (out node of the LUT)   --->   "%sum_1 = select i1 %sel_tmp_i_i, i32 %sum, i32 %sum_1_i_i" [hw_sgm/common.h:33->hw_sgm/sad.cpp:38->hw_sgm/sad.cpp:22]   --->   Operation 164 'select' 'sum_1' <Predicate = (tmp_8_i_i_i_8)> <Delay = 0.99> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_17 : Operation 165 [1/1] (0.69ns) (out node of the LUT)   --->   "%sum_2 = select i1 %tmp_8_i_i_i_8, i32 %sum_1, i32 %sum_1_i_i" [hw_sgm/common.h:33->hw_sgm/sad.cpp:38->hw_sgm/sad.cpp:22]   --->   Operation 165 'select' 'sum_2' <Predicate = true> <Delay = 0.69> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_17 : Operation 166 [1/1] (0.00ns)   --->   "br label %3" [hw_sgm/sad.cpp:34->hw_sgm/sad.cpp:22]   --->   Operation 166 'br' <Predicate = true> <Delay = 0.00>
+
+State 18 <SV = 5> <Delay = 8.75>
+ST_18 : Operation 167 [4/5] (8.75ns)   --->   "%p_wr_resp = call i1 @_ssdm_op_WriteResp.m_axi.i32P(i32* %COST_BUS_addr)" [hw_sgm/sad.cpp:22]   --->   Operation 167 'writeresp' 'p_wr_resp' <Predicate = true> <Delay = 8.75> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+
+State 19 <SV = 6> <Delay = 8.75>
+ST_19 : Operation 168 [3/5] (8.75ns)   --->   "%p_wr_resp = call i1 @_ssdm_op_WriteResp.m_axi.i32P(i32* %COST_BUS_addr)" [hw_sgm/sad.cpp:22]   --->   Operation 168 'writeresp' 'p_wr_resp' <Predicate = true> <Delay = 8.75> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+
+State 20 <SV = 7> <Delay = 8.75>
+ST_20 : Operation 169 [2/5] (8.75ns)   --->   "%p_wr_resp = call i1 @_ssdm_op_WriteResp.m_axi.i32P(i32* %COST_BUS_addr)" [hw_sgm/sad.cpp:22]   --->   Operation 169 'writeresp' 'p_wr_resp' <Predicate = true> <Delay = 8.75> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+
+State 21 <SV = 8> <Delay = 8.75>
+ST_21 : Operation 170 [1/5] (8.75ns)   --->   "%p_wr_resp = call i1 @_ssdm_op_WriteResp.m_axi.i32P(i32* %COST_BUS_addr)" [hw_sgm/sad.cpp:22]   --->   Operation 170 'writeresp' 'p_wr_resp' <Predicate = true> <Delay = 8.75> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+ST_21 : Operation 171 [1/1] (0.00ns)   --->   "br label %.preheader1.i" [hw_sgm/sad.cpp:16]   --->   Operation 171 'br' <Predicate = true> <Delay = 0.00>
+
+State 22 <SV = 2> <Delay = 1.76>
+ST_22 : Operation 172 [1/2] (0.00ns)   --->   "call fastcc void @comp_disps(i32* %COST_BUS, i8* %IMG_BUS) nounwind"   --->   Operation 172 'call' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_22 : Operation 173 [1/1] (1.76ns)   --->   "br label %6" [hw_sgm/common.h:45->hw_sgm/sgm.cpp:30]   --->   Operation 173 'br' <Predicate = true> <Delay = 1.76>
+
+State 23 <SV = 3> <Delay = 2.55>
+ST_23 : Operation 174 [1/1] (0.00ns)   --->   "%i_assign = phi i8 [ 0, %comp_sad_cost.exit ], [ %i, %8 ]"   --->   Operation 174 'phi' 'i_assign' <Predicate = true> <Delay = 0.00>
+ST_23 : Operation 175 [1/1] (0.00ns)   --->   "%phi_mul1 = phi i16 [ 0, %comp_sad_cost.exit ], [ %next_mul1, %8 ]"   --->   Operation 175 'phi' 'phi_mul1' <Predicate = true> <Delay = 0.00>
+ST_23 : Operation 176 [1/1] (2.07ns)   --->   "%next_mul1 = add i16 %phi_mul1, 225"   --->   Operation 176 'add' 'next_mul1' <Predicate = true> <Delay = 2.07> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.91> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_23 : Operation 177 [1/1] (0.00ns)   --->   "%empty_10 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 188, i64 188, i64 188) nounwind"   --->   Operation 177 'speclooptripcount' 'empty_10' <Predicate = true> <Delay = 0.00>
+ST_23 : Operation 178 [1/1] (1.55ns)   --->   "%exitcond1 = icmp eq i8 %i_assign, -68" [hw_sgm/common.h:45->hw_sgm/sgm.cpp:30]   --->   Operation 178 'icmp' 'exitcond1' <Predicate = true> <Delay = 1.55> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.55> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_23 : Operation 179 [1/1] (1.91ns)   --->   "%i = add i8 %i_assign, 1" [hw_sgm/common.h:45->hw_sgm/sgm.cpp:30]   --->   Operation 179 'add' 'i' <Predicate = true> <Delay = 1.91> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.91> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_23 : Operation 180 [1/1] (0.00ns)   --->   "br i1 %exitcond1, label %"scale<unsigned char>.exit", label %.preheader.i.preheader" [hw_sgm/common.h:45->hw_sgm/sgm.cpp:30]   --->   Operation 180 'br' <Predicate = true> <Delay = 0.00>
+ST_23 : Operation 181 [1/1] (0.00ns)   --->   "%tmp = zext i16 %phi_mul1 to i33" [hw_sgm/common.h:39->hw_sgm/common.h:47->hw_sgm/sgm.cpp:30]   --->   Operation 181 'zext' 'tmp' <Predicate = (!exitcond1)> <Delay = 0.00>
+ST_23 : Operation 182 [1/1] (2.55ns)   --->   "%tmp_4 = add i33 %tmp, %tmp_1_cast" [hw_sgm/common.h:39->hw_sgm/common.h:47->hw_sgm/sgm.cpp:30]   --->   Operation 182 'add' 'tmp_4' <Predicate = (!exitcond1)> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.91> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_23 : Operation 183 [1/1] (0.00ns)   --->   "%tmp_5 = sext i33 %tmp_4 to i64" [hw_sgm/common.h:39->hw_sgm/common.h:47->hw_sgm/sgm.cpp:30]   --->   Operation 183 'sext' 'tmp_5' <Predicate = (!exitcond1)> <Delay = 0.00>
+ST_23 : Operation 184 [1/1] (0.00ns)   --->   "%IMG_BUS_addr = getelementptr inbounds i8* %IMG_BUS, i64 %tmp_5" [hw_sgm/common.h:39->hw_sgm/common.h:47->hw_sgm/sgm.cpp:30]   --->   Operation 184 'getelementptr' 'IMG_BUS_addr' <Predicate = (!exitcond1)> <Delay = 0.00>
+ST_23 : Operation 185 [1/1] (0.00ns)   --->   "ret void" [hw_sgm/sgm.cpp:31]   --->   Operation 185 'ret' <Predicate = (exitcond1)> <Delay = 0.00>
+
+State 24 <SV = 4> <Delay = 8.75>
+ST_24 : Operation 186 [7/7] (8.75ns)   --->   "%p_rd_req = call i1 @_ssdm_op_ReadReq.m_axi.i8P(i8* %IMG_BUS_addr, i32 225)" [hw_sgm/common.h:47->hw_sgm/sgm.cpp:30]   --->   Operation 186 'readreq' 'p_rd_req' <Predicate = true> <Delay = 8.75> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+
+State 25 <SV = 5> <Delay = 8.75>
+ST_25 : Operation 187 [6/7] (8.75ns)   --->   "%p_rd_req = call i1 @_ssdm_op_ReadReq.m_axi.i8P(i8* %IMG_BUS_addr, i32 225)" [hw_sgm/common.h:47->hw_sgm/sgm.cpp:30]   --->   Operation 187 'readreq' 'p_rd_req' <Predicate = true> <Delay = 8.75> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+
+State 26 <SV = 6> <Delay = 8.75>
+ST_26 : Operation 188 [5/7] (8.75ns)   --->   "%p_rd_req = call i1 @_ssdm_op_ReadReq.m_axi.i8P(i8* %IMG_BUS_addr, i32 225)" [hw_sgm/common.h:47->hw_sgm/sgm.cpp:30]   --->   Operation 188 'readreq' 'p_rd_req' <Predicate = true> <Delay = 8.75> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+
+State 27 <SV = 7> <Delay = 8.75>
+ST_27 : Operation 189 [4/7] (8.75ns)   --->   "%p_rd_req = call i1 @_ssdm_op_ReadReq.m_axi.i8P(i8* %IMG_BUS_addr, i32 225)" [hw_sgm/common.h:47->hw_sgm/sgm.cpp:30]   --->   Operation 189 'readreq' 'p_rd_req' <Predicate = true> <Delay = 8.75> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+
+State 28 <SV = 8> <Delay = 8.75>
+ST_28 : Operation 190 [3/7] (8.75ns)   --->   "%p_rd_req = call i1 @_ssdm_op_ReadReq.m_axi.i8P(i8* %IMG_BUS_addr, i32 225)" [hw_sgm/common.h:47->hw_sgm/sgm.cpp:30]   --->   Operation 190 'readreq' 'p_rd_req' <Predicate = true> <Delay = 8.75> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+
+State 29 <SV = 9> <Delay = 8.75>
+ST_29 : Operation 191 [2/7] (8.75ns)   --->   "%p_rd_req = call i1 @_ssdm_op_ReadReq.m_axi.i8P(i8* %IMG_BUS_addr, i32 225)" [hw_sgm/common.h:47->hw_sgm/sgm.cpp:30]   --->   Operation 191 'readreq' 'p_rd_req' <Predicate = true> <Delay = 8.75> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+
+State 30 <SV = 10> <Delay = 8.75>
+ST_30 : Operation 192 [1/7] (8.75ns)   --->   "%p_rd_req = call i1 @_ssdm_op_ReadReq.m_axi.i8P(i8* %IMG_BUS_addr, i32 225)" [hw_sgm/common.h:47->hw_sgm/sgm.cpp:30]   --->   Operation 192 'readreq' 'p_rd_req' <Predicate = true> <Delay = 8.75> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+ST_30 : Operation 193 [1/1] (8.75ns)   --->   "%p_wr_req14 = call i1 @_ssdm_op_WriteReq.m_axi.i8P(i8* %IMG_BUS_addr, i32 225)" [hw_sgm/common.h:47->hw_sgm/sgm.cpp:30]   --->   Operation 193 'writereq' 'p_wr_req14' <Predicate = true> <Delay = 8.75> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+ST_30 : Operation 194 [1/1] (1.76ns)   --->   "br label %.preheader.i"   --->   Operation 194 'br' <Predicate = true> <Delay = 1.76>
+
+State 31 <SV = 11> <Delay = 8.75>
+ST_31 : Operation 195 [1/1] (0.00ns)   --->   "%j_assign = phi i8 [ %j, %7 ], [ 0, %.preheader.i.preheader ]"   --->   Operation 195 'phi' 'j_assign' <Predicate = true> <Delay = 0.00>
+ST_31 : Operation 196 [1/1] (0.00ns)   --->   "%empty_11 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 225, i64 225, i64 225) nounwind"   --->   Operation 196 'speclooptripcount' 'empty_11' <Predicate = true> <Delay = 0.00>
+ST_31 : Operation 197 [1/1] (1.55ns)   --->   "%exitcond = icmp eq i8 %j_assign, -31" [hw_sgm/common.h:46->hw_sgm/sgm.cpp:30]   --->   Operation 197 'icmp' 'exitcond' <Predicate = true> <Delay = 1.55> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.55> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_31 : Operation 198 [1/1] (1.91ns)   --->   "%j = add i8 %j_assign, 1" [hw_sgm/common.h:46->hw_sgm/sgm.cpp:30]   --->   Operation 198 'add' 'j' <Predicate = true> <Delay = 1.91> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.91> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_31 : Operation 199 [1/1] (0.00ns)   --->   "br i1 %exitcond, label %8, label %7" [hw_sgm/common.h:46->hw_sgm/sgm.cpp:30]   --->   Operation 199 'br' <Predicate = true> <Delay = 0.00>
+ST_31 : Operation 200 [1/1] (8.75ns)   --->   "%IMG_BUS_addr_read = call i8 @_ssdm_op_Read.m_axi.i8P(i8* %IMG_BUS_addr)" [hw_sgm/common.h:47->hw_sgm/sgm.cpp:30]   --->   Operation 200 'read' 'IMG_BUS_addr_read' <Predicate = (!exitcond)> <Delay = 8.75> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+ST_31 : Operation 201 [5/5] (8.75ns)   --->   "%p_wr_resp15 = call i1 @_ssdm_op_WriteResp.m_axi.i8P(i8* %IMG_BUS_addr)" [hw_sgm/common.h:47->hw_sgm/sgm.cpp:30]   --->   Operation 201 'writeresp' 'p_wr_resp15' <Predicate = (exitcond)> <Delay = 8.75> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+
+State 32 <SV = 12> <Delay = 8.75>
+ST_32 : Operation 202 [1/1] (0.00ns)   --->   "%tmp_8 = shl i8 %IMG_BUS_addr_read, 3" [hw_sgm/common.h:47->hw_sgm/sgm.cpp:30]   --->   Operation 202 'shl' 'tmp_8' <Predicate = true> <Delay = 0.00>
+ST_32 : Operation 203 [1/1] (8.75ns)   --->   "call void @_ssdm_op_Write.m_axi.i8P(i8* %IMG_BUS_addr, i8 %tmp_8, i1 true)" [hw_sgm/common.h:47->hw_sgm/sgm.cpp:30]   --->   Operation 203 'write' <Predicate = true> <Delay = 8.75> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+ST_32 : Operation 204 [1/1] (0.00ns)   --->   "br label %.preheader.i" [hw_sgm/common.h:46->hw_sgm/sgm.cpp:30]   --->   Operation 204 'br' <Predicate = true> <Delay = 0.00>
+
+State 33 <SV = 12> <Delay = 8.75>
+ST_33 : Operation 205 [4/5] (8.75ns)   --->   "%p_wr_resp15 = call i1 @_ssdm_op_WriteResp.m_axi.i8P(i8* %IMG_BUS_addr)" [hw_sgm/common.h:47->hw_sgm/sgm.cpp:30]   --->   Operation 205 'writeresp' 'p_wr_resp15' <Predicate = true> <Delay = 8.75> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+
+State 34 <SV = 13> <Delay = 8.75>
+ST_34 : Operation 206 [3/5] (8.75ns)   --->   "%p_wr_resp15 = call i1 @_ssdm_op_WriteResp.m_axi.i8P(i8* %IMG_BUS_addr)" [hw_sgm/common.h:47->hw_sgm/sgm.cpp:30]   --->   Operation 206 'writeresp' 'p_wr_resp15' <Predicate = true> <Delay = 8.75> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+
+State 35 <SV = 14> <Delay = 8.75>
+ST_35 : Operation 207 [2/5] (8.75ns)   --->   "%p_wr_resp15 = call i1 @_ssdm_op_WriteResp.m_axi.i8P(i8* %IMG_BUS_addr)" [hw_sgm/common.h:47->hw_sgm/sgm.cpp:30]   --->   Operation 207 'writeresp' 'p_wr_resp15' <Predicate = true> <Delay = 8.75> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+
+State 36 <SV = 15> <Delay = 8.75>
+ST_36 : Operation 208 [1/5] (8.75ns)   --->   "%p_wr_resp15 = call i1 @_ssdm_op_WriteResp.m_axi.i8P(i8* %IMG_BUS_addr)" [hw_sgm/common.h:47->hw_sgm/sgm.cpp:30]   --->   Operation 208 'writeresp' 'p_wr_resp15' <Predicate = true> <Delay = 8.75> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+ST_36 : Operation 209 [1/1] (0.00ns)   --->   "br label %6" [hw_sgm/common.h:45->hw_sgm/sgm.cpp:30]   --->   Operation 209 'br' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 10ns, clock uncertainty: 1.25ns.
+
+ <State 1>: 1.77ns
+The critical path consists of the following:
+	multiplexor before 'phi' operation ('i') with incoming values : ('i', hw_sgm/sad.cpp:15) [25]  (1.77 ns)
+
+ <State 2>: 2.08ns
+The critical path consists of the following:
+	'phi' operation ('phi_mul') with incoming values : ('next_mul') [26]  (0 ns)
+	'add' operation ('next_mul') [27]  (2.08 ns)
+
+ <State 3>: 4.3ns
+The critical path consists of the following:
+	'phi' operation ('j') with incoming values : ('j', hw_sgm/sad.cpp:16) [35]  (0 ns)
+	'add' operation ('ci', hw_sgm/sad.cpp:19) [43]  (2.08 ns)
+	'sub' operation ('tmp_4_i9', hw_sgm/common.h:39->hw_sgm/sad.cpp:22) [48]  (2.23 ns)
+
+ <State 4>: 8.75ns
+The critical path consists of the following:
+	'getelementptr' operation ('COST_BUS_addr', hw_sgm/common.h:39->hw_sgm/sad.cpp:22) [51]  (0 ns)
+	bus request on port 'COST_BUS' (hw_sgm/sad.cpp:22) [52]  (8.75 ns)
+
+ <State 5>: 8.75ns
+The critical path consists of the following:
+	bus access on port 'COST_BUS' (hw_sgm/sad.cpp:22) [135]  (8.75 ns)
+
+ <State 6>: 8.75ns
+The critical path consists of the following:
+	'phi' operation ('sum_i_i', hw_sgm/common.h:33->hw_sgm/sad.cpp:38->hw_sgm/sad.cpp:22) with incoming values : ('sum', hw_sgm/common.h:33->hw_sgm/sad.cpp:38->hw_sgm/sad.cpp:22) [66]  (0 ns)
+	bus write on port 'COST_BUS' (hw_sgm/sad.cpp:22) [132]  (8.75 ns)
+
+ <State 7>: 6.57ns
+The critical path consists of the following:
+	'phi' operation ('dj') with incoming values : ('dj', hw_sgm/sad.cpp:34->hw_sgm/sad.cpp:22) [80]  (0 ns)
+	'add' operation ('clj', hw_sgm/sad.cpp:35->hw_sgm/sad.cpp:22) [86]  (1.92 ns)
+	'add' operation ('tmp_i_i_9', hw_sgm/common.h:39->hw_sgm/sad.cpp:39->hw_sgm/sad.cpp:22) [100]  (2.11 ns)
+	'add' operation ('left_m_img_sum', hw_sgm/common.h:39->hw_sgm/sad.cpp:39->hw_sgm/sad.cpp:22) [102]  (2.55 ns)
+
+ <State 8>: 8.75ns
+The critical path consists of the following:
+	bus request on port 'IMG_BUS' (hw_sgm/sad.cpp:39->hw_sgm/sad.cpp:22) [105]  (8.75 ns)
+
+ <State 9>: 8.75ns
+The critical path consists of the following:
+	bus request on port 'IMG_BUS' (hw_sgm/sad.cpp:39->hw_sgm/sad.cpp:22) [105]  (8.75 ns)
+
+ <State 10>: 8.75ns
+The critical path consists of the following:
+	bus request on port 'IMG_BUS' (hw_sgm/sad.cpp:39->hw_sgm/sad.cpp:22) [105]  (8.75 ns)
+
+ <State 11>: 8.75ns
+The critical path consists of the following:
+	bus request on port 'IMG_BUS' (hw_sgm/sad.cpp:39->hw_sgm/sad.cpp:22) [105]  (8.75 ns)
+
+ <State 12>: 8.75ns
+The critical path consists of the following:
+	bus request on port 'IMG_BUS' (hw_sgm/sad.cpp:39->hw_sgm/sad.cpp:22) [105]  (8.75 ns)
+
+ <State 13>: 8.75ns
+The critical path consists of the following:
+	bus request on port 'IMG_BUS' (hw_sgm/sad.cpp:39->hw_sgm/sad.cpp:22) [105]  (8.75 ns)
+
+ <State 14>: 8.75ns
+The critical path consists of the following:
+	bus request on port 'IMG_BUS' (hw_sgm/sad.cpp:39->hw_sgm/sad.cpp:22) [105]  (8.75 ns)
+
+ <State 15>: 8.75ns
+The critical path consists of the following:
+	bus read on port 'IMG_BUS' (hw_sgm/sad.cpp:39->hw_sgm/sad.cpp:22) [106]  (8.75 ns)
+
+ <State 16>: 8.75ns
+The critical path consists of the following:
+	bus read on port 'IMG_BUS' (hw_sgm/sad.cpp:40->hw_sgm/sad.cpp:22) [114]  (8.75 ns)
+
+ <State 17>: 7.98ns
+The critical path consists of the following:
+	'sub' operation ('a', hw_sgm/sad.cpp:42->hw_sgm/sad.cpp:22) [116]  (1.92 ns)
+	'sub' operation ('tmp_i8_i_i', hw_sgm/sad.cpp:4->hw_sgm/sad.cpp:42->hw_sgm/sad.cpp:22) [118]  (1.82 ns)
+	'select' operation ('a', hw_sgm/sad.cpp:4->hw_sgm/sad.cpp:42->hw_sgm/sad.cpp:22) [119]  (0 ns)
+	'add' operation ('sum', hw_sgm/sad.cpp:42->hw_sgm/sad.cpp:22) [121]  (2.55 ns)
+	'select' operation ('sum', hw_sgm/common.h:33->hw_sgm/sad.cpp:38->hw_sgm/sad.cpp:22) [124]  (0.99 ns)
+	'select' operation ('sum', hw_sgm/common.h:33->hw_sgm/sad.cpp:38->hw_sgm/sad.cpp:22) [125]  (0.698 ns)
+
+ <State 18>: 8.75ns
+The critical path consists of the following:
+	bus access on port 'COST_BUS' (hw_sgm/sad.cpp:22) [135]  (8.75 ns)
+
+ <State 19>: 8.75ns
+The critical path consists of the following:
+	bus access on port 'COST_BUS' (hw_sgm/sad.cpp:22) [135]  (8.75 ns)
+
+ <State 20>: 8.75ns
+The critical path consists of the following:
+	bus access on port 'COST_BUS' (hw_sgm/sad.cpp:22) [135]  (8.75 ns)
+
+ <State 21>: 8.75ns
+The critical path consists of the following:
+	bus access on port 'COST_BUS' (hw_sgm/sad.cpp:22) [135]  (8.75 ns)
+
+ <State 22>: 1.77ns
+The critical path consists of the following:
+	multiplexor before 'phi' operation ('i') with incoming values : ('i', hw_sgm/common.h:45->hw_sgm/sgm.cpp:30) [143]  (1.77 ns)
+
+ <State 23>: 2.55ns
+The critical path consists of the following:
+	'phi' operation ('phi_mul1') with incoming values : ('next_mul1') [144]  (0 ns)
+	'add' operation ('tmp_4', hw_sgm/common.h:39->hw_sgm/common.h:47->hw_sgm/sgm.cpp:30) [152]  (2.55 ns)
+
+ <State 24>: 8.75ns
+The critical path consists of the following:
+	bus request on port 'IMG_BUS' (hw_sgm/common.h:47->hw_sgm/sgm.cpp:30) [155]  (8.75 ns)
+
+ <State 25>: 8.75ns
+The critical path consists of the following:
+	bus request on port 'IMG_BUS' (hw_sgm/common.h:47->hw_sgm/sgm.cpp:30) [155]  (8.75 ns)
+
+ <State 26>: 8.75ns
+The critical path consists of the following:
+	bus request on port 'IMG_BUS' (hw_sgm/common.h:47->hw_sgm/sgm.cpp:30) [155]  (8.75 ns)
+
+ <State 27>: 8.75ns
+The critical path consists of the following:
+	bus request on port 'IMG_BUS' (hw_sgm/common.h:47->hw_sgm/sgm.cpp:30) [155]  (8.75 ns)
+
+ <State 28>: 8.75ns
+The critical path consists of the following:
+	bus request on port 'IMG_BUS' (hw_sgm/common.h:47->hw_sgm/sgm.cpp:30) [155]  (8.75 ns)
+
+ <State 29>: 8.75ns
+The critical path consists of the following:
+	bus request on port 'IMG_BUS' (hw_sgm/common.h:47->hw_sgm/sgm.cpp:30) [155]  (8.75 ns)
+
+ <State 30>: 8.75ns
+The critical path consists of the following:
+	bus request on port 'IMG_BUS' (hw_sgm/common.h:47->hw_sgm/sgm.cpp:30) [155]  (8.75 ns)
+
+ <State 31>: 8.75ns
+The critical path consists of the following:
+	bus read on port 'IMG_BUS' (hw_sgm/common.h:47->hw_sgm/sgm.cpp:30) [165]  (8.75 ns)
+
+ <State 32>: 8.75ns
+The critical path consists of the following:
+	'shl' operation ('tmp_8', hw_sgm/common.h:47->hw_sgm/sgm.cpp:30) [166]  (0 ns)
+	bus write on port 'IMG_BUS' (hw_sgm/common.h:47->hw_sgm/sgm.cpp:30) [167]  (8.75 ns)
+
+ <State 33>: 8.75ns
+The critical path consists of the following:
+	bus access on port 'IMG_BUS' (hw_sgm/common.h:47->hw_sgm/sgm.cpp:30) [170]  (8.75 ns)
+
+ <State 34>: 8.75ns
+The critical path consists of the following:
+	bus access on port 'IMG_BUS' (hw_sgm/common.h:47->hw_sgm/sgm.cpp:30) [170]  (8.75 ns)
+
+ <State 35>: 8.75ns
+The critical path consists of the following:
+	bus access on port 'IMG_BUS' (hw_sgm/common.h:47->hw_sgm/sgm.cpp:30) [170]  (8.75 ns)
+
+ <State 36>: 8.75ns
+The critical path consists of the following:
+	bus access on port 'IMG_BUS' (hw_sgm/common.h:47->hw_sgm/sgm.cpp:30) [170]  (8.75 ns)
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+	State 8
+	State 9
+	State 10
+	State 11
+	State 12
+	State 13
+	State 14
+	State 15
+	State 16
+	State 17
+	State 18
+	State 19
+	State 20
+	State 21
+	State 22
+	State 23
+	State 24
+	State 25
+	State 26
+	State 27
+	State 28
+	State 29
+	State 30
+	State 31
+	State 32
+	State 33
+	State 34
+	State 35
+	State 36
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

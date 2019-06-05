@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<Runs Version="1" Minor="0">
+	<Run Id="img_proc_hw_axi_smc_0_synth_1" LaunchDir="E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.runs/img_proc_hw_axi_smc_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="img_proc_hw_comp_d_map_0_0_synth_1" LaunchDir="E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.runs/img_proc_hw_comp_d_map_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Parameters>
+		<Parameter Name="runs.monitorLSFJobs" Val="true" Type="bool"/>
+	</Parameters>
+</Runs>
+

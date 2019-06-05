@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="img_proc_hw_axi_smc_0_synth_1" LaunchPart="xc7z020clg484-1" LaunchTime="1559378290">
+<GenRun Id="img_proc_hw_axi_smc_0_synth_1" LaunchPart="xc7z020clg484-1" LaunchTime="1559759995">
   <File Type="PA-TCL" Name="img_proc_hw_axi_smc_0.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="img_proc_hw_axi_smc_0_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="img_proc_hw_axi_smc_0_reports.tcl"/>
@@ -12,9 +12,11 @@
   <FileSet Name="sources" Type="BlockSrcs" RelSrcDir="$PSRCDIR/img_proc_hw_axi_smc_0">
     <File Path="$PSRCDIR/sources_1/bd/img_proc_hw/ip/img_proc_hw_axi_smc_0/img_proc_hw_axi_smc_0.xci">
       <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
+        <Attr Name="ProcessingOrder" Val="EARLY"/>
       </FileInfo>
     </File>
     <Config>
@@ -25,9 +27,11 @@
   <FileSet Name="constrs_in" Type="BlockSrcs" RelSrcDir="$PSRCDIR/img_proc_hw_axi_smc_0">
     <File Path="$PSRCDIR/sources_1/bd/img_proc_hw/ip/img_proc_hw_axi_smc_0/img_proc_hw_axi_smc_0.xci">
       <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
+        <Attr Name="ProcessingOrder" Val="EARLY"/>
       </FileInfo>
     </File>
     <Config>
@@ -42,9 +46,7 @@
     </Config>
   </FileSet>
   <Strategy Version="1" Minor="2">
-    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018">
-      <Desc>Vivado Synthesis Defaults</Desc>
-    </StratHandle>
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018"/>
     <Step Id="synth_design"/>
   </Strategy>
 </GenRun>

@@ -2,8 +2,8 @@
 # Vivado v2018.3 (64-bit)
 # SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
 # IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
-# Start of session at: Sat Jun  1 11:41:43 2019
-# Process ID: 24104
+# Start of session at: Wed Jun  5 21:44:12 2019
+# Process ID: 20280
 # Current directory: E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.runs/synth_1
 # Command line: vivado.exe -log img_proc_hw_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source img_proc_hw_wrapper.tcl
 # Log file: E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.runs/synth_1/img_proc_hw_wrapper.vds
@@ -19,35 +19,100 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 3208 
+INFO: Helper process launched with PID 6772 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 485.039 ; gain = 105.020
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 499.402 ; gain = 101.789
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'img_proc_hw_wrapper' [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/hdl/img_proc_hw_wrapper.vhd:40]
-INFO: [Synth 8-3491] module 'img_proc_hw' declared at 'E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/synth/img_proc_hw.vhd:579' bound to instance 'img_proc_hw_i' of component 'img_proc_hw' [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/hdl/img_proc_hw_wrapper.vhd:67]
-INFO: [Synth 8-638] synthesizing module 'img_proc_hw' [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/synth/img_proc_hw.vhd:609]
-INFO: [Synth 8-3491] module 'img_proc_hw_axi_smc_0' declared at 'E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.runs/synth_1/.Xil/Vivado-24104-Laszlo-LPT/realtime/img_proc_hw_axi_smc_0_stub.vhdl:5' bound to instance 'axi_smc' of component 'img_proc_hw_axi_smc_0' [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/synth/img_proc_hw.vhd:1053]
-INFO: [Synth 8-638] synthesizing module 'img_proc_hw_axi_smc_0' [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.runs/synth_1/.Xil/Vivado-24104-Laszlo-LPT/realtime/img_proc_hw_axi_smc_0_stub.vhdl:79]
-INFO: [Synth 8-3491] module 'img_proc_hw_inverse_img_0_0' declared at 'E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.runs/synth_1/.Xil/Vivado-24104-Laszlo-LPT/realtime/img_proc_hw_inverse_img_0_0_stub.vhdl:5' bound to instance 'inverse_img_0' of component 'img_proc_hw_inverse_img_0_0' [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/synth/img_proc_hw.vhd:1124]
-INFO: [Synth 8-638] synthesizing module 'img_proc_hw_inverse_img_0_0' [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.runs/synth_1/.Xil/Vivado-24104-Laszlo-LPT/realtime/img_proc_hw_inverse_img_0_0_stub.vhdl:66]
-INFO: [Synth 8-3491] module 'img_proc_hw_processing_system7_0_0' declared at 'E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.runs/synth_1/.Xil/Vivado-24104-Laszlo-LPT/realtime/img_proc_hw_processing_system7_0_0_stub.vhdl:5' bound to instance 'processing_system7_0' of component 'img_proc_hw_processing_system7_0_0' [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/synth/img_proc_hw.vhd:1182]
-INFO: [Synth 8-638] synthesizing module 'img_proc_hw_processing_system7_0_0' [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.runs/synth_1/.Xil/Vivado-24104-Laszlo-LPT/realtime/img_proc_hw_processing_system7_0_0_stub.vhdl:120]
-INFO: [Synth 8-638] synthesizing module 'img_proc_hw_ps7_0_axi_periph_0' [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/synth/img_proc_hw.vhd:392]
-INFO: [Synth 8-638] synthesizing module 's00_couplers_imp_12R73Y3' [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/synth/img_proc_hw.vhd:78]
-INFO: [Synth 8-3491] module 'img_proc_hw_auto_pc_0' declared at 'E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.runs/synth_1/.Xil/Vivado-24104-Laszlo-LPT/realtime/img_proc_hw_auto_pc_0_stub.vhdl:5' bound to instance 'auto_pc' of component 'img_proc_hw_auto_pc_0' [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/synth/img_proc_hw.vhd:259]
-INFO: [Synth 8-638] synthesizing module 'img_proc_hw_auto_pc_0' [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.runs/synth_1/.Xil/Vivado-24104-Laszlo-LPT/realtime/img_proc_hw_auto_pc_0_stub.vhdl:70]
-INFO: [Synth 8-256] done synthesizing module 's00_couplers_imp_12R73Y3' (1#1) [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/synth/img_proc_hw.vhd:78]
-INFO: [Synth 8-256] done synthesizing module 'img_proc_hw_ps7_0_axi_periph_0' (2#1) [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/synth/img_proc_hw.vhd:392]
-INFO: [Synth 8-3491] module 'img_proc_hw_rst_ps7_0_100M_0' declared at 'E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.runs/synth_1/.Xil/Vivado-24104-Laszlo-LPT/realtime/img_proc_hw_rst_ps7_0_100M_0_stub.vhdl:5' bound to instance 'rst_ps7_0_100M' of component 'img_proc_hw_rst_ps7_0_100M_0' [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/synth/img_proc_hw.vhd:1358]
-INFO: [Synth 8-638] synthesizing module 'img_proc_hw_rst_ps7_0_100M_0' [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.runs/synth_1/.Xil/Vivado-24104-Laszlo-LPT/realtime/img_proc_hw_rst_ps7_0_100M_0_stub.vhdl:21]
-INFO: [Synth 8-256] done synthesizing module 'img_proc_hw' (3#1) [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/synth/img_proc_hw.vhd:609]
-INFO: [Synth 8-256] done synthesizing module 'img_proc_hw_wrapper' (4#1) [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/hdl/img_proc_hw_wrapper.vhd:40]
+INFO: [Synth 8-3491] module 'img_proc_hw' declared at 'E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/synth/img_proc_hw.vhd:1729' bound to instance 'img_proc_hw_i' of component 'img_proc_hw' [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/hdl/img_proc_hw_wrapper.vhd:67]
+INFO: [Synth 8-638] synthesizing module 'img_proc_hw' [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/synth/img_proc_hw.vhd:1759]
+INFO: [Synth 8-3491] module 'img_proc_hw_axi_smc_0' declared at 'E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.runs/synth_1/.Xil/Vivado-20280-Laszlo-LPT/realtime/img_proc_hw_axi_smc_0_stub.vhdl:5' bound to instance 'axi_smc' of component 'img_proc_hw_axi_smc_0' [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/synth/img_proc_hw.vhd:2501]
+INFO: [Synth 8-638] synthesizing module 'img_proc_hw_axi_smc_0' [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.runs/synth_1/.Xil/Vivado-20280-Laszlo-LPT/realtime/img_proc_hw_axi_smc_0_stub.vhdl:247]
+INFO: [Synth 8-3491] module 'img_proc_hw_comp_d_map_0_1' declared at 'E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.runs/synth_1/.Xil/Vivado-20280-Laszlo-LPT/realtime/img_proc_hw_comp_d_map_0_1_stub.vhdl:5' bound to instance 'comp_d_map_0' of component 'img_proc_hw_comp_d_map_0_1' [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/synth/img_proc_hw.vhd:2740]
+INFO: [Synth 8-638] synthesizing module 'img_proc_hw_comp_d_map_0_1' [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.runs/synth_1/.Xil/Vivado-20280-Laszlo-LPT/realtime/img_proc_hw_comp_d_map_0_1_stub.vhdl:101]
+INFO: [Synth 8-3491] module 'img_proc_hw_processing_system7_0_0' declared at 'E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.runs/synth_1/.Xil/Vivado-20280-Laszlo-LPT/realtime/img_proc_hw_processing_system7_0_0_stub.vhdl:5' bound to instance 'processing_system7_0' of component 'img_proc_hw_processing_system7_0_0' [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/synth/img_proc_hw.vhd:2833]
+INFO: [Synth 8-638] synthesizing module 'img_proc_hw_processing_system7_0_0' [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.runs/synth_1/.Xil/Vivado-20280-Laszlo-LPT/realtime/img_proc_hw_processing_system7_0_0_stub.vhdl:120]
+INFO: [Synth 8-638] synthesizing module 'img_proc_hw_ps7_0_axi_periph_0' [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/synth/img_proc_hw.vhd:939]
+INFO: [Synth 8-638] synthesizing module 'm00_couplers_imp_SRKYAZ' [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/synth/img_proc_hw.vhd:61]
+INFO: [Synth 8-256] done synthesizing module 'm00_couplers_imp_SRKYAZ' (1#1) [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/synth/img_proc_hw.vhd:61]
+INFO: [Synth 8-638] synthesizing module 'm01_couplers_imp_1WXTIYD' [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/synth/img_proc_hw.vhd:190]
+INFO: [Synth 8-3491] module 'img_proc_hw_auto_pc_0' declared at 'E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.runs/synth_1/.Xil/Vivado-20280-Laszlo-LPT/realtime/img_proc_hw_auto_pc_0_stub.vhdl:5' bound to instance 'auto_pc' of component 'img_proc_hw_auto_pc_0' [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/synth/img_proc_hw.vhd:374]
+INFO: [Synth 8-638] synthesizing module 'img_proc_hw_auto_pc_0' [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.runs/synth_1/.Xil/Vivado-20280-Laszlo-LPT/realtime/img_proc_hw_auto_pc_0_stub.vhdl:71]
+INFO: [Synth 8-256] done synthesizing module 'm01_couplers_imp_1WXTIYD' (2#1) [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/synth/img_proc_hw.vhd:190]
+INFO: [Synth 8-638] synthesizing module 's00_couplers_imp_12R73Y3' [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/synth/img_proc_hw.vhd:526]
+INFO: [Synth 8-3491] module 'img_proc_hw_auto_pc_1' declared at 'E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.runs/synth_1/.Xil/Vivado-20280-Laszlo-LPT/realtime/img_proc_hw_auto_pc_1_stub.vhdl:5' bound to instance 'auto_pc' of component 'img_proc_hw_auto_pc_1' [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/synth/img_proc_hw.vhd:767]
+INFO: [Synth 8-638] synthesizing module 'img_proc_hw_auto_pc_1' [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.runs/synth_1/.Xil/Vivado-20280-Laszlo-LPT/realtime/img_proc_hw_auto_pc_1_stub.vhdl:90]
+INFO: [Synth 8-256] done synthesizing module 's00_couplers_imp_12R73Y3' (3#1) [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/synth/img_proc_hw.vhd:526]
+INFO: [Synth 8-3491] module 'img_proc_hw_xbar_0' declared at 'E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.runs/synth_1/.Xil/Vivado-20280-Laszlo-LPT/realtime/img_proc_hw_xbar_0_stub.vhdl:5' bound to instance 'xbar' of component 'img_proc_hw_xbar_0' [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/synth/img_proc_hw.vhd:1571]
+INFO: [Synth 8-638] synthesizing module 'img_proc_hw_xbar_0' [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.runs/synth_1/.Xil/Vivado-20280-Laszlo-LPT/realtime/img_proc_hw_xbar_0_stub.vhdl:89]
+INFO: [Synth 8-256] done synthesizing module 'img_proc_hw_ps7_0_axi_periph_0' (4#1) [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/synth/img_proc_hw.vhd:939]
+INFO: [Synth 8-3491] module 'img_proc_hw_rst_ps7_0_100M_0' declared at 'E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.runs/synth_1/.Xil/Vivado-20280-Laszlo-LPT/realtime/img_proc_hw_rst_ps7_0_100M_0_stub.vhdl:5' bound to instance 'rst_ps7_0_100M' of component 'img_proc_hw_rst_ps7_0_100M_0' [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/synth/img_proc_hw.vhd:3028]
+INFO: [Synth 8-638] synthesizing module 'img_proc_hw_rst_ps7_0_100M_0' [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.runs/synth_1/.Xil/Vivado-20280-Laszlo-LPT/realtime/img_proc_hw_rst_ps7_0_100M_0_stub.vhdl:21]
+INFO: [Synth 8-3491] module 'img_proc_hw_xlconstant_0_0' declared at 'e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ip/img_proc_hw_xlconstant_0_0/synth/img_proc_hw_xlconstant_0_0.v:57' bound to instance 'xlconstant_0' of component 'img_proc_hw_xlconstant_0_0' [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/synth/img_proc_hw.vhd:3041]
+INFO: [Synth 8-6157] synthesizing module 'img_proc_hw_xlconstant_0_0' [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ip/img_proc_hw_xlconstant_0_0/synth/img_proc_hw_xlconstant_0_0.v:57]
+INFO: [Synth 8-6157] synthesizing module 'xlconstant_v1_1_5_xlconstant' [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/4649/hdl/xlconstant_v1_1_vl_rfs.v:23]
+	Parameter CONST_VAL bound to: 31 - type: integer 
+	Parameter CONST_WIDTH bound to: 5 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'xlconstant_v1_1_5_xlconstant' (5#1) [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/4649/hdl/xlconstant_v1_1_vl_rfs.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'img_proc_hw_xlconstant_0_0' (6#1) [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ip/img_proc_hw_xlconstant_0_0/synth/img_proc_hw_xlconstant_0_0.v:57]
+INFO: [Synth 8-3491] module 'img_proc_hw_xlconstant_0_1' declared at 'e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ip/img_proc_hw_xlconstant_0_1/synth/img_proc_hw_xlconstant_0_1.v:57' bound to instance 'xlconstant_1' of component 'img_proc_hw_xlconstant_0_1' [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/synth/img_proc_hw.vhd:3045]
+INFO: [Synth 8-6157] synthesizing module 'img_proc_hw_xlconstant_0_1' [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ip/img_proc_hw_xlconstant_0_1/synth/img_proc_hw_xlconstant_0_1.v:57]
+INFO: [Synth 8-6157] synthesizing module 'xlconstant_v1_1_5_xlconstant__parameterized0' [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/4649/hdl/xlconstant_v1_1_vl_rfs.v:23]
+	Parameter CONST_VAL bound to: 15 - type: integer 
+	Parameter CONST_WIDTH bound to: 4 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'xlconstant_v1_1_5_xlconstant__parameterized0' (6#1) [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ipshared/4649/hdl/xlconstant_v1_1_vl_rfs.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'img_proc_hw_xlconstant_0_1' (7#1) [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ip/img_proc_hw_xlconstant_0_1/synth/img_proc_hw_xlconstant_0_1.v:57]
+INFO: [Synth 8-256] done synthesizing module 'img_proc_hw' (8#1) [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/synth/img_proc_hw.vhd:1759]
+INFO: [Synth 8-256] done synthesizing module 'img_proc_hw_wrapper' (9#1) [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/hdl/img_proc_hw_wrapper.vhd:40]
 WARNING: [Synth 8-3331] design s00_couplers_imp_12R73Y3 has unconnected port M_ACLK
 WARNING: [Synth 8-3331] design s00_couplers_imp_12R73Y3 has unconnected port M_ARESETN
-WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port ACLK
-WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port ARESETN
+WARNING: [Synth 8-3331] design m01_couplers_imp_1WXTIYD has unconnected port M_ACLK
+WARNING: [Synth 8-3331] design m01_couplers_imp_1WXTIYD has unconnected port M_ARESETN
+WARNING: [Synth 8-3331] design m00_couplers_imp_SRKYAZ has unconnected port M_ACLK
+WARNING: [Synth 8-3331] design m00_couplers_imp_SRKYAZ has unconnected port M_ARESETN
+WARNING: [Synth 8-3331] design m00_couplers_imp_SRKYAZ has unconnected port S_ACLK
+WARNING: [Synth 8-3331] design m00_couplers_imp_SRKYAZ has unconnected port S_ARESETN
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_ACLK
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_ARESETN
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_bresp[1]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[31]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[30]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[29]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[28]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[27]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[26]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[25]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[24]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[23]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[22]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[21]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[20]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[19]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[18]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[17]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[16]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[15]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[14]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[13]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[12]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[11]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[10]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[9]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[8]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[7]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[6]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[5]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[4]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[3]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[2]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[1]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rresp[1]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M01_ACLK
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M01_ARESETN
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port S00_ACLK
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port S00_ARESETN
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 542.180 ; gain = 162.160
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 558.922 ; gain = 161.309
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -60,10 +125,10 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 542.180 ; gain = 162.160
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 558.922 ; gain = 161.309
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 542.180 ; gain = 162.160
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 558.922 ; gain = 161.309
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7z020clg484-1
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -72,33 +137,37 @@ Processing XDC Constraints
 Initializing timing engine
 Parsing XDC File [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ip/img_proc_hw_processing_system7_0_0/img_proc_hw_processing_system7_0_0/img_proc_hw_processing_system7_0_0_in_context.xdc] for cell 'img_proc_hw_i/processing_system7_0'
 Finished Parsing XDC File [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ip/img_proc_hw_processing_system7_0_0/img_proc_hw_processing_system7_0_0/img_proc_hw_processing_system7_0_0_in_context.xdc] for cell 'img_proc_hw_i/processing_system7_0'
-Parsing XDC File [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ip/img_proc_hw_inverse_img_0_0/img_proc_hw_inverse_img_0_0/img_proc_hw_inverse_img_0_0_in_context.xdc] for cell 'img_proc_hw_i/inverse_img_0'
-Finished Parsing XDC File [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ip/img_proc_hw_inverse_img_0_0/img_proc_hw_inverse_img_0_0/img_proc_hw_inverse_img_0_0_in_context.xdc] for cell 'img_proc_hw_i/inverse_img_0'
 Parsing XDC File [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ip/img_proc_hw_axi_smc_0/img_proc_hw_axi_smc_0/img_proc_hw_axi_smc_0_in_context.xdc] for cell 'img_proc_hw_i/axi_smc'
 Finished Parsing XDC File [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ip/img_proc_hw_axi_smc_0/img_proc_hw_axi_smc_0/img_proc_hw_axi_smc_0_in_context.xdc] for cell 'img_proc_hw_i/axi_smc'
 Parsing XDC File [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ip/img_proc_hw_rst_ps7_0_100M_0/img_proc_hw_rst_ps7_0_100M_0/img_proc_hw_rst_ps7_0_100M_0_in_context.xdc] for cell 'img_proc_hw_i/rst_ps7_0_100M'
 Finished Parsing XDC File [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ip/img_proc_hw_rst_ps7_0_100M_0/img_proc_hw_rst_ps7_0_100M_0/img_proc_hw_rst_ps7_0_100M_0_in_context.xdc] for cell 'img_proc_hw_i/rst_ps7_0_100M'
-Parsing XDC File [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ip/img_proc_hw_auto_pc_0/img_proc_hw_auto_pc_0/img_proc_hw_auto_pc_0_in_context.xdc] for cell 'img_proc_hw_i/ps7_0_axi_periph/s00_couplers/auto_pc'
-Finished Parsing XDC File [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ip/img_proc_hw_auto_pc_0/img_proc_hw_auto_pc_0/img_proc_hw_auto_pc_0_in_context.xdc] for cell 'img_proc_hw_i/ps7_0_axi_periph/s00_couplers/auto_pc'
+Parsing XDC File [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ip/img_proc_hw_comp_d_map_0_1/img_proc_hw_comp_d_map_0_1/img_proc_hw_comp_d_map_0_1_in_context.xdc] for cell 'img_proc_hw_i/comp_d_map_0'
+Finished Parsing XDC File [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ip/img_proc_hw_comp_d_map_0_1/img_proc_hw_comp_d_map_0_1/img_proc_hw_comp_d_map_0_1_in_context.xdc] for cell 'img_proc_hw_i/comp_d_map_0'
+Parsing XDC File [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ip/img_proc_hw_xbar_0/img_proc_hw_xbar_0/img_proc_hw_xbar_0_in_context.xdc] for cell 'img_proc_hw_i/ps7_0_axi_periph/xbar'
+Finished Parsing XDC File [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ip/img_proc_hw_xbar_0/img_proc_hw_xbar_0/img_proc_hw_xbar_0_in_context.xdc] for cell 'img_proc_hw_i/ps7_0_axi_periph/xbar'
+Parsing XDC File [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ip/img_proc_hw_auto_pc_1/img_proc_hw_auto_pc_1/img_proc_hw_auto_pc_1_in_context.xdc] for cell 'img_proc_hw_i/ps7_0_axi_periph/s00_couplers/auto_pc'
+Finished Parsing XDC File [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ip/img_proc_hw_auto_pc_1/img_proc_hw_auto_pc_1/img_proc_hw_auto_pc_1_in_context.xdc] for cell 'img_proc_hw_i/ps7_0_axi_periph/s00_couplers/auto_pc'
+Parsing XDC File [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ip/img_proc_hw_auto_pc_0/img_proc_hw_auto_pc_0/img_proc_hw_auto_pc_0_in_context.xdc] for cell 'img_proc_hw_i/ps7_0_axi_periph/m01_couplers/auto_pc'
+Finished Parsing XDC File [e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ip/img_proc_hw_auto_pc_0/img_proc_hw_auto_pc_0/img_proc_hw_auto_pc_0_in_context.xdc] for cell 'img_proc_hw_i/ps7_0_axi_periph/m01_couplers/auto_pc'
 Parsing XDC File [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.runs/synth_1/dont_touch.xdc]
 Finished Parsing XDC File [E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 828.238 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 860.855 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 828.250 ; gain = 0.000
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.030 . Memory (MB): peak = 828.250 ; gain = 0.012
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 860.980 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.045 . Memory (MB): peak = 860.980 ; gain = 0.125
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 828.250 ; gain = 448.230
+Finished Constraint Validation : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 860.980 ; gain = 463.367
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg484-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 828.250 ; gain = 448.230
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 860.980 ; gain = 463.367
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -365,16 +434,20 @@ Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_ps_srstb. (constraint fi
 Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_ps_srstb. (constraint file  e:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.srcs/sources_1/bd/img_proc_hw/ip/img_proc_hw_processing_system7_0_0/img_proc_hw_processing_system7_0_0/img_proc_hw_processing_system7_0_0_in_context.xdc, line 261).
 Applied set_property DONT_TOUCH = true for img_proc_hw_i. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for img_proc_hw_i/processing_system7_0. (constraint file  auto generated constraint, line ).
-Applied set_property DONT_TOUCH = true for img_proc_hw_i/inverse_img_0. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for img_proc_hw_i/axi_smc. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for img_proc_hw_i/rst_ps7_0_100M. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for img_proc_hw_i/ps7_0_axi_periph. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for img_proc_hw_i/xlconstant_0. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for img_proc_hw_i/xlconstant_1. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for img_proc_hw_i/comp_d_map_0. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for img_proc_hw_i/ps7_0_axi_periph/xbar. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for img_proc_hw_i/ps7_0_axi_periph/s00_couplers/auto_pc. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for img_proc_hw_i/ps7_0_axi_periph/m01_couplers/auto_pc. (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 828.250 ; gain = 448.230
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 860.980 ; gain = 463.367
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 828.250 ; gain = 448.230
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 860.980 ; gain = 463.367
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -409,12 +482,47 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 Warning: Parallel synthesis criteria is not met 
-WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port ACLK
-WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port ARESETN
 WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_ACLK
 WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_ARESETN
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_bresp[1]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[31]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[30]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[29]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[28]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[27]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[26]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[25]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[24]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[23]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[22]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[21]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[20]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[19]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[18]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[17]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[16]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[15]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[14]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[13]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[12]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[11]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[10]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[9]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[8]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[7]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[6]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[5]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[4]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[3]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[2]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rdata[1]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M00_AXI_rresp[1]
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M01_ACLK
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port M01_ARESETN
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port S00_ACLK
+WARNING: [Synth 8-3331] design img_proc_hw_ps7_0_axi_periph_0 has unconnected port S00_ARESETN
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 828.250 ; gain = 448.230
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 860.980 ; gain = 463.367
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -428,13 +536,13 @@ Start Applying XDC Timing Constraints
 INFO: [Synth 8-5578] Moved timing constraint from pin 'img_proc_hw_i/processing_system7_0/FCLK_CLK0' to pin 'img_proc_hw_i/processing_system7_0/bbstub_FCLK_CLK0/O'
 INFO: [Synth 8-5819] Moved 1 constraints on hierarchical pins to their respective driving/loading pins
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 870.797 ; gain = 490.777
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 892.539 ; gain = 494.926
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 870.945 ; gain = 490.926
+Finished Timing Optimization : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 892.688 ; gain = 495.074
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -446,7 +554,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 880.945 ; gain = 500.926
+Finished Technology Mapping : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 902.906 ; gain = 505.293
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -470,7 +578,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 880.945 ; gain = 500.926
+Finished IO Insertion : Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 902.906 ; gain = 505.293
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -483,7 +591,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 880.945 ; gain = 500.926
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 902.906 ; gain = 505.293
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -495,25 +603,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 880.945 ; gain = 500.926
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 902.906 ; gain = 505.293
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 880.945 ; gain = 500.926
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 902.906 ; gain = 505.293
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 880.945 ; gain = 500.926
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 902.906 ; gain = 505.293
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 880.945 ; gain = 500.926
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 902.906 ; gain = 505.293
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -523,11 +631,13 @@ Report BlackBoxes:
 +------+-----------------------------------+----------+
 |      |BlackBox name                      |Instances |
 +------+-----------------------------------+----------+
-|1     |img_proc_hw_auto_pc_0              |         1|
-|2     |img_proc_hw_axi_smc_0              |         1|
-|3     |img_proc_hw_inverse_img_0_0        |         1|
-|4     |img_proc_hw_processing_system7_0_0 |         1|
-|5     |img_proc_hw_rst_ps7_0_100M_0       |         1|
+|1     |img_proc_hw_xbar_0                 |         1|
+|2     |img_proc_hw_auto_pc_0              |         1|
+|3     |img_proc_hw_auto_pc_1              |         1|
+|4     |img_proc_hw_axi_smc_0              |         1|
+|5     |img_proc_hw_comp_d_map_0_1         |         1|
+|6     |img_proc_hw_processing_system7_0_0 |         1|
+|7     |img_proc_hw_rst_ps7_0_100M_0       |         1|
 +------+-----------------------------------+----------+
 
 Report Cell Usage: 
@@ -535,41 +645,46 @@ Report Cell Usage:
 |      |Cell                                      |Count |
 +------+------------------------------------------+------+
 |1     |img_proc_hw_auto_pc_0_bbox_3              |     1|
-|2     |img_proc_hw_axi_smc_0_bbox_0              |     1|
-|3     |img_proc_hw_inverse_img_0_0_bbox_1        |     1|
-|4     |img_proc_hw_processing_system7_0_0_bbox_2 |     1|
-|5     |img_proc_hw_rst_ps7_0_100M_0_bbox_4       |     1|
+|2     |img_proc_hw_auto_pc_1_bbox_4              |     1|
+|3     |img_proc_hw_axi_smc_0_bbox_0              |     1|
+|4     |img_proc_hw_comp_d_map_0_1_bbox_1         |     1|
+|5     |img_proc_hw_processing_system7_0_0_bbox_2 |     1|
+|6     |img_proc_hw_rst_ps7_0_100M_0_bbox_6       |     1|
+|7     |img_proc_hw_xbar_0_bbox_5                 |     1|
 +------+------------------------------------------+------+
 
 Report Instance Areas: 
 +------+---------------------+-------------------------------+------+
 |      |Instance             |Module                         |Cells |
 +------+---------------------+-------------------------------+------+
-|1     |top                  |                               |   892|
-|2     |  img_proc_hw_i      |img_proc_hw                    |   892|
-|3     |    ps7_0_axi_periph |img_proc_hw_ps7_0_axi_periph_0 |   177|
-|4     |      s00_couplers   |s00_couplers_imp_12R73Y3       |   177|
+|1     |top                  |                               |  1841|
+|2     |  img_proc_hw_i      |img_proc_hw                    |  1841|
+|3     |    ps7_0_axi_periph |img_proc_hw_ps7_0_axi_periph_0 |   873|
+|4     |      m01_couplers   |m01_couplers_imp_1WXTIYD       |   177|
+|5     |      s00_couplers   |s00_couplers_imp_12R73Y3       |   254|
+|6     |    xlconstant_0     |img_proc_hw_xlconstant_0_0     |     0|
+|7     |    xlconstant_1     |img_proc_hw_xlconstant_0_1     |     0|
 +------+---------------------+-------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 880.945 ; gain = 500.926
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 902.906 ; gain = 505.293
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 4 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:16 ; elapsed = 00:00:22 . Memory (MB): peak = 880.945 ; gain = 214.855
-Synthesis Optimization Complete : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 880.945 ; gain = 500.926
+Synthesis finished with 0 errors, 0 critical warnings and 39 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:15 ; elapsed = 00:00:20 . Memory (MB): peak = 902.906 ; gain = 203.234
+Synthesis Optimization Complete : Time (s): cpu = 00:00:26 ; elapsed = 00:00:27 . Memory (MB): peak = 902.906 ; gain = 505.293
 INFO: [Project 1-571] Translating synthesized netlist
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 896.352 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 919.051 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 INFO: [Common 17-83] Releasing license: Synthesis
-33 Infos, 9 Warnings, 0 Critical Warnings and 0 Errors encountered.
+51 Infos, 87 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:29 ; elapsed = 00:00:33 . Memory (MB): peak = 901.117 ; gain = 530.297
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 901.117 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 923.441 ; gain = 532.727
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 923.441 ; gain = 0.000
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint 'E:/Git/Thesis_SGM_FPGA/zebdoard_sgm/zebdoard_sgm.runs/synth_1/img_proc_hw_wrapper.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file img_proc_hw_wrapper_utilization_synth.rpt -pb img_proc_hw_wrapper_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Sat Jun  1 11:42:27 2019...
+INFO: [Common 17-206] Exiting Vivado at Wed Jun  5 21:44:54 2019...

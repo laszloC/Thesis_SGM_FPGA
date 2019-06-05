@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7z020clg484-1" LaunchTime="1559378292">
+<GenRun Id="impl_1" LaunchPart="xc7z020clg484-1" LaunchTime="1559759998">
   <File Type="BITSTR-BMM" Name="img_proc_hw_wrapper_bd.bmm"/>
   <File Type="OPT-METHODOLOGY-DRC" Name="img_proc_hw_wrapper_methodology_drc_opted.rpt"/>
   <File Type="INIT-TIMING" Name="img_proc_hw_wrapper_timing_summary_init.rpt"/>
@@ -103,9 +103,7 @@
     </Config>
   </FileSet>
   <Strategy Version="1" Minor="2">
-    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2018">
-      <Desc>Default settings for Implementation.</Desc>
-    </StratHandle>
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2018"/>
     <Step Id="init_design"/>
     <Step Id="opt_design"/>
     <Step Id="power_opt_design"/>
@@ -118,7 +116,9 @@
   </Strategy>
   <BlockFileSet Type="BlockSrcs" Name="img_proc_hw_auto_pc_0"/>
   <BlockFileSet Type="BlockSrcs" Name="img_proc_hw_processing_system7_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="img_proc_hw_inverse_img_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="img_proc_hw_rst_ps7_0_100M_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="img_proc_hw_auto_pc_1"/>
   <BlockFileSet Type="BlockSrcs" Name="img_proc_hw_axi_smc_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="img_proc_hw_xbar_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="img_proc_hw_comp_d_map_0_1"/>
 </GenRun>

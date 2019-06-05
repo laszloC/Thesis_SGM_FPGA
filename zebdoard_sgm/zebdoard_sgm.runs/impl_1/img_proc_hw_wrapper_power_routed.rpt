@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-| Date             : Sat Jun  1 11:44:55 2019
+| Date             : Wed Jun  5 21:48:05 2019
 | Host             : Laszlo-LPT running 64-bit major release  (build 9200)
 | Command          : report_power -file img_proc_hw_wrapper_power_routed.rpt -pb img_proc_hw_wrapper_power_summary_routed.pb -rpx img_proc_hw_wrapper_power_routed.rpx
 | Design           : img_proc_hw_wrapper
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 1.708        |
+| Total On-Chip Power (W)  | 1.746        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 1.566        |
-| Device Static (W)        | 0.142        |
+| Dynamic (W)              | 1.602        |
+| Device Static (W)        | 0.143        |
 | Effective TJA (C/W)      | 11.5         |
-| Max Ambient (C)          | 65.3         |
-| Junction Temperature (C) | 44.7         |
+| Max Ambient (C)          | 64.9         |
+| Junction Temperature (C) | 45.1         |
 | Confidence Level         | Medium       |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -52,19 +52,20 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
-| Clocks                   |     0.014 |        3 |       --- |             --- |
-| Slice Logic              |     0.008 |     7976 |       --- |             --- |
-|   LUT as Logic           |     0.006 |     2358 |     53200 |            4.43 |
-|   Register               |    <0.001 |     3858 |    106400 |            3.63 |
-|   LUT as Distributed RAM |    <0.001 |      204 |     17400 |            1.17 |
-|   CARRY4                 |    <0.001 |      120 |     13300 |            0.90 |
-|   LUT as Shift Register  |    <0.001 |      131 |     17400 |            0.75 |
-|   Others                 |     0.000 |      340 |       --- |             --- |
-| Signals                  |     0.009 |     5313 |       --- |             --- |
-| Block RAM                |     0.003 |        1 |       140 |            0.71 |
+| Clocks                   |     0.027 |        3 |       --- |             --- |
+| Slice Logic              |     0.016 |    17572 |       --- |             --- |
+|   LUT as Logic           |     0.012 |     5408 |     53200 |           10.17 |
+|   LUT as Distributed RAM |     0.002 |      636 |     17400 |            3.66 |
+|   Register               |     0.001 |     8289 |    106400 |            7.79 |
+|   CARRY4                 |    <0.001 |      275 |     13300 |            2.07 |
+|   LUT as Shift Register  |    <0.001 |      207 |     17400 |            1.19 |
+|   Others                 |     0.000 |      604 |       --- |             --- |
+| Signals                  |     0.018 |    11508 |       --- |             --- |
+| Block RAM                |     0.009 |        2 |       140 |            1.43 |
+| DSPs                     |     0.002 |        2 |       220 |            0.91 |
 | PS7                      |     1.531 |        1 |       --- |             --- |
-| Static Power             |     0.142 |          |           |                 |
-| Total                    |     1.708 |          |           |                 |
+| Static Power             |     0.143 |          |           |                 |
+| Total                    |     1.746 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -74,7 +75,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.050 |       0.035 |      0.015 |
+| Vccint    |       1.000 |     0.086 |       0.071 |      0.015 |
 | Vccaux    |       1.800 |     0.015 |       0.000 |      0.015 |
 | Vcco33    |       3.300 |     0.000 |       0.000 |      0.000 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
@@ -87,7 +88,7 @@ Table of Contents
 | MGTAVcc   |       1.000 |     0.000 |       0.000 |      0.000 |
 | MGTAVtt   |       1.200 |     0.000 |       0.000 |      0.000 |
 | MGTVccaux |       1.800 |     0.000 |       0.000 |      0.000 |
-| Vccpint   |       1.000 |     0.750 |       0.720 |      0.030 |
+| Vccpint   |       1.000 |     0.751 |       0.720 |      0.031 |
 | Vccpaux   |       1.800 |     0.061 |       0.051 |      0.010 |
 | Vccpll    |       1.800 |     0.017 |       0.014 |      0.003 |
 | Vcco_ddr  |       1.500 |     0.459 |       0.457 |      0.002 |
@@ -150,16 +151,17 @@ Table of Contents
 +--------------------------+-----------+
 | Name                     | Power (W) |
 +--------------------------+-----------+
-| img_proc_hw_wrapper      |     1.566 |
-|   img_proc_hw_i          |     1.566 |
-|     axi_smc              |     0.019 |
-|       inst               |     0.019 |
-|     inverse_img_0        |     0.011 |
-|       U0                 |     0.011 |
+| img_proc_hw_wrapper      |     1.602 |
+|   img_proc_hw_i          |     1.602 |
+|     axi_smc              |     0.035 |
+|       inst               |     0.035 |
+|     comp_d_map_0         |     0.028 |
+|       U0                 |     0.028 |
 |     processing_system7_0 |     1.532 |
 |       inst               |     1.532 |
-|     ps7_0_axi_periph     |     0.005 |
-|       s00_couplers       |     0.005 |
+|     ps7_0_axi_periph     |     0.007 |
+|       m01_couplers       |     0.004 |
+|       xbar               |     0.003 |
 +--------------------------+-----------+
 
 
