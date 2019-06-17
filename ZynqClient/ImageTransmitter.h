@@ -24,7 +24,7 @@ public:
 
     void SendImage(const cv::Mat& Img);
 
-    cv::Mat ReceiveImage(uint32_t H, uint32_t W);
+    cv::Mat ReceiveDepthMap(uint32_t H, uint32_t W);
 
 private:
 

@@ -49,7 +49,7 @@ namespace comms
 
         std::cout << "Waiting to receive acknowledgment of image transmission" << std::endl;
 
-        m_socket.Recv((char*)&recv_cmd, sizeof(recv_cmd));
+        m_socket.Recv((char*)& recv_cmd, sizeof(recv_cmd));
 
         if (recv_cmd != Command::CmdRecvImg)
             throw ImageException("Did not receive acknowledgment command");
@@ -57,7 +57,7 @@ namespace comms
         std::cout << "Image was successfully transmitted" << std::endl;
     }
 
-    cv::Mat ImageTransmitter::ReceiveImage(uint32_t H, uint32_t W)
+    cv::Mat ImageTransmitter::ReceiveDepthMap(uint32_t H, uint32_t W)
     {
         SendCommand(comms::Command::CmdCompDepthMap);
 

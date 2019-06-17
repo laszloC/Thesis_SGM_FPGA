@@ -27,21 +27,21 @@
 
 /******************************************************************/
 
-/* Definitions for driver COMP_D_MAP */
-#define XPAR_XCOMP_D_MAP_NUM_INSTANCES 1
+/* Definitions for driver AGGR */
+#define XPAR_XAGGR_NUM_INSTANCES 1
 
-/* Definitions for peripheral COMP_D_MAP_0 */
-#define XPAR_COMP_D_MAP_0_DEVICE_ID 0
-#define XPAR_COMP_D_MAP_0_S_AXI_IMG_BUS_BASEADDR 0x43C00000
-#define XPAR_COMP_D_MAP_0_S_AXI_IMG_BUS_HIGHADDR 0x43C0FFFF
+/* Definitions for peripheral AGGR_0 */
+#define XPAR_AGGR_0_DEVICE_ID 0
+#define XPAR_AGGR_0_S_AXI_DATA_BUS_BASEADDR 0x43C20000
+#define XPAR_AGGR_0_S_AXI_DATA_BUS_HIGHADDR 0x43C2FFFF
 
 
 /******************************************************************/
 
-/* Canonical definitions for peripheral COMP_D_MAP_0 */
-#define XPAR_XCOMP_D_MAP_0_DEVICE_ID XPAR_COMP_D_MAP_0_DEVICE_ID
-#define XPAR_XCOMP_D_MAP_0_S_AXI_IMG_BUS_BASEADDR 0x43C00000
-#define XPAR_XCOMP_D_MAP_0_S_AXI_IMG_BUS_HIGHADDR 0x43C0FFFF
+/* Canonical definitions for peripheral AGGR_0 */
+#define XPAR_XAGGR_0_DEVICE_ID XPAR_AGGR_0_DEVICE_ID
+#define XPAR_XAGGR_0_S_AXI_DATA_BUS_BASEADDR 0x43C20000
+#define XPAR_XAGGR_0_S_AXI_DATA_BUS_HIGHADDR 0x43C2FFFF
 
 
 /******************************************************************/
@@ -69,6 +69,25 @@
 #define XPAR_XDCFG_0_DEVICE_ID XPAR_PS7_DEV_CFG_0_DEVICE_ID
 #define XPAR_XDCFG_0_BASEADDR 0xF8007000U
 #define XPAR_XDCFG_0_HIGHADDR 0xF80070FFU
+
+
+/******************************************************************/
+
+/* Definitions for driver DISP */
+#define XPAR_XDISP_NUM_INSTANCES 1
+
+/* Definitions for peripheral DISP_0 */
+#define XPAR_DISP_0_DEVICE_ID 0
+#define XPAR_DISP_0_S_AXI_DATA_BUS_BASEADDR 0x43C10000
+#define XPAR_DISP_0_S_AXI_DATA_BUS_HIGHADDR 0x43C1FFFF
+
+
+/******************************************************************/
+
+/* Canonical definitions for peripheral DISP_0 */
+#define XPAR_XDISP_0_DEVICE_ID XPAR_DISP_0_DEVICE_ID
+#define XPAR_XDISP_0_S_AXI_DATA_BUS_BASEADDR 0x43C10000
+#define XPAR_XDISP_0_S_AXI_DATA_BUS_HIGHADDR 0x43C1FFFF
 
 
 /******************************************************************/
@@ -275,6 +294,25 @@
 #define XPAR_XQSPIPS_0_QSPI_CLK_FREQ_HZ 200000000
 #define XPAR_XQSPIPS_0_QSPI_MODE 0
 #define XPAR_XQSPIPS_0_QSPI_BUS_WIDTH 2
+
+
+/******************************************************************/
+
+/* Definitions for driver SAD_COST */
+#define XPAR_XSAD_COST_NUM_INSTANCES 1
+
+/* Definitions for peripheral SAD_COST_0 */
+#define XPAR_SAD_COST_0_DEVICE_ID 0
+#define XPAR_SAD_COST_0_S_AXI_DATA_BUS_BASEADDR 0x43C00000
+#define XPAR_SAD_COST_0_S_AXI_DATA_BUS_HIGHADDR 0x43C0FFFF
+
+
+/******************************************************************/
+
+/* Canonical definitions for peripheral SAD_COST_0 */
+#define XPAR_XSAD_COST_0_DEVICE_ID XPAR_SAD_COST_0_DEVICE_ID
+#define XPAR_XSAD_COST_0_S_AXI_DATA_BUS_BASEADDR 0x43C00000
+#define XPAR_XSAD_COST_0_S_AXI_DATA_BUS_HIGHADDR 0x43C0FFFF
 
 
 /******************************************************************/

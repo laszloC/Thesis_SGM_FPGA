@@ -42,9 +42,9 @@ void TestImageTransmission(const std::string& left, const std::string& right)
 
        transmitter.SendImage(img_right);
 
-       Mat res = transmitter.ReceiveImage(img_left.rows, img_left.cols);
+       Mat res = transmitter.ReceiveDepthMap(img_left.rows, img_left.cols);
 
-       imshow("Negative", res);
+       imshow("Depth Map", res);
 
        waitKey(10000);
 }

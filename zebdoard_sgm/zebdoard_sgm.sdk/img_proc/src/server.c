@@ -35,7 +35,11 @@
 #include "xil_printf.h"
 #include "FreeRTOS.h"
 #include "task.h"
-#include "xcomp_d_map.h"
+//#include "xparameters.h"
+//#include "xsad_cost.h"
+//#include "xdisp.h"
+#include "stereo/stereo.h"
+#include "common/common.h"
 
 #define THREAD_STACKSIZE 1024
 #define FRAG_SIZE 1000
@@ -70,34 +74,6 @@ u8 g_img_l_recv;
 static u32 g_img_r_size[2];
 static u8* g_img_r;
 u8 g_img_r_recv;
-
-// HW image inverser instance
-XComp_d_map depth_map_computer;
-
-int depth_map_computer_init(XComp_d_map *Instance)
-{
-	XComp_d_map_Config *cfgPtr;
-	int status;
-
-	cfgPtr = XComp_d_map_LookupConfig(XPAR_XDMAPS_0_DEVICE_ID);
-	if (!cfgPtr) {
-		xil_printf("ERROR: Lookup of depth map computer configuration failed.\n\r");
-		return XST_FAILURE;
-	}
-	status = XComp_d_map_CfgInitialize(Instance, cfgPtr);
-	if (status != XST_SUCCESS) {
-		xil_printf("ERROR: Could not initialize depth mpa computer.\n\r");
-		return XST_FAILURE;
-	}
-	return status;
-}
-
-void comp_depth_map_start(void *InstancePtr) {
-	XComp_d_map *pInvImg = (XComp_d_map*) InstancePtr;
-	XComp_d_map_InterruptEnable(pInvImg, 1);
-	XComp_d_map_InterruptGlobalEnable(pInvImg);
-	XComp_d_map_Start(pInvImg);
-}
 
 void cleanup()
 {
@@ -300,15 +276,6 @@ cleanup:
 void compute_and_send_depth_map(int sd)
 {
 	u32 dm_bytes = g_img_l_size[0] * g_img_l_size[1];
-	u32 cost_bytes = dm_bytes * MAX_DISPARITY;
-
-	xil_printf("Will compute depth map in HW\r\n");
-
-	u8* cost_matrix = malloc(cost_bytes * sizeof(u8));
-	if (cost_matrix == NULL) {
-		xil_printf("%s: failed to allocate %d bytes\r\n", __FUNCTION__, cost_bytes);
-		goto cleanup;
-	}
 
 	u8* depth_map = malloc(dm_bytes * sizeof(u8));
 	if (depth_map == NULL) {
@@ -316,28 +283,15 @@ void compute_and_send_depth_map(int sd)
 		goto cleanup;
 	}
 
-	// compute depth map in HW
+	compute_disparity(g_img_l, g_img_r, depth_map, g_img_l_size, MAX_DISPARITY);
 
-	// setup input parameters for depth map computer
-	XComp_d_map_Set_img_left(&depth_map_computer, (u32)g_img_l);
-	XComp_d_map_Set_img_right(&depth_map_computer, (u32)g_img_r);
-	XComp_d_map_Set_disp_out(&depth_map_computer, (u32)depth_map);
-	XComp_d_map_Set_img_cost(&depth_map_computer, (u32)cost_matrix);
-
-	comp_depth_map_start(&depth_map_computer);
-	while(!XComp_d_map_IsReady(&depth_map_computer));
-
-	xil_printf("Finished to compute depth map in HW\r\n");
+	scale(depth_map, g_img_l_size[0] * g_img_l_size[1], 0, MAX_DISPARITY - 1, 0, 255);
 
 	send_image(sd, depth_map, g_img_l_size[0], g_img_l_size[1]);
 
 cleanup:
 	if (depth_map != NULL) {
 		free(depth_map);
-	}
-
-	if (cost_matrix != NULL) {
-		free(cost_matrix);
 	}
 }
 
@@ -406,11 +360,11 @@ void application_thread()
 #if LWIP_IPV6==0
 	struct sockaddr_in address, remote;
 
-	// setup hw inverser
-	status = depth_map_computer_init(&depth_map_computer);
-	if (status != XST_SUCCESS) {
-		print("HLS peripheral setup failed\n\r");
-		exit(-1);
+	// setup hw stereo
+	status = init_stereo();
+	if (status != 0){
+		xil_printf("Failed to initialize stereo hardware\r\n");
+		return;
 	}
 
 	memset(&address, 0, sizeof(address));
