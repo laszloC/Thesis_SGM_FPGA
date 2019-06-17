@@ -1,0 +1,11 @@
+Debug/*
+.reference/*
+.apc/*
+.settings/*
+solution1/*
+vivado_hls.app
+.cproject
+.project
+.vivado_hls_log_all.xml
+
+!solution1/*.tcl

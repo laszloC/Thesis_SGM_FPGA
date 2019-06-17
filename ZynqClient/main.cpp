@@ -11,6 +11,44 @@
 //const std::string m_pc_host = "192.168.1.20";
 //const std::string m_pc_port = "50001";
 
+void BuildTestImages() {
+    char dirPath[MAX_PATH];
+    if (openFolderDlg(dirPath)) {
+        for (int t = 10; t <= 10000; t *= 10)
+        {
+            std::string fileName = std::string(dirPath) + "/tst" + std::to_string(t) + ".bmp";
+            Mat m = Mat(t, t, CV_8UC1);
+            for (auto i = 0; i < t; i++)
+            {
+                for (auto j = 0; j < t; j++)
+                {
+                    m.at<uchar>(i, j) = (i * t + j) / 100;
+                }
+            }
+            imwrite(fileName, m);
+        }
+        std::cout << "Wrote test images to disk";
+    }
+}
+
+void TestImageTransmission(const std::string& left, const std::string& right)
+{
+       comms::ImageTransmitter transmitter = comms::ImageTransmitter();
+
+       Mat img_left = imread(left, IMREAD_GRAYSCALE);
+       Mat img_right = imread(right, IMREAD_GRAYSCALE);
+
+       transmitter.SendImage(img_left);
+
+       transmitter.SendImage(img_right);
+
+       Mat res = transmitter.ReceiveDepthMap(img_left.rows, img_left.cols);
+
+       imshow("Depth Map", res);
+
+       waitKey(10000);
+}
+
 int main(int argc, char** argv)
 {
     if (argc != 3)
@@ -22,19 +60,9 @@ int main(int argc, char** argv)
 
     try
     {
-        comms::ImageTransmitter transmitter = comms::ImageTransmitter();
+        TestImageTransmission(argv[1], argv[2]);
 
-        // start by sending the left image only and expect to get it back
-        Mat img_left = imread(argv[1], IMREAD_GRAYSCALE);
-        Mat img_right = imread(argv[2], IMREAD_GRAYSCALE);
-
-        transmitter.SendImage(img_left);
-
-        transmitter.SendImage(img_right);
-
-        Mat res = transmitter.ReceiveImage(img_left.rows, img_left.cols);
-
-        imshow("Negative", res);
+        //BuildTestImages();
     }
     catch (const std::exception& e)
     {

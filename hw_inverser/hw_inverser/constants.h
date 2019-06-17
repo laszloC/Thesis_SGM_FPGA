@@ -1,0 +1,8 @@
+#define IMG_ROWS 188
+#define IMG_COLS 225
+
+#define MAX_DISP 30
+
+#define IMG_SIZE (IMG_ROWS * IMG_COLS)
+
+#define COST_SIZE (IMG_SIZE * MAX_DISP)

@@ -1,0 +1,17 @@
+<annotationInfo>
+<annotationInfo>
+<item  id="8" filename="hw_inverser/inv.cpp" linenumber="24" name="sext_cast" contextFuncName="inverse_img" moduleName="Loop_1_proc" rtlName="sext_cast_fu_101_p1" latency="0" BRAM="-1" DSP="-1" FF="-1" LUT="-1" fileDirectory="E:\Git\Thesis_SGM_FPGA\hw_inverser"&gt;&lt;\/item&gt;
+<item  id="9" filename="hw_inverser/inv.cpp" linenumber="24" name="sext6_cast" contextFuncName="inverse_img" moduleName="Loop_1_proc" rtlName="sext6_cast_fu_105_p1" latency="0" BRAM="-1" DSP="-1" FF="-1" LUT="-1" fileDirectory="E:\Git\Thesis_SGM_FPGA\hw_inverser"&gt;&lt;\/item&gt;
+<item  id="13" filename="hw_inverser/inv.cpp" linenumber="23" name="tmp_i" contextFuncName="inverse_img" moduleName="Loop_1_proc" rtlName="tmp_i_fu_109_p2" latency="0" BRAM="-1" DSP="-1" FF="0" LUT="13" fileDirectory="E:\Git\Thesis_SGM_FPGA\hw_inverser"&gt;&lt;\/item&gt;
+<item  id="15" filename="hw_inverser/inv.cpp" linenumber="23" name="i" contextFuncName="inverse_img" moduleName="Loop_1_proc" rtlName="i_fu_115_p2" latency="0" BRAM="-1" DSP="-1" FF="0" LUT="23" fileDirectory="E:\Git\Thesis_SGM_FPGA\hw_inverser"&gt;&lt;\/item&gt;
+<item  id="18" filename="hw_inverser/inv.cpp" linenumber="24" name="tmp_1_i_cast" contextFuncName="inverse_img" moduleName="Loop_1_proc" rtlName="tmp_1_i_cast_fu_121_p1" latency="0" BRAM="-1" DSP="-1" FF="-1" LUT="-1" fileDirectory="E:\Git\Thesis_SGM_FPGA\hw_inverser"&gt;&lt;\/item&gt;
+<item  id="19" filename="hw_inverser/inv.cpp" linenumber="24" name="sum3" contextFuncName="inverse_img" moduleName="Loop_1_proc" rtlName="sum3_fu_125_p2" latency="0" BRAM="-1" DSP="-1" FF="0" LUT="40" fileDirectory="E:\Git\Thesis_SGM_FPGA\hw_inverser"&gt;&lt;\/item&gt;
+<item  id="20" filename="hw_inverser/inv.cpp" linenumber="24" name="sum3_cast" contextFuncName="inverse_img" moduleName="Loop_1_proc" rtlName="sum3_cast_fu_130_p1" latency="0" BRAM="-1" DSP="-1" FF="-1" LUT="-1" fileDirectory="E:\Git\Thesis_SGM_FPGA\hw_inverser"&gt;&lt;\/item&gt;
+<item  id="24" filename="hw_inverser/inv.cpp" linenumber="24" name="tmp_2_i" contextFuncName="inverse_img" moduleName="Loop_1_proc" rtlName="tmp_2_i_fu_155_p2" latency="0" BRAM="-1" DSP="-1" FF="0" LUT="8" fileDirectory="E:\Git\Thesis_SGM_FPGA\hw_inverser"&gt;&lt;\/item&gt;
+<item  id="25" filename="hw_inverser/inv.cpp" linenumber="24" name="sum9" contextFuncName="inverse_img" moduleName="Loop_1_proc" rtlName="sum9_fu_140_p2" latency="0" BRAM="-1" DSP="-1" FF="0" LUT="40" fileDirectory="E:\Git\Thesis_SGM_FPGA\hw_inverser"&gt;&lt;\/item&gt;
+<item  id="26" filename="hw_inverser/inv.cpp" linenumber="24" name="sum9_cast" contextFuncName="inverse_img" moduleName="Loop_1_proc" rtlName="sum9_cast_fu_145_p1" latency="0" BRAM="-1" DSP="-1" FF="-1" LUT="-1" fileDirectory="E:\Git\Thesis_SGM_FPGA\hw_inverser"&gt;&lt;\/item&gt;
+&lt;\/annotationInfo&gt;
+<annotationInfo>
+<item  id="13" filename="hw_inverser/inv.cpp" linenumber="3" name="" contextFuncName="inverse_img" moduleName="inverse_img" rtlName="Loop_1_proc_U0" latency="1" BRAM="-1" DSP="-1" FF="-1" LUT="-1" fileDirectory="E:\Git\Thesis_SGM_FPGA\hw_inverser"><\/item>
+<\/annotationInfo>
+</annotationInfo>

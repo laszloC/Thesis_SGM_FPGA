@@ -13,7 +13,7 @@
     <ClCompile Include="ImageTransmitter.cpp">
       <Filter>Sources\Comms</Filter>
     </ClCompile>
-    <ClCompile Include="UdpSocket.cpp">
+    <ClCompile Include="Socket.cpp">
       <Filter>Sources\Comms</Filter>
     </ClCompile>
   </ItemGroup>
@@ -36,7 +36,7 @@
     <ClInclude Include="Commands.h">
       <Filter>Headers\Comms</Filter>
     </ClInclude>
-    <ClInclude Include="UdpSocket.h">
+    <ClInclude Include="Socket.h">
       <Filter>Headers\Comms</Filter>
     </ClInclude>
   </ItemGroup>
