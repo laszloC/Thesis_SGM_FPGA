@@ -1,4 +1,0 @@
-inverse_img_D_BUS_s_axi
-inverse_img_D_BUS_m_axi
-Loop_1_proc
-inverse_img
