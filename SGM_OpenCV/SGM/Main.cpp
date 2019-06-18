@@ -23,51 +23,6 @@ enum class CostFnType
     SAD
 };
 
-std::ostream& operator<<(std::ostream& Out, const CostFnType& FnType)
-{
-    switch (FnType)
-    {
-    case CostFnType::Census:
-        Out << "Census";
-        break;
-    case CostFnType::MI:
-        Out << "MI";
-        break;
-    case CostFnType::SAD:
-        Out << "SAD";
-        break;
-    default:
-        Out << "UNKNOWN";
-        break;
-    }
-
-    return Out;
-}
-
-CostFnType ChooseCostFunction()
-{
-    std::cout << "Choose cost function" << std::endl
-        << "\t[" <<(int)CostFnType::Census << "]" << " Census cost" << std::endl
-        << "\t[" <<(int)CostFnType::MI << "]" << " Mutual Information" << std::endl
-        << "\t[" <<(int)CostFnType::SAD << "]" << " Sum of Absolute Differences" << std::endl;
-    std::cout << "Cost function: ";
-
-    int method = 0;
-
-    std::cin >> method;
-
-    return CostFnType(method);
-}
-
-int GetMaxDisparity()
-{
-    int maxDsp = 0;
-    std::cout << "Max disparity: ";
-    std::cin >> maxDsp;
-
-    return maxDsp;
-}
-
 void ComputeCostMatrixes(const Mat& LeftImg, const Mat& RightImg, const int MaxDsp, const CostFnType& CostFn, Mat& CostLR, Mat& CostRL)
 {
     switch (CostFn)
@@ -88,90 +43,77 @@ void ComputeCostMatrixes(const Mat& LeftImg, const Mat& RightImg, const int MaxD
     }
 }
 
-void SaveResults(const Mat& DepthMapRaw, const Mat& DepthMapSGM, const int MaxDisparity, const int P1, const int P2, const CostFnType CostFn)
+CostFnType GetCostFn(const std::string& CostFn)
 {
-    char folderName[MAX_PATH];
+    std::string costStr = CostFn;
+    std::transform(costStr.begin(), costStr.end(), costStr.begin(), ::tolower);
 
-    if (!openFolderDlg(folderName))
-        throw std::logic_error("Could not open folder");
+    if (costStr == "census") return CostFnType::Census;
 
-    auto time = std::chrono::system_clock::now();
+    if (costStr == "mi") return CostFnType::MI;
 
-    std::stringstream saveFolderName;
-    saveFolderName << folderName << "\\" << "SGM_Results_" << CostFn << "_" << std::to_string(time.time_since_epoch().count());
+    if (costStr == "sad") return CostFnType::SAD;
 
-    std::experimental::filesystem::create_directory(saveFolderName.str());
-
-    std::stringstream fileNameRaw;
-    fileNameRaw << saveFolderName.str() << "\\"
-        << "raw" << std::to_string(MaxDisparity)
-        << "_" << std::to_string(P1)
-        << "_" << std::to_string(P2)
-        << ".bmp";
-
-    std::stringstream fileNameSgm;
-    fileNameSgm << saveFolderName.str() << "\\"
-        << "sgm" << std::to_string(MaxDisparity)
-        << "_" << std::to_string(P1)
-        << "_" << std::to_string(P2)
-        << ".bmp";
-
-    imwrite(fileNameRaw.str(), DepthMapRaw);
-    imwrite(fileNameSgm.str(), DepthMapSGM);
-
-    imshow("Raw Depth Map", DepthMapRaw);
-    imshow("SGM Depth Map", DepthMapSGM);
-
-    waitKey(10000);
+    return CostFnType::SAD;
 }
 
+// program.exe <left_path> <right_path> <result_path> <cost_fn> <p1> <p2> <max_disp>
 int main(int argc, char* argv[])
 {
-    std::cout << "Press Ctrl+C to exit" << std::endl;
+    int iLeftImg = 1;
+    int iRightImg = 2;
+    int iResultPath = 3;
+    int iCostFn = 4;
+    int iP1 = 5;
+    int iP2 = 6;
+    int iMaxDisp = 7;
 
-    while (true)
+    try
     {
-        try
-        {
-            std::cout << std::endl << "<<----------------------------------------------------------------->>" << std::endl << std::endl;
 
-            std::cout << "Choose left image" << std::endl;
-            auto leftImg = OpenGrayscaleImage();
-            std::cout << "Choose right image" << std::endl;
-            auto rightImg = OpenGrayscaleImage();
-
-            auto costFn = ChooseCostFunction();
-
-            auto maxDisparity = GetMaxDisparity();
-
-            int p1 = 5;
-            int p2 = 20;
-
-            std::cout << "P1: ";
-            std::cin >> p1;
-
-            std::cout << "P2: ";
-            std::cin >> p2;
-
-            Mat costLR;
-            Mat costRL;
-
-            ComputeCostMatrixes(leftImg, rightImg, maxDisparity, costFn, costLR, costRL);
-
-            Mat depthMapRaw = ComputeDepthMap(costLR, leftImg.rows, leftImg.cols);
-            Scale(depthMapRaw, 0, maxDisparity - 1, 0, 255);
-
-            Mat depthMapLR = semi_global::ComputeDepthMap(costLR, leftImg.rows, leftImg.cols, p1, p2);
-            Mat depthMapRL = semi_global::ComputeDepthMap(costRL, leftImg.rows, leftImg.cols, p1, p2);
-
-            semi_global::LeftRightCheck(depthMapLR, depthMapRL);
-            Scale(depthMapLR, 0, maxDisparity - 1, 0, 255);
-
-            SaveResults(depthMapRaw, depthMapLR, maxDisparity, p1, p2, costFn);
+        if (argc != 8) {
+            std::cout << "Usage: " << argv[0] << " <left_img_path> <right_img_path> <result_path> <cost_fn> <p1> <p2> <max_disp>" << std::endl;
+            return -1;
         }
-        catch (const std::exception& e)
-        {
-            std::cerr << e.what() << std::endl;
-        }
+
+        auto leftImg = OpenGrayscaleImage(argv[iLeftImg]);
+        auto rightImg = OpenGrayscaleImage(argv[iRightImg]);
+        auto resultPath = std::string(argv[iResultPath]);
+        auto costFn = GetCostFn(argv[iCostFn]);
+        auto p1 = std::atoi(argv[iP1]);
+        auto p2 = std::atoi(argv[iP2]);
+        auto maxDisp = std::atoi(argv[iMaxDisp]);
+
+        std::cout << "Running SGM with parameters: " << std::endl
+            << "\tLeft image: " << argv[iLeftImg] << std::endl
+            << "\tRight image: " << argv[iRightImg] << std::endl
+            << "\tResult path: " << argv[iResultPath] << std::endl
+            << "\tCost function: " << argv[iCostFn] << std::endl
+            << "\tP1: " << argv[iP1] << std::endl
+            << "\tP2: " << argv[iP2] << std::endl
+            << "\tMax Disparity: " << argv[maxDisp] << std::endl;
+
+        Mat costLR;
+        Mat costRL;
+
+        ComputeCostMatrixes(leftImg, rightImg, maxDisp, costFn, costLR, costRL);
+
+        Mat depthMapRaw = ComputeDepthMap(costLR, leftImg.rows, leftImg.cols);
+        Scale(depthMapRaw, 0, maxDisp - 1, 0, 255);
+
+        Mat depthMapLR = semi_global::ComputeDepthMap(costLR, leftImg.rows, leftImg.cols, p1, p2);
+        Mat depthMapRL = semi_global::ComputeDepthMap(costRL, leftImg.rows, leftImg.cols, p1, p2);
+
+        semi_global::LeftRightCheck(depthMapLR, depthMapRL);
+        Scale(depthMapLR, 0, maxDisp - 1, 0, 255);
+
+        imwrite(resultPath, depthMapLR);
+
+        imshow("RAW", depthMapRaw);
+        imshow("SGM", depthMapLR);
+    }
+    catch (const std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
     }
 }

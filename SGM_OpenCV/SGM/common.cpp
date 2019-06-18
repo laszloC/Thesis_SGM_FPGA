@@ -139,6 +139,11 @@ Mat OpenGrayscaleImage()
     return imread(fileName, CV_LOAD_IMAGE_GRAYSCALE);
 }
 
+Mat OpenGrayscaleImage(const std::string& Path)
+{
+    return imread(Path.c_str(), CV_LOAD_IMAGE_GRAYSCALE);
+}
+
 int compare(const void* a, const void* b)
 {
     return (*(int*)a) - (*(int*)b);

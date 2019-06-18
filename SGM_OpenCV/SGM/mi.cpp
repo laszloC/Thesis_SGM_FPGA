@@ -18,7 +18,7 @@ Mat mutual_information::ComputeJointPdf(const Mat& LeftImg, const Mat& RightImg)
         }
     }
 
-    float n = height * width;
+    float n = (float)(height * width);
 
     for (auto i = 0; i < 255; i++)
     {

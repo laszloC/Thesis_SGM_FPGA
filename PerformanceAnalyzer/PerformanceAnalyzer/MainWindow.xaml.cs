@@ -87,12 +87,13 @@ namespace PerformanceAnalyzer
                 }
                 string defaultFileName = "results_" + DateTime.Now.ToString("MMdd_HHmmss");
                 string filename = GetSavePathFromDialog("Save results as JSON", defaultFileName, ".json", "JSON files (*.json)|*.json");
+
+                // dump results and save as json file
             }
             catch (Exception ex)
             {
                 _ = MessageBox.Show(ex.Message);
             }
-
         }
 
         private string GetFilePathFromDialog(string title)

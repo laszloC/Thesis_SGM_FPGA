@@ -44,6 +44,8 @@ void Scale(Mat& Img, int InStart, int InEnd, int OutStart, int OutEnd);
 
 Mat OpenGrayscaleImage();
 
+Mat OpenGrayscaleImage(const std::string& Path);
+
 void MedianFilter(Mat img, int w);
 
 int RowMajorIndex(const int I, const int J, const int Cols);
