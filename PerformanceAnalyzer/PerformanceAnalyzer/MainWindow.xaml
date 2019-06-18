@@ -46,7 +46,7 @@
         
         <Separator/>
 
-        <Label Content="Software Execution Results" Height="30" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" FontWeight="DemiBold" FontSize="16"/>
+        <Label Content="Software Execution RunResults" Height="30" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" FontWeight="DemiBold" FontSize="16"/>
 
         <!-- Sequential Result Grid -->
         <Grid>
@@ -95,7 +95,7 @@
         
         <Separator/>
 
-        <Label Content="Hardware Execution Results" Height="30" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" FontWeight="DemiBold" FontSize="16"/>
+        <Label Content="Hardware Execution RunResults" Height="30" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" FontWeight="DemiBold" FontSize="16"/>
 
         <!-- Sequential Result Grid -->
         <Grid>
@@ -165,7 +165,7 @@
                 </Button.ToolTip>
             </Button>
 
-            <Button Content="Run" Click="RunClick" Grid.Column="1" Height="30" Margin="5 5 5 5">
+            <Button Content="RunResults" Click="RunClick" Grid.Column="1" Height="30" Margin="5 5 5 5">
                 <Button.ToolTip>
                     <ToolTip>
                         Generate results with software and hardware
@@ -173,7 +173,7 @@
                 </Button.ToolTip>
             </Button>
 
-            <Button Content="Save Results" Click="SaveClick" Grid.Column="2" Height="30" Margin="5 5 5 5">
+            <Button Content="Save RunResults" Click="SaveClick" Grid.Column="2" Height="30" Margin="5 5 5 5">
                 <Button.ToolTip>
                     <ToolTip>
                         Save results as a JSON file
