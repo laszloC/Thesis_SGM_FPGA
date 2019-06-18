@@ -1,19 +1,8 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.IO;
 using WinForms = System.Windows.Forms;
 
 namespace PerformanceAnalyzer
@@ -34,9 +23,8 @@ namespace PerformanceAnalyzer
             can_save = false;
         }
 
-        private void NewImagesClick(object sender, RoutedEventArgs e)
+        private void SelectImagesClick(object sender, RoutedEventArgs e)
         {
-            // present file dialogs
             try
             {
                 results = new RunResults
@@ -73,7 +61,10 @@ namespace PerformanceAnalyzer
                 results.ResultSWDepthMapPath = System.IO.Path.Combine(resultsFolder, "result_sw.bmp");
                 results.ResultSWDepthMapPath = System.IO.Path.Combine(resultsFolder, "result_hw.bmp");
 
-                // run st process
+                // get parameters max_disp, p1 and p2
+                GetParameters();
+
+                // run sw process
                 // get results from sw process
 
                 // run hw process
@@ -145,6 +136,34 @@ namespace PerformanceAnalyzer
             }
 
             throw new ApplicationException("Failed to get file path");
+        }
+
+        private void GetParameters()
+        {
+            if (string.IsNullOrWhiteSpace(MaxDisp.Text))
+            {
+                throw new ApplicationException("Maximum disparity not defined");
+            }
+
+            if (string.IsNullOrWhiteSpace(P1.Text))
+            {
+                throw new ApplicationException("P1 not defined");
+            }
+
+            if (string.IsNullOrWhiteSpace(P2.Text))
+            {
+                throw new ApplicationException("P2 not defined");
+            }
+
+            results.MaxDisp = System.Convert.ToInt32(MaxDisp.Text);
+            results.P1 = System.Convert.ToInt32(P1.Text);
+            results.P2 = System.Convert.ToInt32(P2.Text);
+        }
+
+        private void IntPreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            Regex r = new Regex("[^0-9]+");
+            e.Handled = r.IsMatch(e.Text);
         }
     }
 }

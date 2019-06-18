@@ -14,6 +14,12 @@ namespace PerformanceAnalyzer
 
         public string ResultHWDepthMapPath { get; set; }
 
+        public int MaxDisp { get; set; }
+
+        public int P1 { get; set; }
+
+        public int P2 { get; set; }
+
         public TimeSpan ResultSWTime { get; set; }
 
         public int ResultSWRms { get; set; }
@@ -27,5 +33,15 @@ namespace PerformanceAnalyzer
         public int ResultHWBadMatches { get; set; }
 
         public double ResultHWSpeedup { get; set; }
+
+        public void GetSoftwareResults()
+        {
+            
+        }
+
+        public void GetHardwareResults()
+        {
+
+        }
     }
 }
