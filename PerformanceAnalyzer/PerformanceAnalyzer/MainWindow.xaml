@@ -165,7 +165,7 @@
                 </Button.ToolTip>
             </Button>
 
-            <Button Content="RunResults" Click="RunClick" Grid.Column="1" Height="30" Margin="5 5 5 5">
+            <Button Content="Run" Click="RunClick" Grid.Column="1" Height="30" Margin="5 5 5 5">
                 <Button.ToolTip>
                     <ToolTip>
                         Generate results with software and hardware
@@ -173,7 +173,7 @@
                 </Button.ToolTip>
             </Button>
 
-            <Button Content="Save RunResults" Click="SaveClick" Grid.Column="2" Height="30" Margin="5 5 5 5">
+            <Button Content="Save" Click="SaveClick" Grid.Column="2" Height="30" Margin="5 5 5 5">
                 <Button.ToolTip>
                     <ToolTip>
                         Save results as a JSON file
