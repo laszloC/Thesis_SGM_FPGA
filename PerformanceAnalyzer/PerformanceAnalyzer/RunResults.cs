@@ -4,28 +4,28 @@ namespace PerformanceAnalyzer
 {
     class RunResults
     {
-        string InputLeftPath { get; set; }
+        public string InputLeftPath { get; set; }
 
-        string InputRightPath { get; set; }
+        public string InputRightPath { get; set; }
 
-        string InputGroundThruthPath { get; set; }
+        public string InputGroundThruthPath { get; set; }
 
-        string ResultSWDepthMapPath { get; set; }
+        public string ResultSWDepthMapPath { get; set; }
 
-        string ResultHWDepthMapPath { get; set; }
+        public string ResultHWDepthMapPath { get; set; }
 
-        TimeSpan ResultSWTime { get; set; }
+        public TimeSpan ResultSWTime { get; set; }
 
-        int ResultSWRms { get; set; }
+        public int ResultSWRms { get; set; }
 
-        int ResultSWBadMatches { get; set; }
+        public int ResultSWBadMatches { get; set; }
 
-        TimeSpan ResultHWTime { get; set; }
+        public TimeSpan ResultHWTime { get; set; }
 
-        int ResultHWRms { get; set; }
+        public int ResultHWRms { get; set; }
 
-        int ResultHWBadMatches { get; set; }
+        public int ResultHWBadMatches { get; set; }
 
-        double ResultHWSpeedup { get; set; }
+        public double ResultHWSpeedup { get; set; }
     }
 }

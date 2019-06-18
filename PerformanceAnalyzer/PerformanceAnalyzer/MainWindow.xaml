@@ -21,7 +21,7 @@
             <!-- Left image -->
             <StackPanel Grid.Column="0" Margin="5 5 5 5">
                 <Border BorderThickness="1" BorderBrush="Gray">
-                    <Image Width="200" Height="150" x:Name="LImg"/>
+                    <Image  x:Name="LeftImg" Width="200" Height="150"/>
                 </Border>
                 <Label Content="Left Image" HorizontalContentAlignment="Center"/>
             </StackPanel>
@@ -29,7 +29,7 @@
             <!-- Right image -->
             <StackPanel Grid.Column="1" Margin="5 5 5 5">
                 <Border BorderThickness="1" BorderBrush="Gray">
-                    <Image Width="200" Height="150" x:Name="RImg"/>
+                    <Image  x:Name="RightImg" Width="200" Height="150"/>
                 </Border>
                 <Label Content="Right Image" HorizontalContentAlignment="Center"/>
             </StackPanel>
@@ -37,7 +37,7 @@
             <!-- Ground Truth -->
             <StackPanel Grid.Column="2" Margin="5 5 5 5">
                 <Border BorderThickness="1" BorderBrush="Gray">
-                    <Image Width="200" Height="150" x:Name="GTImg"/>
+                    <Image x:Name="GroundTruthImg" Width="200" Height="150"/>
                 </Border>
                 <Label Content="Ground Truth" HorizontalContentAlignment="Center"/>
             </StackPanel>
@@ -107,7 +107,7 @@
             <!-- Result Image -->
             <StackPanel Grid.Column="0" Margin="5 5 5 5">
                 <Border BorderThickness="1" BorderBrush="Gray">
-                    <Image Width="200" Height="150" x:Name="HWResult"/>
+                    <Image  x:Name="HWResult" Width="200" Height="150"/>
                 </Border>
                 <Label Content="Depth Map" HorizontalContentAlignment="Center"/>
             </StackPanel>
