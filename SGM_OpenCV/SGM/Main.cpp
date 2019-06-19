@@ -68,14 +68,14 @@ int main(int argc, char* argv[])
     int iP2 = 6;
     int iMaxDisp = 7;
 
+    if (argc != 8) {
+        std::cout << "Usage: " << std::endl
+            << argv[0] << " <left_img_path> <right_img_path> <result_path> <cost_fn> <p1> <p2> <max_disp>" << std::endl;
+        return -1;
+    }
+
     try
     {
-
-        if (argc != 8) {
-            std::cout << "Usage: " << argv[0] << " <left_img_path> <right_img_path> <result_path> <cost_fn> <p1> <p2> <max_disp>" << std::endl;
-            return -1;
-        }
-
         auto leftImg = OpenGrayscaleImage(argv[iLeftImg]);
         auto rightImg = OpenGrayscaleImage(argv[iRightImg]);
         auto resultPath = std::string(argv[iResultPath]);
@@ -91,7 +91,7 @@ int main(int argc, char* argv[])
             << "\tCost function: " << argv[iCostFn] << std::endl
             << "\tP1: " << argv[iP1] << std::endl
             << "\tP2: " << argv[iP2] << std::endl
-            << "\tMax Disparity: " << argv[maxDisp] << std::endl;
+            << "\tMax Disparity: " << argv[iMaxDisp] << std::endl;
 
         Mat costLR;
         Mat costRL;
@@ -104,13 +104,13 @@ int main(int argc, char* argv[])
         Mat depthMapLR = semi_global::ComputeDepthMap(costLR, leftImg.rows, leftImg.cols, p1, p2);
         Mat depthMapRL = semi_global::ComputeDepthMap(costRL, leftImg.rows, leftImg.cols, p1, p2);
 
-        semi_global::LeftRightCheck(depthMapLR, depthMapRL);
-        Scale(depthMapLR, 0, maxDisp - 1, 0, 255);
+        Mat depthMap = semi_global::LeftRightCheck(depthMapLR, depthMapRL);
+        Scale(depthMap, 0, maxDisp - 1, 0, 255);
 
-        imwrite(resultPath, depthMapLR);
+        imwrite(resultPath, depthMap);
 
-        imshow("RAW", depthMapRaw);
-        imshow("SGM", depthMapLR);
+        //imshow("RAW", depthMapRaw);
+        //imshow("SGM", depthMap);
     }
     catch (const std::exception& e)
     {

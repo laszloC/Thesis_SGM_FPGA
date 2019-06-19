@@ -167,7 +167,7 @@ namespace semi_global
 
     Mat LeftRightCheck(const Mat& DB, const Mat& DM)
     {
-        Mat disp = Mat::zeros(DB.rows, DB.cols, CV_8UC1);
+        Mat disp = DB.clone();
         for (auto i = 0; i < DB.rows; i++)
         {
             for (auto j = 0; j < DB.cols; j++)
@@ -180,7 +180,7 @@ namespace semi_global
                 {
                     auto dM = DM.at<uint8_t>(iM, jM);
 
-                    if (iM - dM > 1)
+                    if (dB - dM > 1)
                     {
                         disp.at<uint8_t>(iB, jB) = 0;
                     }

@@ -141,7 +141,7 @@ Mat OpenGrayscaleImage()
 
 Mat OpenGrayscaleImage(const std::string& Path)
 {
-    return imread(Path.c_str(), CV_LOAD_IMAGE_GRAYSCALE);
+    return imread(Path, CV_LOAD_IMAGE_GRAYSCALE);
 }
 
 int compare(const void* a, const void* b)
