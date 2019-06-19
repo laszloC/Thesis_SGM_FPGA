@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Configuration;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Media.Imaging;
@@ -13,37 +14,28 @@ namespace PerformanceAnalyzer
     public partial class MainWindow : Window
     {
         private RunResults results;
-        private bool can_run;
-        private bool can_save;
+        private bool canRun;
+        private bool canSave;
+        private BitmapImage gtImage;
+        private string saveFolder;
 
         public MainWindow()
         {
             InitializeComponent();
-            can_run = false;
-            can_save = false;
+            canRun = false;
+            canSave = false;
         }
 
         private void SelectImagesClick(object sender, RoutedEventArgs e)
         {
             try
             {
-                results = new RunResults
-                {
-                    InputLeftPath = GetFilePathFromDialog("Select LEFT image"),
-                    InputRightPath = GetFilePathFromDialog("Select RIGHT image"),
-                    InputGroundThruthPath = GetFilePathFromDialog("Select GROUND TRUTH image")
+                InitializeResult();
 
-                };
-
-                LeftImg.Source = new BitmapImage(new Uri(results.InputLeftPath));
-                RightImg.Source = new BitmapImage(new Uri(results.InputRightPath));
-                GroundTruthImg.Source = new BitmapImage(new Uri(results.InputGroundThruthPath));
-
-                can_run = true;
+                canRun = true;
             }
             catch (Exception ex)
             {
-                can_run = false;
                 _ = MessageBox.Show(ex.Message);
             }
         }
@@ -52,24 +44,20 @@ namespace PerformanceAnalyzer
         {
             try
             {
-                if (!can_run)
+                if (!canRun)
                 {
                     throw new ApplicationException("Please select images before running");
                 }
-                // choose folder to save results
-                string resultsFolder = GetFolderPathFromDialog("Select folder to save results");
-                results.ResultSWDepthMapPath = System.IO.Path.Combine(resultsFolder, "result_sw.bmp");
-                results.ResultSWDepthMapPath = System.IO.Path.Combine(resultsFolder, "result_hw.bmp");
 
-                // get parameters max_disp, p1 and p2
                 GetParameters();
 
-                // run sw process
-                // get results from sw process
+                GetSaveFolder();
 
-                // run hw process
-                // get results from hw process
-                can_save = true;
+                RunSwProcess();
+
+                RunHwProcess();
+
+                canSave = true;
             }
             catch (Exception ex)
             {
@@ -81,7 +69,7 @@ namespace PerformanceAnalyzer
         {
             try
             {
-                if (!can_save)
+                if (!canSave)
                 {
                     throw new ApplicationException("Please run before saving");
                 }
@@ -94,6 +82,60 @@ namespace PerformanceAnalyzer
             {
                 _ = MessageBox.Show(ex.Message);
             }
+        }
+
+        private void InitializeResult()
+        {
+            var inputLeftPath = GetFilePathFromDialog("Select LEFT image");
+            var inputRightPath = GetFilePathFromDialog("Select RIGHT image");
+            var inputGroundTruthPath = GetFilePathFromDialog("Select GROUND TRUTH image");
+
+            results = new RunResults
+            {
+                InputLeftPath = inputLeftPath,
+                InputRightPath = inputRightPath,
+                InputGroundThruthPath = inputGroundTruthPath
+            };
+
+            LeftImg.Source = new BitmapImage(new Uri(results.InputLeftPath));
+            RightImg.Source = new BitmapImage(new Uri(results.InputRightPath));
+            gtImage = new BitmapImage(new Uri(results.InputGroundThruthPath));
+            GroundTruthImg.Source = gtImage;
+        }
+
+        private void RunSwProcess()
+        {
+            var swArgs = CreateSwProcessArgs();
+            var swPath = GetSwAppPath();
+
+            var swProcessTimer = new ProcessTimer(swPath, swArgs, true);
+            var ellapsedMs = swProcessTimer.RunProcess();
+            results.ResultSWTime = TimeSpan.FromMilliseconds(ellapsedMs);
+            SWTime.Text = results.ResultSWTime.ToString("c");
+
+            // set output image
+            var swImage = new BitmapImage(new Uri(results.ResultSWDepthMapPath));
+            SWResult.Source = swImage;
+
+            // compute rms and bad matches
+            var analyzer = new ResultAnalyzer(swImage, gtImage);
+            SWRms.Text = analyzer.GetRmsError().ToString();
+            SWBadMatches.Text = analyzer.GetBadMatchesPercentage().ToString();
+        }
+
+        private void RunHwProcess()
+        {
+            var hwArgs = CreateHwProcessArgs();
+            var hwPath = GetHwAppPath();
+
+            var hwProcessTimer = new ProcessTimer(hwPath, hwArgs, true);
+            var ellapsedMs = hwProcessTimer.RunProcess();
+            results.ResultHWTime = TimeSpan.FromMilliseconds(ellapsedMs);
+            HWTime.Text = results.ResultHWTime.ToString("c");
+
+            // set output image
+
+            // compute rms and bad matches
         }
 
         private string GetFilePathFromDialog(string title)
@@ -111,7 +153,7 @@ namespace PerformanceAnalyzer
         {
             var openFolderDialog = new WinForms.FolderBrowserDialog
             {
-                SelectedPath = System.AppDomain.CurrentDomain.BaseDirectory,
+                SelectedPath = (!string.IsNullOrEmpty(saveFolder)) ? saveFolder : System.AppDomain.CurrentDomain.BaseDirectory,
                 Description = description
             };
             if (openFolderDialog.ShowDialog() == WinForms.DialogResult.OK)
@@ -161,10 +203,43 @@ namespace PerformanceAnalyzer
             results.P2 = System.Convert.ToInt32(P2.Text);
         }
 
+        private void GetSaveFolder()
+        {
+            saveFolder = GetFolderPathFromDialog("Select folder to save results");
+            results.ResultSWDepthMapPath = System.IO.Path.Combine(saveFolder, "result_sw.bmp");
+            results.ResultSWDepthMapPath = System.IO.Path.Combine(saveFolder, "result_hw.bmp");
+        }
+
         private void IntPreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
         {
             Regex r = new Regex("[^0-9]+");
             e.Handled = r.IsMatch(e.Text);
+        }
+
+        private string CreateSwProcessArgs()
+        {
+            return "\"" + results.InputLeftPath + "\" " +
+                "\"" + results.InputRightPath + "\" " +
+                "\"" + results.ResultSWDepthMapPath + "\" " +
+                "sad " +
+                results.P1.ToString() + " " +
+                results.P2.ToString() + " " +
+                results.MaxDisp;
+        }
+
+        private string CreateHwProcessArgs()
+        {
+            throw new NotImplementedException();
+        }
+
+        private string GetSwAppPath()
+        {
+            return ConfigurationManager.AppSettings["SwAppPath"];
+        }
+
+        private string GetHwAppPath()
+        {
+            return ConfigurationManager.AppSettings["HwAppPath"];
         }
     }
 }
