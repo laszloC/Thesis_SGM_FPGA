@@ -117,7 +117,7 @@
                     <TextBox x:Name="SWRms" IsReadOnly="True" Grid.Row="1" Grid.Column="1" Margin="0 5 0 5" VerticalContentAlignment="Center"/>
 
                     <!-- Bad Matches -->
-                    <Label Content="Bad Matches:" HorizontalContentAlignment="Right" Grid.Row="2" Grid.Column="0" Margin="0 5 0 5"/>
+                    <Label Content="Bad Matches (%):" HorizontalContentAlignment="Right" Grid.Row="2" Grid.Column="0" Margin="0 5 0 5"/>
                     <TextBox x:Name="SWBadMatches" IsReadOnly="True" Grid.Row="2" Grid.Column="1" Margin="0 5 0 5" VerticalContentAlignment="Center"/>
                 </Grid>
             </StackPanel>
@@ -167,12 +167,12 @@
                     <TextBox x:Name="HWRms" IsReadOnly="True" Grid.Row="1" Grid.Column="1" Margin="0 5 0 5" VerticalContentAlignment="Center"/>
 
                     <!-- Bad Matches -->
-                    <Label Content="Bad Matches:" HorizontalContentAlignment="Right" Grid.Row="2" Grid.Column="0" Margin="0 5 0 5"/>
-                    <TextBox x:Name="HwBadMatches" IsReadOnly="True" Grid.Row="2" Grid.Column="1" Margin="0 5 0 5" VerticalContentAlignment="Center"/>
+                    <Label Content="Bad Matches (%):" HorizontalContentAlignment="Right" Grid.Row="2" Grid.Column="0" Margin="0 5 0 5"/>
+                    <TextBox x:Name="HWBadMatches" IsReadOnly="True" Grid.Row="2" Grid.Column="1" Margin="0 5 0 5" VerticalContentAlignment="Center"/>
                     
                     <!-- Speedup -->
                     <Label Content="Speedup:" HorizontalContentAlignment="Right" Grid.Row="3" Grid.Column="0" Margin="0 5 0 5"/>
-                    <TextBox x:Name="HwSpeedup" IsReadOnly="True" Grid.Row="3" Grid.Column="1" Margin="0 5 0 5" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="HWSpeedup" IsReadOnly="True" Grid.Row="3" Grid.Column="1" Margin="0 5 0 5" VerticalContentAlignment="Center"/>
                 </Grid>
             </StackPanel>
 

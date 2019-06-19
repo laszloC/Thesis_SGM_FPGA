@@ -22,26 +22,21 @@ namespace PerformanceAnalyzer
 
         public TimeSpan ResultSWTime { get; set; }
 
-        public int ResultSWRms { get; set; }
+        public double ResultSWRms { get; set; }
 
-        public int ResultSWBadMatches { get; set; }
+        public double ResultSWBadMatches { get; set; }
 
         public TimeSpan ResultHWTime { get; set; }
 
-        public int ResultHWRms { get; set; }
+        public double ResultHWRms { get; set; }
 
-        public int ResultHWBadMatches { get; set; }
+        public double ResultHWBadMatches { get; set; }
 
         public double ResultHWSpeedup { get; set; }
 
-        public void GetSoftwareResults()
+        public string Dump()
         {
-            
-        }
-
-        public void GetHardwareResults()
-        {
-
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
     }
 }

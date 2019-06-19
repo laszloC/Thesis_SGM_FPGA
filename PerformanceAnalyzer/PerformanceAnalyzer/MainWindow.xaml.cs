@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Configuration;
+using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Media.Imaging;
@@ -18,6 +19,7 @@ namespace PerformanceAnalyzer
         private bool canSave;
         private BitmapImage gtImage;
         private string saveFolder;
+        private int tolerance = 30;
 
         public MainWindow()
         {
@@ -55,7 +57,7 @@ namespace PerformanceAnalyzer
 
                 RunSwProcess();
 
-                RunHwProcess();
+                //RunHwProcess();
 
                 canSave = true;
             }
@@ -73,10 +75,13 @@ namespace PerformanceAnalyzer
                 {
                     throw new ApplicationException("Please run before saving");
                 }
-                string defaultFileName = "results_" + DateTime.Now.ToString("MMdd_HHmmss");
+                string defaultFileName = $"results_{DateTime.Now.ToString("MMdd_HHmmss")}";
                 string filename = GetSavePathFromDialog("Save results as JSON", defaultFileName, ".json", "JSON files (*.json)|*.json");
 
                 // dump results and save as json file
+                System.IO.File.WriteAllText(filename, results.Dump());
+
+                MessageBox.Show($"Results saved to {filename}");
             }
             catch (Exception ex)
             {
@@ -110,17 +115,24 @@ namespace PerformanceAnalyzer
 
             var swProcessTimer = new ProcessTimer(swPath, swArgs, true);
             var ellapsedMs = swProcessTimer.RunProcess();
+
+            // set time
             results.ResultSWTime = TimeSpan.FromMilliseconds(ellapsedMs);
-            SWTime.Text = results.ResultSWTime.ToString("c");
+            SWTime.Text = results.ResultSWTime.ToString("g");
 
             // set output image
             var swImage = new BitmapImage(new Uri(results.ResultSWDepthMapPath));
             SWResult.Source = swImage;
 
-            // compute rms and bad matches
-            var analyzer = new ResultAnalyzer(swImage, gtImage);
-            SWRms.Text = analyzer.GetRmsError().ToString();
-            SWBadMatches.Text = analyzer.GetBadMatchesPercentage().ToString();
+            var analyzer = new ResultAnalyzer(results.ResultSWDepthMapPath, results.InputGroundThruthPath);
+
+            // compute rms
+            results.ResultSWRms = analyzer.GetRmsError();
+            SWRms.Text = results.ResultSWRms.ToString("F3");
+
+            // compute bad matches
+            results.ResultSWBadMatches = analyzer.GetBadMatchesPercentage(tolerance);
+            SWBadMatches.Text = results.ResultSWBadMatches.ToString("F3");
         }
 
         private void RunHwProcess()
@@ -130,12 +142,30 @@ namespace PerformanceAnalyzer
 
             var hwProcessTimer = new ProcessTimer(hwPath, hwArgs, true);
             var ellapsedMs = hwProcessTimer.RunProcess();
+
+            // set time
             results.ResultHWTime = TimeSpan.FromMilliseconds(ellapsedMs);
-            HWTime.Text = results.ResultHWTime.ToString("c");
+            HWTime.Text = results.ResultHWTime.ToString("g");
 
             // set output image
+            var hwImage = new BitmapImage(new Uri(results.ResultHWDepthMapPath));
+            HWResult.Source = hwImage;
 
-            // compute rms and bad matches
+            var analyzer = new ResultAnalyzer(results.ResultHWDepthMapPath, results.InputGroundThruthPath);
+
+            // compute rms
+            SWBadMatches.Text = analyzer.GetBadMatchesPercentage(tolerance).ToString("F3");
+
+            // compute bad matches
+            results.ResultHWRms = analyzer.GetRmsError();
+            HWRms.Text = results.ResultHWRms.ToString("F3");
+
+            results.ResultHWBadMatches = analyzer.GetBadMatchesPercentage(tolerance);
+            HWBadMatches.Text = results.ResultHWBadMatches.ToString("F3");
+
+            // compute speedup
+            results.ResultHWSpeedup = results.ResultSWTime.TotalMilliseconds / results.ResultHWTime.TotalMilliseconds;
+            HWSpeedup.Text = results.ResultHWSpeedup.ToString("F3");
         }
 
         private string GetFilePathFromDialog(string title)
@@ -229,7 +259,13 @@ namespace PerformanceAnalyzer
 
         private string CreateHwProcessArgs()
         {
-            throw new NotImplementedException();
+            return "\"" + results.InputLeftPath + "\" " +
+                "\"" + results.InputRightPath + "\" " +
+                "\"" + results.ResultHWDepthMapPath + "\" " +
+                "sad " +
+                results.P1.ToString() + " " +
+                results.P2.ToString() + " " +
+                results.MaxDisp;
         }
 
         private string GetSwAppPath()
