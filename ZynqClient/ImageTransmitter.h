@@ -20,13 +20,18 @@ public:
 
     ImageTransmitter();
 
-    void SendCommand(const Command& Cmd);
 
     void SendImage(const cv::Mat& Img);
 
-    cv::Mat ReceiveDepthMap(uint32_t H, uint32_t W);
+    void ComputeDepthMap(const int32_t P1, const int32_t P2, const int32_t MaxDisp);
+
+    cv::Mat ReceiveImage(uint32_t H, uint32_t W);
 
 private:
+
+    void SendCommand(const Command& Cmd);
+
+    void SendInt(const int32_t X);
 
     const uint32_t m_fragSize = 1000;
 

@@ -104,3 +104,8 @@ void resizeImg(Mat src, Mat &dst, int maxSize, bool interpolate)
 	else
 		resize(src,dst,sz,0,0,INTER_NEAREST);
 }
+
+Mat OpenGrayscaleImage(const std::string& Path)
+{
+    return imread(Path, CV_LOAD_IMAGE_GRAYSCALE);
+}

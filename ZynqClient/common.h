@@ -33,3 +33,5 @@ int openFileDlg(char* fname);
 int openFolderDlg(char* folderName);
 
 void resizeImg(Mat src, Mat &dst, int maxSize, bool interpolate);
+
+Mat OpenGrayscaleImage(const std::string& Path);

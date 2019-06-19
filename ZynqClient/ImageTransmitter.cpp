@@ -12,11 +12,6 @@ namespace comms
         m_socket.Connect(SEND_ADDRESS, SEND_PORT);
     }
 
-    void ImageTransmitter::SendCommand(const Command& Cmd)
-    {
-        m_socket.Send((const char*)&Cmd, sizeof(Cmd));
-    }
-
     void ImageTransmitter::SendImage(const cv::Mat& Img)
     {
         uint32_t dims[2] = { (uint32_t)Img.rows, (uint32_t)Img.cols };
@@ -28,12 +23,12 @@ namespace comms
         SendCommand(Command::CmdSendImg);
 
         std::cout << "Sending image size..." << std::endl;
-        m_socket.Send((const char*)dims, sizeof(dims));
+        m_socket.Send((const char*) dims, sizeof(dims));
 
         Command recv_cmd;
-        m_socket.Recv((char*)&recv_cmd, sizeof(recv_cmd));
+        m_socket.Recv((char*) &recv_cmd, sizeof(recv_cmd));
         if (recv_cmd != Command::CmdReadyToRecv)
-            throw ImageException("Error occured: cannot send image fragments");
+            throw ImageException("Error occurred: cannot send image fragments");
 
         for (uint32_t i = 0; i < size; i += m_fragSize)
         {
@@ -49,7 +44,7 @@ namespace comms
 
         std::cout << "Waiting to receive acknowledgment of image transmission" << std::endl;
 
-        m_socket.Recv((char*)& recv_cmd, sizeof(recv_cmd));
+        m_socket.Recv((char*) &recv_cmd, sizeof(recv_cmd));
 
         if (recv_cmd != Command::CmdRecvImg)
             throw ImageException("Did not receive acknowledgment command");
@@ -57,10 +52,19 @@ namespace comms
         std::cout << "Image was successfully transmitted" << std::endl;
     }
 
-    cv::Mat ImageTransmitter::ReceiveDepthMap(uint32_t H, uint32_t W)
+    void ImageTransmitter::ComputeDepthMap(const int32_t P1, const int32_t P2, const int32_t MaxDisp)
     {
+        // send compute depth map command
         SendCommand(comms::Command::CmdCompDepthMap);
 
+        // send parameters
+        SendInt(P1);
+        SendInt(P2);
+        SendInt(MaxDisp);
+    }
+
+    cv::Mat ImageTransmitter::ReceiveImage(uint32_t H, uint32_t W)
+    {
         Command cmd{ Command::CmdUnknown };
 
         std::cout << "Waiting to receive image command..." << std::endl;
@@ -96,5 +100,15 @@ namespace comms
         SendCommand(comms::Command::CmdStop);
 
         return img;
+    }
+
+    void ImageTransmitter::SendCommand(const Command& Cmd)
+    {
+        m_socket.Send((const char*)& Cmd, sizeof(Cmd));
+    }
+
+    void ImageTransmitter::SendInt(const int32_t X)
+    {
+        m_socket.Send((const char*)& X, sizeof(int32_t));
     }
 }

@@ -31,36 +31,56 @@ void BuildTestImages() {
     }
 }
 
-void TestImageTransmission(const std::string& left, const std::string& right)
-{
-       comms::ImageTransmitter transmitter = comms::ImageTransmitter();
-
-       Mat img_left = imread(left, IMREAD_GRAYSCALE);
-       Mat img_right = imread(right, IMREAD_GRAYSCALE);
-
-       transmitter.SendImage(img_left);
-
-       transmitter.SendImage(img_right);
-
-       Mat res = transmitter.ReceiveDepthMap(img_left.rows, img_left.cols);
-
-       imshow("Depth Map", res);
-
-       waitKey(10000);
-}
-
 int main(int argc, char** argv)
 {
-    if (argc != 3)
+    int iLeftImg = 1;
+    int iRightImg = 2;
+    int iResultPath = 3;
+    int iCostFn = 4;
+    int iP1 = 5;
+    int iP2 = 6;
+    int iMaxDisp = 7;
+
+    if (argc != 8)
     {
         std::cerr << "Usage:" << std::endl
-            << argv[0] << " [Left Image Path] [Right Image Path]" << std::endl;
+            << argv[0] << " <left_img_path> <right_img_path> <result_path> <cost_fn> <p1> <p2> <max_disp>" << std::endl;
         return -1;
     }
 
     try
     {
-        TestImageTransmission(argv[1], argv[2]);
+        // open images
+        auto leftImg = OpenGrayscaleImage(argv[iLeftImg]);
+        auto rightImg = OpenGrayscaleImage(argv[iRightImg]);
+        auto resultPath = std::string(argv[iResultPath]);
+        auto costFn = "sad";
+        auto p1 = std::atoi(argv[iP1]);
+        auto p2 = std::atoi(argv[iP2]);
+        auto maxDisp = std::atoi(argv[iMaxDisp]);
+
+        std::cout << "Running SGM with parameters: " << std::endl
+            << "\tLeft image: " << argv[iLeftImg] << std::endl
+            << "\tRight image: " << argv[iRightImg] << std::endl
+            << "\tResult path: " << argv[iResultPath] << std::endl
+            << "\tCost function: " << argv[iCostFn] << std::endl
+            << "\tP1: " << argv[iP1] << std::endl
+            << "\tP2: " << argv[iP2] << std::endl
+            << "\tMax Disparity: " << argv[iMaxDisp] << std::endl;
+
+        // send images
+        comms::ImageTransmitter transmitter;
+        transmitter.SendImage(leftImg);
+        transmitter.SendImage(rightImg);
+
+        // compute depth map on hw
+        transmitter.ComputeDepthMap(p1, p2, maxDisp);
+
+        // get result
+        Mat depthMap = transmitter.ReceiveImage(leftImg.rows, leftImg.cols);
+
+        // save result
+        imwrite(resultPath, depthMap);
 
         //BuildTestImages();
     }
