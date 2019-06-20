@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PerformanceAnalyzer"
         mc:Ignorable="d"
-        Title="MainWindow" SizeToContent="WidthAndHeight">
+        Title="SGM Analyzer" SizeToContent="WidthAndHeight">
     <StackPanel>
         
         <Label Height="30" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" FontWeight="DemiBold" FontSize="16" Content="Input"/>
@@ -79,8 +79,8 @@
 
         <Label Content="Software Execution Results" Height="30" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" FontWeight="DemiBold" FontSize="16"/>
 
-        <!-- Sequential Result Grid -->
-        <Grid>
+        <!-- Software Result Grid -->
+        <Grid x:Name="SwResultsGrid">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="2*"/>
@@ -128,8 +128,8 @@
 
         <Label Content="Hardware Execution Results" Height="30" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" FontWeight="DemiBold" FontSize="16"/>
 
-        <!-- Sequential Result Grid -->
-        <Grid>
+        <!-- Hardware Result Grid -->
+        <Grid x:Name="HwResultsGrid">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="2*"/>

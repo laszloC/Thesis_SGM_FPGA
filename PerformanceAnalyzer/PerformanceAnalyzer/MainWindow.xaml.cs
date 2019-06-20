@@ -26,6 +26,8 @@ namespace PerformanceAnalyzer
             InitializeComponent();
             canRun = false;
             canSave = false;
+            SwResultsGrid.Visibility = Visibility.Collapsed;
+            HwResultsGrid.Visibility = Visibility.Collapsed;
         }
 
         private void SelectImagesClick(object sender, RoutedEventArgs e)
@@ -40,6 +42,9 @@ namespace PerformanceAnalyzer
             {
                 _ = MessageBox.Show(ex.Message);
             }
+
+            SwResultsGrid.Visibility = Visibility.Collapsed;
+            HwResultsGrid.Visibility = Visibility.Collapsed;
         }
 
         private void RunClick(object sender, RoutedEventArgs e)
@@ -57,7 +62,7 @@ namespace PerformanceAnalyzer
 
                 RunSwProcess();
 
-                //RunHwProcess();
+                RunHwProcess();
 
                 canSave = true;
             }
@@ -110,62 +115,92 @@ namespace PerformanceAnalyzer
 
         private void RunSwProcess()
         {
-            var swArgs = CreateSwProcessArgs();
-            var swPath = GetSwAppPath();
+            WaitWindow waitWindow = new WaitWindow("Running software process");
+            waitWindow.Show();
+            try
+            {
+                var swArgs = CreateSwProcessArgs();
+                var swPath = GetSwAppPath();
 
-            var swProcessTimer = new ProcessTimer(swPath, swArgs, true);
-            var ellapsedMs = swProcessTimer.RunProcess();
+                var swProcessTimer = new ProcessTimer(swPath, swArgs, false);
+                var ellapsedMs = swProcessTimer.RunProcess();
 
-            // set time
-            results.ResultSWTime = TimeSpan.FromMilliseconds(ellapsedMs);
-            SWTime.Text = results.ResultSWTime.ToString("g");
+                // set time
+                results.ResultSWTime = TimeSpan.FromMilliseconds(ellapsedMs);
+                SWTime.Text = results.ResultSWTime.ToString("g");
 
-            // set output image
-            var swImage = new BitmapImage(new Uri(results.ResultSWDepthMapPath));
-            SWResult.Source = swImage;
+                // set output image
+                var swImage = new BitmapImage(new Uri(results.ResultSWDepthMapPath));
+                SWResult.Source = swImage;
 
-            var analyzer = new ResultAnalyzer(results.ResultSWDepthMapPath, results.InputGroundThruthPath);
+                var analyzer = new ResultAnalyzer(results.ResultSWDepthMapPath, results.InputGroundThruthPath);
 
-            // compute rms
-            results.ResultSWRms = analyzer.GetRmsError();
-            SWRms.Text = results.ResultSWRms.ToString("F3");
+                // compute rms
+                results.ResultSWRms = analyzer.GetRmsError();
+                SWRms.Text = results.ResultSWRms.ToString("F3");
 
-            // compute bad matches
-            results.ResultSWBadMatches = analyzer.GetBadMatchesPercentage(tolerance);
-            SWBadMatches.Text = results.ResultSWBadMatches.ToString("F3");
+                // compute bad matches
+                results.ResultSWBadMatches = analyzer.GetBadMatchesPercentage(tolerance);
+                SWBadMatches.Text = results.ResultSWBadMatches.ToString("F3");
+
+                SwResultsGrid.Visibility = Visibility.Visible;
+            }
+            catch(Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                waitWindow.Close();
+            }
         }
 
         private void RunHwProcess()
         {
-            var hwArgs = CreateHwProcessArgs();
-            var hwPath = GetHwAppPath();
+            WaitWindow waitWindow = new WaitWindow("Running hardware process");
+            waitWindow.Show();
+            try
+            {
+                var hwArgs = CreateHwProcessArgs();
+                var hwPath = GetHwAppPath();
 
-            var hwProcessTimer = new ProcessTimer(hwPath, hwArgs, true);
-            var ellapsedMs = hwProcessTimer.RunProcess();
+                var hwProcessTimer = new ProcessTimer(hwPath, hwArgs, false);
+                var ellapsedMs = hwProcessTimer.RunProcess();
 
-            // set time
-            results.ResultHWTime = TimeSpan.FromMilliseconds(ellapsedMs);
-            HWTime.Text = results.ResultHWTime.ToString("g");
+                // set time
+                results.ResultHWTime = TimeSpan.FromMilliseconds(ellapsedMs);
+                HWTime.Text = results.ResultHWTime.ToString("g");
 
-            // set output image
-            var hwImage = new BitmapImage(new Uri(results.ResultHWDepthMapPath));
-            HWResult.Source = hwImage;
+                // set output image
+                var hwImage = new BitmapImage(new Uri(results.ResultHWDepthMapPath));
+                HWResult.Source = hwImage;
 
-            var analyzer = new ResultAnalyzer(results.ResultHWDepthMapPath, results.InputGroundThruthPath);
+                var analyzer = new ResultAnalyzer(results.ResultHWDepthMapPath, results.InputGroundThruthPath);
 
-            // compute rms
-            SWBadMatches.Text = analyzer.GetBadMatchesPercentage(tolerance).ToString("F3");
+                // compute rms
+                SWBadMatches.Text = analyzer.GetBadMatchesPercentage(tolerance).ToString("F3");
 
-            // compute bad matches
-            results.ResultHWRms = analyzer.GetRmsError();
-            HWRms.Text = results.ResultHWRms.ToString("F3");
+                // compute bad matches
+                results.ResultHWRms = analyzer.GetRmsError();
+                HWRms.Text = results.ResultHWRms.ToString("F3");
 
-            results.ResultHWBadMatches = analyzer.GetBadMatchesPercentage(tolerance);
-            HWBadMatches.Text = results.ResultHWBadMatches.ToString("F3");
+                results.ResultHWBadMatches = analyzer.GetBadMatchesPercentage(tolerance);
+                HWBadMatches.Text = results.ResultHWBadMatches.ToString("F3");
 
-            // compute speedup
-            results.ResultHWSpeedup = results.ResultSWTime.TotalMilliseconds / results.ResultHWTime.TotalMilliseconds;
-            HWSpeedup.Text = results.ResultHWSpeedup.ToString("F3");
+                // compute speedup
+                results.ResultHWSpeedup = results.ResultSWTime.TotalMilliseconds / results.ResultHWTime.TotalMilliseconds;
+                HWSpeedup.Text = results.ResultHWSpeedup.ToString("F3");
+
+                HwResultsGrid.Visibility = Visibility.Visible;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                waitWindow.Close();
+            }
         }
 
         private string GetFilePathFromDialog(string title)
@@ -231,13 +266,18 @@ namespace PerformanceAnalyzer
             results.MaxDisp = System.Convert.ToInt32(MaxDisp.Text);
             results.P1 = System.Convert.ToInt32(P1.Text);
             results.P2 = System.Convert.ToInt32(P2.Text);
+
+            if (results.P1 > results.P2)
+            {
+                throw new ApplicationException("P1 must be less or equal to P2");
+            }
         }
 
         private void GetSaveFolder()
         {
             saveFolder = GetFolderPathFromDialog("Select folder to save results");
             results.ResultSWDepthMapPath = System.IO.Path.Combine(saveFolder, "result_sw.bmp");
-            results.ResultSWDepthMapPath = System.IO.Path.Combine(saveFolder, "result_hw.bmp");
+            results.ResultHWDepthMapPath = System.IO.Path.Combine(saveFolder, "result_hw.bmp");
         }
 
         private void IntPreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
