@@ -8,26 +8,24 @@
 #include "ImageTransmitter.h"
 #include "Exceptions.h"
 
-//const std::string m_pc_host = "192.168.1.20";
-//const std::string m_pc_port = "50001";
+void WriteTimeStats(const std::string& FileName, const Stats& TimeStats)
+{
+    std::stringstream ssTime;
 
-void BuildTestImages() {
-    char dirPath[MAX_PATH];
-    if (openFolderDlg(dirPath)) {
-        for (int t = 10; t <= 10000; t *= 10)
-        {
-            std::string fileName = std::string(dirPath) + "/tst" + std::to_string(t) + ".bmp";
-            Mat m = Mat(t, t, CV_8UC1);
-            for (auto i = 0; i < t; i++)
-            {
-                for (auto j = 0; j < t; j++)
-                {
-                    m.at<uchar>(i, j) = (i * t + j) / 100;
-                }
-            }
-            imwrite(fileName, m);
-        }
-        std::cout << "Wrote test images to disk";
+    ssTime << "{" << std::endl
+        << "\t\"cost_time\": " << TimeStats.CostTime << std::endl
+        << "\t\"aggr_time\": " << TimeStats.AggrTime << std::endl
+        << "\t\"disp_time\": " << TimeStats.DispTime << std::endl
+        << "\t\"total_time\": " << TimeStats.TotalTime << std::endl
+        << "}" << std::endl;
+
+    if (std::ofstream outFile{ FileName })
+    {
+        outFile << ssTime.str();
+    }
+    else
+    {
+        throw std::exception("Failed to write time results");
     }
 }
 
@@ -35,16 +33,17 @@ int main(int argc, char** argv)
 {
     int iLeftImg = 1;
     int iRightImg = 2;
-    int iResultPath = 3;
-    int iCostFn = 4;
-    int iP1 = 5;
-    int iP2 = 6;
-    int iMaxDisp = 7;
+    int iDepthMapPath = 3;
+    int iTimeResPath = 4;
+    int iCostFn = 5;
+    int iP1 = 6;
+    int iP2 = 7;
+    int iMaxDisp = 8;
 
-    if (argc != 8)
+    if (argc != 9)
     {
         std::cerr << "Usage:" << std::endl
-            << argv[0] << " <left_img_path> <right_img_path> <result_path> <cost_fn> <p1> <p2> <max_disp>" << std::endl;
+            << argv[0] << " <left_img_path> <right_img_path> <depth_map_path> <time_res_path> <cost_fn> <p1> <p2> <max_disp>" << std::endl;
         return -1;
     }
 
@@ -53,16 +52,18 @@ int main(int argc, char** argv)
         // open images
         auto leftImg = OpenGrayscaleImage(argv[iLeftImg]);
         auto rightImg = OpenGrayscaleImage(argv[iRightImg]);
-        auto resultPath = std::string(argv[iResultPath]);
+        auto depthMapPath = std::string(argv[iDepthMapPath]);
+        auto timeResPath = std::string(argv[iTimeResPath]);
         auto costFn = "sad";
-        auto p1 = std::atoi(argv[iP1]);
-        auto p2 = std::atoi(argv[iP2]);
-        auto maxDisp = std::atoi(argv[iMaxDisp]);
+        auto p1 = (int16_t)std::atoi(argv[iP1]);
+        auto p2 = (int16_t)::atoi(argv[iP2]);
+        auto maxDisp = (int16_t)std::atoi(argv[iMaxDisp]);
 
         std::cout << "Running SGM with parameters: " << std::endl
             << "\tLeft image: " << argv[iLeftImg] << std::endl
             << "\tRight image: " << argv[iRightImg] << std::endl
-            << "\tResult path: " << argv[iResultPath] << std::endl
+            << "\tDepth map path: " << argv[iDepthMapPath] << std::endl
+            << "\tTime results path" << argv[iTimeResPath] << std::endl
             << "\tCost function: " << argv[iCostFn] << std::endl
             << "\tP1: " << argv[iP1] << std::endl
             << "\tP2: " << argv[iP2] << std::endl
@@ -79,8 +80,15 @@ int main(int argc, char** argv)
         // get result
         Mat depthMap = transmitter.ReceiveImage(leftImg.rows, leftImg.cols);
 
+        std::cout << "Received depth map" << std::endl;
+
         // save result
-        imwrite(resultPath, depthMap);
+        imwrite(depthMapPath, depthMap);
+        std::cout << "Saved depth map to " << depthMapPath << std::endl;
+
+        WriteTimeStats(timeResPath, transmitter.GetTimeStats());
+        std::cout << "Saved time results to " << timeResPath << std::endl;
+
 
         //BuildTestImages();
     }

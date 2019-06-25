@@ -1,3 +1,5 @@
+#pragma once
+
 #include <opencv2/opencv.hpp>
 #include <opencv2/core/core.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
@@ -27,6 +29,13 @@ public:
 	char* getFoundFileName();
 };
 
+struct Stats
+{
+    uint64_t CostTime;
+    uint64_t AggrTime;
+    uint64_t DispTime;
+    uint64_t TotalTime;
+};
 
 int openFileDlg(char* fname);
 

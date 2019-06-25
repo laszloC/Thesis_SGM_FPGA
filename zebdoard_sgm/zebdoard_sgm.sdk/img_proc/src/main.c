@@ -47,7 +47,7 @@ int IicPhyReset(void);
 #endif
 
 int main_thread();
-void print_echo_app_header();
+void print_sgm_server_app_header();
 void application_thread(void *);
 
 void lwip_init();
@@ -123,7 +123,7 @@ void network_thread(void *p)
     netif = &server_netif;
 
     xil_printf("\r\n\r\n");
-    xil_printf("-----lwIP Socket Mode Echo server Demo Application ------\r\n");
+    xil_printf("----- SGM Server Application ------\r\n");
 
 #if LWIP_IPV6==0
 #if LWIP_DHCP==0
@@ -195,7 +195,7 @@ void network_thread(void *p)
     xil_printf("%20s %6s %s\r\n", "Server", "Port", "Connect With..");
     xil_printf("%20s %6s %s\r\n", "--------------------", "------", "--------------------");
 
-    print_echo_app_header();
+    print_sgm_server_app_header();
     xil_printf("\r\n");
     sys_thread_new("echod", application_thread, 0,
 		THREAD_STACKSIZE,
@@ -203,7 +203,7 @@ void network_thread(void *p)
     vTaskDelete(NULL);
 #endif
 #else
-    print_echo_app_header();
+    print_sgm_server_app_header();
     xil_printf("\r\n");
     sys_thread_new("echod",application_thread, 0,
 		THREAD_STACKSIZE,
@@ -238,7 +238,7 @@ int main_thread()
 		if (server_netif.ip_addr.addr) {
 			xil_printf("DHCP request success\r\n");
 			print_ip_settings(&(server_netif.ip_addr), &(server_netif.netmask), &(server_netif.gw));
-			print_echo_app_header();
+			print_sgm_server_app_header();
 			xil_printf("\r\n");
 			sys_thread_new("echod", application_thread, 0,
 					THREAD_STACKSIZE,
@@ -258,7 +258,7 @@ int main_thread()
 			xil_printf("%20s %6s %s\r\n", "Server", "Port", "Connect With..");
 			xil_printf("%20s %6s %s\r\n", "--------------------", "------", "--------------------");
 
-			print_echo_app_header();
+			print_sgm_server_app_header();
 			xil_printf("\r\n");
 			sys_thread_new("echod", application_thread, 0,
 					THREAD_STACKSIZE,

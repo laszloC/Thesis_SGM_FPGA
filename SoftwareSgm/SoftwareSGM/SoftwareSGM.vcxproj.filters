@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="semi_global.cpp">
+      <Filter>Sources\CostAggregator</Filter>
+    </ClCompile>
+    <ClCompile Include="census.cpp">
+      <Filter>Sources\Experimental\CostCensus</Filter>
+    </ClCompile>
+    <ClCompile Include="mi.cpp">
+      <Filter>Sources\Experimental\CostMI</Filter>
+    </ClCompile>
+    <ClCompile Include="sad.cpp">
+      <Filter>Sources\CostSAD</Filter>
+    </ClCompile>
+    <ClCompile Include="disp_selector.cpp">
+      <Filter>Sources\DisparitySelector</Filter>
+    </ClCompile>
+    <ClCompile Include="control.cpp">
+      <Filter>Sources\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="common.cpp">
+      <Filter>Sources\Helper</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="census.h">
+      <Filter>Headers\Experimental\CostCensus</Filter>
+    </ClInclude>
+    <ClInclude Include="mi.h">
+      <Filter>Headers\Experimental\CostMI</Filter>
+    </ClInclude>
+    <ClInclude Include="common.h">
+      <Filter>Headers\Helper</Filter>
+    </ClInclude>
+    <ClInclude Include="disp_selector.h">
+      <Filter>Headers\DisparitySelector</Filter>
+    </ClInclude>
+    <ClInclude Include="sad.h">
+      <Filter>Headers\CostSAD</Filter>
+    </ClInclude>
+    <ClInclude Include="semi_global.h">
+      <Filter>Headers\CostAggregator</Filter>
+    </ClInclude>
+    <ClInclude Include="control.h">
+      <Filter>Headers\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Sources">
+      <UniqueIdentifier>{cefca9c7-b9f6-41bf-9a36-353b519f613f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{5d0e1927-d078-40d3-b442-e22cc7001bc9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Helper">
+      <UniqueIdentifier>{65bff518-5eae-455c-bd01-347ce54eae1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Helper">
+      <UniqueIdentifier>{846a5aeb-601d-4066-8262-4d5ee89ef8cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Control">
+      <UniqueIdentifier>{c5a5c703-b905-4deb-9d62-9c16198b7d80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\CostAggregator">
+      <UniqueIdentifier>{8e56f14e-0910-4eff-9d67-18efd2a5b25c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\CostSAD">
+      <UniqueIdentifier>{c94414a8-5086-4d5a-b563-0bc3fe52cd22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\DisparitySelector">
+      <UniqueIdentifier>{8ebe18aa-cfe0-47c7-aeae-0b3c4648c9a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Experimental">
+      <UniqueIdentifier>{064f9468-8f1c-4dcb-991a-0c59cb42ca1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Experimental\CostCensus">
+      <UniqueIdentifier>{dd4373fd-7466-409e-8cda-71814635db75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Experimental\CostMI">
+      <UniqueIdentifier>{4f33759a-e7b3-4c20-9887-0530f0e1a367}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Experimental">
+      <UniqueIdentifier>{1b7f9daf-fcb2-42cd-84fa-8411ca74b8d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Experimental\CostMI">
+      <UniqueIdentifier>{283b189a-c55d-4115-aed2-86206c069054}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Experimental\CostCensus">
+      <UniqueIdentifier>{adf23b8b-8be9-4126-8ff2-b98f01a59170}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\DisparitySelector">
+      <UniqueIdentifier>{26410c15-e66a-47f2-9aff-d4b4917540e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\CostSAD">
+      <UniqueIdentifier>{5edd6f2f-3e41-4623-8260-86fd4d806ce3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\CostAggregator">
+      <UniqueIdentifier>{e19b1943-506d-4f4d-8bf3-767ce1acba09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Control">
+      <UniqueIdentifier>{620a426c-7de7-4b53-9f0e-ffdc954d4246}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

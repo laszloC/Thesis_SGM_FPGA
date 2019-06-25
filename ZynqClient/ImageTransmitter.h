@@ -4,6 +4,7 @@
 
 #include "Socket.h"
 #include "Commands.h"
+#include "common.h"
 
 namespace comms
 {
@@ -20,22 +21,27 @@ public:
 
     ImageTransmitter();
 
-
     void SendImage(const cv::Mat& Img);
 
-    void ComputeDepthMap(const int32_t P1, const int32_t P2, const int32_t MaxDisp);
+    void ComputeDepthMap(const int16_t P1, const int16_t P2, const int16_t MaxDisp);
 
     cv::Mat ReceiveImage(uint32_t H, uint32_t W);
+
+    Stats GetTimeStats();
 
 private:
 
     void SendCommand(const Command& Cmd);
 
-    void SendInt(const int32_t X);
+    void SendInt16(const int16_t X);
+
+    void ReceiveTimeStats();
 
     const uint32_t m_fragSize = 1000;
 
     Socket m_socket;
+
+    Stats m_timeStats;
 };
 
 } // comms

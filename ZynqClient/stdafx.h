@@ -23,5 +23,7 @@
 
 #include <string>
 #include <thread>
+#include <iostream>
+#include <fstream>
 
 using namespace cv;

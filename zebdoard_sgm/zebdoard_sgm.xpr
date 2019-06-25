@@ -42,13 +42,13 @@
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="3"/>
-    <Option Name="WTModelSimExportSim" Val="3"/>
-    <Option Name="WTQuestaExportSim" Val="3"/>
-    <Option Name="WTIesExportSim" Val="3"/>
-    <Option Name="WTVcsExportSim" Val="3"/>
-    <Option Name="WTRivieraExportSim" Val="3"/>
-    <Option Name="WTActivehdlExportSim" Val="3"/>
+    <Option Name="WTXSimExportSim" Val="8"/>
+    <Option Name="WTModelSimExportSim" Val="8"/>
+    <Option Name="WTQuestaExportSim" Val="8"/>
+    <Option Name="WTIesExportSim" Val="8"/>
+    <Option Name="WTVcsExportSim" Val="8"/>
+    <Option Name="WTRivieraExportSim" Val="8"/>
+    <Option Name="WTActivehdlExportSim" Val="8"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -69,29 +69,20 @@
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
-        <CompFileExtendedInfo CompFileName="img_proc_hw.bd" FileRelPathName="ip/img_proc_hw_auto_pc_0/img_proc_hw_auto_pc_0.xci">
-          <Proxy FileSetName="img_proc_hw_auto_pc_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="img_proc_hw.bd" FileRelPathName="ip/img_proc_hw_aggr_0_0/img_proc_hw_aggr_0_0.xci">
-          <Proxy FileSetName="img_proc_hw_aggr_0_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="img_proc_hw.bd" FileRelPathName="ip/img_proc_hw_rst_ps7_0_100M_0/img_proc_hw_rst_ps7_0_100M_0.xci">
-          <Proxy FileSetName="img_proc_hw_rst_ps7_0_100M_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="img_proc_hw.bd" FileRelPathName="ip/img_proc_hw_xbar_0/img_proc_hw_xbar_0.xci">
-          <Proxy FileSetName="img_proc_hw_xbar_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="img_proc_hw.bd" FileRelPathName="ip/img_proc_hw_disp_0_0/img_proc_hw_disp_0_0.xci">
-          <Proxy FileSetName="img_proc_hw_disp_0_0"/>
+        <CompFileExtendedInfo CompFileName="img_proc_hw.bd" FileRelPathName="ip/img_proc_hw_sad_cost_0_2/img_proc_hw_sad_cost_0_2.xci">
+          <Proxy FileSetName="img_proc_hw_sad_cost_0_2"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="img_proc_hw.bd" FileRelPathName="ip/img_proc_hw_processing_system7_0_0/img_proc_hw_processing_system7_0_0.xci">
           <Proxy FileSetName="img_proc_hw_processing_system7_0_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="img_proc_hw.bd" FileRelPathName="ip/img_proc_hw_sad_cost_0_0/img_proc_hw_sad_cost_0_0.xci">
-          <Proxy FileSetName="img_proc_hw_sad_cost_0_0"/>
+        <CompFileExtendedInfo CompFileName="img_proc_hw.bd" FileRelPathName="ip/img_proc_hw_xbar_0/img_proc_hw_xbar_0.xci">
+          <Proxy FileSetName="img_proc_hw_xbar_0"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="img_proc_hw.bd" FileRelPathName="ip/img_proc_hw_axi_smc_0/img_proc_hw_axi_smc_0.xci">
           <Proxy FileSetName="img_proc_hw_axi_smc_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="img_proc_hw.bd" FileRelPathName="ip/img_proc_hw_disp_0_0/img_proc_hw_disp_0_0.xci">
+          <Proxy FileSetName="img_proc_hw_disp_0_0"/>
         </CompFileExtendedInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/bd/img_proc_hw/hdl/img_proc_hw_wrapper.vhd">
@@ -136,12 +127,6 @@
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
-    <FileSet Name="img_proc_hw_rst_ps7_0_100M_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/img_proc_hw_rst_ps7_0_100M_0">
-      <Config>
-        <Option Name="TopModule" Val="img_proc_hw_rst_ps7_0_100M_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
     <FileSet Name="img_proc_hw_axi_smc_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/img_proc_hw_axi_smc_0">
       <Config>
         <Option Name="TopModule" Val="img_proc_hw_axi_smc_0"/>
@@ -154,27 +139,15 @@
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
-    <FileSet Name="img_proc_hw_sad_cost_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/img_proc_hw_sad_cost_0_0">
+    <FileSet Name="img_proc_hw_sad_cost_0_2" Type="BlockSrcs" RelSrcDir="$PSRCDIR/img_proc_hw_sad_cost_0_2">
       <Config>
-        <Option Name="TopModule" Val="img_proc_hw_sad_cost_0_0"/>
+        <Option Name="TopModule" Val="img_proc_hw_sad_cost_0_2"/>
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
     <FileSet Name="img_proc_hw_disp_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/img_proc_hw_disp_0_0">
       <Config>
         <Option Name="TopModule" Val="img_proc_hw_disp_0_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="img_proc_hw_aggr_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/img_proc_hw_aggr_0_0">
-      <Config>
-        <Option Name="TopModule" Val="img_proc_hw_aggr_0_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="img_proc_hw_auto_pc_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/img_proc_hw_auto_pc_0">
-      <Config>
-        <Option Name="TopModule" Val="img_proc_hw_auto_pc_0"/>
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
@@ -216,15 +189,6 @@
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2018"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
-    <Run Id="img_proc_hw_rst_ps7_0_100M_0_synth_1" Type="Ft3:Synth" SrcSet="img_proc_hw_rst_ps7_0_100M_0" Part="xc7z020clg484-1" ConstrsSet="img_proc_hw_rst_ps7_0_100M_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/img_proc_hw_rst_ps7_0_100M_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2018"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
     <Run Id="img_proc_hw_axi_smc_0_synth_1" Type="Ft3:Synth" SrcSet="img_proc_hw_axi_smc_0" Part="xc7z020clg484-1" ConstrsSet="img_proc_hw_axi_smc_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/img_proc_hw_axi_smc_0_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018"/>
@@ -243,7 +207,7 @@
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2018"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
-    <Run Id="img_proc_hw_sad_cost_0_0_synth_1" Type="Ft3:Synth" SrcSet="img_proc_hw_sad_cost_0_0" Part="xc7z020clg484-1" ConstrsSet="img_proc_hw_sad_cost_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/img_proc_hw_sad_cost_0_0_synth_1" IncludeInArchive="true">
+    <Run Id="img_proc_hw_sad_cost_0_2_synth_1" Type="Ft3:Synth" SrcSet="img_proc_hw_sad_cost_0_2" Part="xc7z020clg484-1" ConstrsSet="img_proc_hw_sad_cost_0_2" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/img_proc_hw_sad_cost_0_2_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018"/>
         <Step Id="synth_design"/>
@@ -253,26 +217,6 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
     <Run Id="img_proc_hw_disp_0_0_synth_1" Type="Ft3:Synth" SrcSet="img_proc_hw_disp_0_0" Part="xc7z020clg484-1" ConstrsSet="img_proc_hw_disp_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/img_proc_hw_disp_0_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2018"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="img_proc_hw_aggr_0_0_synth_1" Type="Ft3:Synth" SrcSet="img_proc_hw_aggr_0_0" Part="xc7z020clg484-1" ConstrsSet="img_proc_hw_aggr_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/img_proc_hw_aggr_0_0_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2018"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="img_proc_hw_auto_pc_0_synth_1" Type="Ft3:Synth" SrcSet="img_proc_hw_auto_pc_0" Part="xc7z020clg484-1" ConstrsSet="img_proc_hw_auto_pc_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/img_proc_hw_auto_pc_0_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018">
           <Desc>Vivado Synthesis Defaults</Desc>
@@ -301,22 +245,6 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
     <Run Id="img_proc_hw_processing_system7_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="img_proc_hw_processing_system7_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="img_proc_hw_processing_system7_0_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2018"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2018"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="img_proc_hw_rst_ps7_0_100M_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="img_proc_hw_rst_ps7_0_100M_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="img_proc_hw_rst_ps7_0_100M_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2018"/>
         <Step Id="init_design"/>
@@ -364,7 +292,7 @@
       <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2018"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
-    <Run Id="img_proc_hw_sad_cost_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="img_proc_hw_sad_cost_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="img_proc_hw_sad_cost_0_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
+    <Run Id="img_proc_hw_sad_cost_0_2_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="img_proc_hw_sad_cost_0_2" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="img_proc_hw_sad_cost_0_2_synth_1" IncludeInArchive="false" GenFullBitstream="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2018"/>
         <Step Id="init_design"/>
@@ -381,40 +309,6 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
     <Run Id="img_proc_hw_disp_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="img_proc_hw_disp_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="img_proc_hw_disp_0_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2018"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2018"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="img_proc_hw_aggr_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="img_proc_hw_aggr_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="img_proc_hw_aggr_0_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2018">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2018"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="img_proc_hw_auto_pc_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="img_proc_hw_auto_pc_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="img_proc_hw_auto_pc_0_synth_1" IncludeInArchive="false" GenFullBitstream="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2018">
           <Desc>Default settings for Implementation.</Desc>

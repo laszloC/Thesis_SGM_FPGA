@@ -161,17 +161,14 @@ proc create_root_design { parentCell } {
 
   # Create ports
 
-  # Create instance: aggr_0, and set properties
-  set aggr_0 [ create_bd_cell -type ip -vlnv Ciople:sgm:aggr:1.0 aggr_0 ]
-
   # Create instance: axi_smc, and set properties
   set axi_smc [ create_bd_cell -type ip -vlnv xilinx.com:ip:smartconnect:1.0 axi_smc ]
   set_property -dict [ list \
-   CONFIG.NUM_SI {3} \
+   CONFIG.NUM_SI {6} \
  ] $axi_smc
 
   # Create instance: disp_0, and set properties
-  set disp_0 [ create_bd_cell -type ip -vlnv Ciople:sgm:disp:1.2 disp_0 ]
+  set disp_0 [ create_bd_cell -type ip -vlnv Ciople:sgm:disp:2.1 disp_0 ]
 
   # Create instance: processing_system7_0, and set properties
   set processing_system7_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:processing_system7:5.5 processing_system7_0 ]
@@ -181,7 +178,7 @@ proc create_root_design { parentCell } {
    CONFIG.PCW_ACT_DCI_PERIPHERAL_FREQMHZ {10.158730} \
    CONFIG.PCW_ACT_ENET0_PERIPHERAL_FREQMHZ {125.000000} \
    CONFIG.PCW_ACT_ENET1_PERIPHERAL_FREQMHZ {10.000000} \
-   CONFIG.PCW_ACT_FPGA0_PERIPHERAL_FREQMHZ {250.000000} \
+   CONFIG.PCW_ACT_FPGA0_PERIPHERAL_FREQMHZ {100.000000} \
    CONFIG.PCW_ACT_FPGA1_PERIPHERAL_FREQMHZ {10.000000} \
    CONFIG.PCW_ACT_FPGA2_PERIPHERAL_FREQMHZ {10.000000} \
    CONFIG.PCW_ACT_FPGA3_PERIPHERAL_FREQMHZ {10.000000} \
@@ -204,7 +201,7 @@ proc create_root_design { parentCell } {
    CONFIG.PCW_CAN_PERIPHERAL_DIVISOR0 {1} \
    CONFIG.PCW_CAN_PERIPHERAL_DIVISOR1 {1} \
    CONFIG.PCW_CAN_PERIPHERAL_FREQMHZ {100} \
-   CONFIG.PCW_CLK0_FREQ {250000000} \
+   CONFIG.PCW_CLK0_FREQ {100000000} \
    CONFIG.PCW_CLK1_FREQ {10000000} \
    CONFIG.PCW_CLK2_FREQ {10000000} \
    CONFIG.PCW_CLK3_FREQ {10000000} \
@@ -241,7 +238,7 @@ proc create_root_design { parentCell } {
    CONFIG.PCW_EN_TTC0 {1} \
    CONFIG.PCW_EN_UART1 {1} \
    CONFIG.PCW_EN_USB0 {1} \
-   CONFIG.PCW_FCLK0_PERIPHERAL_DIVISOR0 {2} \
+   CONFIG.PCW_FCLK0_PERIPHERAL_DIVISOR0 {5} \
    CONFIG.PCW_FCLK0_PERIPHERAL_DIVISOR1 {2} \
    CONFIG.PCW_FCLK1_PERIPHERAL_DIVISOR0 {1} \
    CONFIG.PCW_FCLK1_PERIPHERAL_DIVISOR1 {1} \
@@ -251,7 +248,7 @@ proc create_root_design { parentCell } {
    CONFIG.PCW_FCLK3_PERIPHERAL_DIVISOR1 {1} \
    CONFIG.PCW_FCLK_CLK0_BUF {TRUE} \
    CONFIG.PCW_FCLK_CLK1_BUF {FALSE} \
-   CONFIG.PCW_FPGA0_PERIPHERAL_FREQMHZ {250.000000} \
+   CONFIG.PCW_FPGA0_PERIPHERAL_FREQMHZ {100.000000} \
    CONFIG.PCW_FPGA1_PERIPHERAL_FREQMHZ {150.000000} \
    CONFIG.PCW_FPGA2_PERIPHERAL_FREQMHZ {50} \
    CONFIG.PCW_FPGA_FCLK0_ENABLE {1} \
@@ -580,14 +577,14 @@ proc create_root_design { parentCell } {
   # Create instance: ps7_0_axi_periph, and set properties
   set ps7_0_axi_periph [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_interconnect:2.1 ps7_0_axi_periph ]
   set_property -dict [ list \
-   CONFIG.NUM_MI {3} \
+   CONFIG.NUM_MI {4} \
  ] $ps7_0_axi_periph
 
   # Create instance: rst_ps7_0_100M, and set properties
   set rst_ps7_0_100M [ create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 rst_ps7_0_100M ]
 
   # Create instance: sad_cost_0, and set properties
-  set sad_cost_0 [ create_bd_cell -type ip -vlnv Ciople:sgm:sad_cost:1.1 sad_cost_0 ]
+  set sad_cost_0 [ create_bd_cell -type ip -vlnv Ciople:sgm:sad_cost:4.0 sad_cost_0 ]
 
   # Create instance: xlconstant_0, and set properties
   set xlconstant_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_0 ]
@@ -604,43 +601,41 @@ proc create_root_design { parentCell } {
  ] $xlconstant_1
 
   # Create interface connections
-  connect_bd_intf_net -intf_net aggr_0_m_axi_DATA_BUS [get_bd_intf_pins aggr_0/m_axi_DATA_BUS] [get_bd_intf_pins axi_smc/S02_AXI]
   connect_bd_intf_net -intf_net axi_smc_M00_AXI [get_bd_intf_pins axi_smc/M00_AXI] [get_bd_intf_pins processing_system7_0/S_AXI_ACP]
   connect_bd_intf_net -intf_net disp_0_m_axi_DATA_BUS [get_bd_intf_pins axi_smc/S01_AXI] [get_bd_intf_pins disp_0/m_axi_DATA_BUS]
   connect_bd_intf_net -intf_net processing_system7_0_DDR [get_bd_intf_ports DDR] [get_bd_intf_pins processing_system7_0/DDR]
   connect_bd_intf_net -intf_net processing_system7_0_FIXED_IO [get_bd_intf_ports FIXED_IO] [get_bd_intf_pins processing_system7_0/FIXED_IO]
   connect_bd_intf_net -intf_net processing_system7_0_M_AXI_GP0 [get_bd_intf_pins processing_system7_0/M_AXI_GP0] [get_bd_intf_pins ps7_0_axi_periph/S00_AXI]
-  connect_bd_intf_net -intf_net ps7_0_axi_periph_M00_AXI [get_bd_intf_pins ps7_0_axi_periph/M00_AXI] [get_bd_intf_pins sad_cost_0/s_axi_DATA_BUS]
   connect_bd_intf_net -intf_net ps7_0_axi_periph_M01_AXI [get_bd_intf_pins disp_0/s_axi_DATA_BUS] [get_bd_intf_pins ps7_0_axi_periph/M01_AXI]
-  connect_bd_intf_net -intf_net ps7_0_axi_periph_M02_AXI [get_bd_intf_pins aggr_0/s_axi_DATA_BUS] [get_bd_intf_pins ps7_0_axi_periph/M02_AXI]
-  connect_bd_intf_net -intf_net sad_cost_0_m_axi_DATA_BUS [get_bd_intf_pins axi_smc/S00_AXI] [get_bd_intf_pins sad_cost_0/m_axi_DATA_BUS]
+  connect_bd_intf_net -intf_net ps7_0_axi_periph_M02_AXI [get_bd_intf_pins ps7_0_axi_periph/M02_AXI] [get_bd_intf_pins sad_cost_0/s_axi_CTRL_BUS]
+  connect_bd_intf_net -intf_net sad_cost_0_m_axi_DATA_BUS2 [get_bd_intf_pins axi_smc/S02_AXI] [get_bd_intf_pins sad_cost_0/m_axi_DATA_BUS]
 
   # Create port connections
-  connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins aggr_0/ap_clk] [get_bd_pins axi_smc/aclk] [get_bd_pins disp_0/ap_clk] [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK] [get_bd_pins processing_system7_0/S_AXI_ACP_ACLK] [get_bd_pins ps7_0_axi_periph/ACLK] [get_bd_pins ps7_0_axi_periph/M00_ACLK] [get_bd_pins ps7_0_axi_periph/M01_ACLK] [get_bd_pins ps7_0_axi_periph/M02_ACLK] [get_bd_pins ps7_0_axi_periph/S00_ACLK] [get_bd_pins rst_ps7_0_100M/slowest_sync_clk] [get_bd_pins sad_cost_0/ap_clk]
+  connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins axi_smc/aclk] [get_bd_pins disp_0/ap_clk] [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK] [get_bd_pins processing_system7_0/S_AXI_ACP_ACLK] [get_bd_pins ps7_0_axi_periph/ACLK] [get_bd_pins ps7_0_axi_periph/M00_ACLK] [get_bd_pins ps7_0_axi_periph/M01_ACLK] [get_bd_pins ps7_0_axi_periph/M02_ACLK] [get_bd_pins ps7_0_axi_periph/M03_ACLK] [get_bd_pins ps7_0_axi_periph/S00_ACLK] [get_bd_pins rst_ps7_0_100M/slowest_sync_clk] [get_bd_pins sad_cost_0/ap_clk]
   connect_bd_net -net processing_system7_0_FCLK_RESET0_N [get_bd_pins processing_system7_0/FCLK_RESET0_N] [get_bd_pins rst_ps7_0_100M/ext_reset_in]
-  connect_bd_net -net rst_ps7_0_100M_peripheral_aresetn [get_bd_pins aggr_0/ap_rst_n] [get_bd_pins axi_smc/aresetn] [get_bd_pins disp_0/ap_rst_n] [get_bd_pins ps7_0_axi_periph/ARESETN] [get_bd_pins ps7_0_axi_periph/M00_ARESETN] [get_bd_pins ps7_0_axi_periph/M01_ARESETN] [get_bd_pins ps7_0_axi_periph/M02_ARESETN] [get_bd_pins ps7_0_axi_periph/S00_ARESETN] [get_bd_pins rst_ps7_0_100M/peripheral_aresetn] [get_bd_pins sad_cost_0/ap_rst_n]
+  connect_bd_net -net rst_ps7_0_100M_peripheral_aresetn [get_bd_pins axi_smc/aresetn] [get_bd_pins disp_0/ap_rst_n] [get_bd_pins ps7_0_axi_periph/ARESETN] [get_bd_pins ps7_0_axi_periph/M00_ARESETN] [get_bd_pins ps7_0_axi_periph/M01_ARESETN] [get_bd_pins ps7_0_axi_periph/M02_ARESETN] [get_bd_pins ps7_0_axi_periph/M03_ARESETN] [get_bd_pins ps7_0_axi_periph/S00_ARESETN] [get_bd_pins rst_ps7_0_100M/peripheral_aresetn] [get_bd_pins sad_cost_0/ap_rst_n]
   connect_bd_net -net xlconstant_0_dout [get_bd_pins processing_system7_0/S_AXI_ACP_ARUSER] [get_bd_pins processing_system7_0/S_AXI_ACP_AWUSER] [get_bd_pins xlconstant_0/dout]
   connect_bd_net -net xlconstant_1_dout [get_bd_pins processing_system7_0/S_AXI_ACP_ARCACHE] [get_bd_pins processing_system7_0/S_AXI_ACP_AWCACHE] [get_bd_pins xlconstant_1/dout]
 
   # Create address segments
-  create_bd_addr_seg -range 0x20000000 -offset 0x00000000 [get_bd_addr_spaces aggr_0/Data_m_axi_DATA_BUS] [get_bd_addr_segs processing_system7_0/S_AXI_ACP/ACP_DDR_LOWOCM] SEG_processing_system7_0_ACP_DDR_LOWOCM
-  create_bd_addr_seg -range 0x00040000 -offset 0xFFFC0000 [get_bd_addr_spaces aggr_0/Data_m_axi_DATA_BUS] [get_bd_addr_segs processing_system7_0/S_AXI_ACP/ACP_HIGH_OCM] SEG_processing_system7_0_ACP_HIGH_OCM
-  create_bd_addr_seg -range 0x00400000 -offset 0xE0000000 [get_bd_addr_spaces aggr_0/Data_m_axi_DATA_BUS] [get_bd_addr_segs processing_system7_0/S_AXI_ACP/ACP_IOP] SEG_processing_system7_0_ACP_IOP
-  create_bd_addr_seg -range 0x40000000 -offset 0x40000000 [get_bd_addr_spaces aggr_0/Data_m_axi_DATA_BUS] [get_bd_addr_segs processing_system7_0/S_AXI_ACP/ACP_M_AXI_GP0] SEG_processing_system7_0_ACP_M_AXI_GP0
-  create_bd_addr_seg -range 0x01000000 -offset 0xFC000000 [get_bd_addr_spaces aggr_0/Data_m_axi_DATA_BUS] [get_bd_addr_segs processing_system7_0/S_AXI_ACP/ACP_QSPI_LINEAR] SEG_processing_system7_0_ACP_QSPI_LINEAR
   create_bd_addr_seg -range 0x20000000 -offset 0x00000000 [get_bd_addr_spaces disp_0/Data_m_axi_DATA_BUS] [get_bd_addr_segs processing_system7_0/S_AXI_ACP/ACP_DDR_LOWOCM] SEG_processing_system7_0_ACP_DDR_LOWOCM
   create_bd_addr_seg -range 0x00040000 -offset 0xFFFC0000 [get_bd_addr_spaces disp_0/Data_m_axi_DATA_BUS] [get_bd_addr_segs processing_system7_0/S_AXI_ACP/ACP_HIGH_OCM] SEG_processing_system7_0_ACP_HIGH_OCM
   create_bd_addr_seg -range 0x00400000 -offset 0xE0000000 [get_bd_addr_spaces disp_0/Data_m_axi_DATA_BUS] [get_bd_addr_segs processing_system7_0/S_AXI_ACP/ACP_IOP] SEG_processing_system7_0_ACP_IOP
   create_bd_addr_seg -range 0x40000000 -offset 0x40000000 [get_bd_addr_spaces disp_0/Data_m_axi_DATA_BUS] [get_bd_addr_segs processing_system7_0/S_AXI_ACP/ACP_M_AXI_GP0] SEG_processing_system7_0_ACP_M_AXI_GP0
   create_bd_addr_seg -range 0x01000000 -offset 0xFC000000 [get_bd_addr_spaces disp_0/Data_m_axi_DATA_BUS] [get_bd_addr_segs processing_system7_0/S_AXI_ACP/ACP_QSPI_LINEAR] SEG_processing_system7_0_ACP_QSPI_LINEAR
-  create_bd_addr_seg -range 0x00010000 -offset 0x43C20000 [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs aggr_0/s_axi_DATA_BUS/Reg] SEG_aggr_0_Reg
   create_bd_addr_seg -range 0x00010000 -offset 0x43C10000 [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs disp_0/s_axi_DATA_BUS/Reg] SEG_disp_0_Reg
-  create_bd_addr_seg -range 0x00010000 -offset 0x43C00000 [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs sad_cost_0/s_axi_DATA_BUS/Reg] SEG_sad_cost_0_Reg
+  create_bd_addr_seg -range 0x00010000 -offset 0x43C00000 [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs sad_cost_0/s_axi_CTRL_BUS/Reg] SEG_sad_cost_0_Reg
   create_bd_addr_seg -range 0x20000000 -offset 0x00000000 [get_bd_addr_spaces sad_cost_0/Data_m_axi_DATA_BUS] [get_bd_addr_segs processing_system7_0/S_AXI_ACP/ACP_DDR_LOWOCM] SEG_processing_system7_0_ACP_DDR_LOWOCM
   create_bd_addr_seg -range 0x00040000 -offset 0xFFFC0000 [get_bd_addr_spaces sad_cost_0/Data_m_axi_DATA_BUS] [get_bd_addr_segs processing_system7_0/S_AXI_ACP/ACP_HIGH_OCM] SEG_processing_system7_0_ACP_HIGH_OCM
-  create_bd_addr_seg -range 0x00400000 -offset 0xE0000000 [get_bd_addr_spaces sad_cost_0/Data_m_axi_DATA_BUS] [get_bd_addr_segs processing_system7_0/S_AXI_ACP/ACP_IOP] SEG_processing_system7_0_ACP_IOP
-  create_bd_addr_seg -range 0x40000000 -offset 0x40000000 [get_bd_addr_spaces sad_cost_0/Data_m_axi_DATA_BUS] [get_bd_addr_segs processing_system7_0/S_AXI_ACP/ACP_M_AXI_GP0] SEG_processing_system7_0_ACP_M_AXI_GP0
   create_bd_addr_seg -range 0x01000000 -offset 0xFC000000 [get_bd_addr_spaces sad_cost_0/Data_m_axi_DATA_BUS] [get_bd_addr_segs processing_system7_0/S_AXI_ACP/ACP_QSPI_LINEAR] SEG_processing_system7_0_ACP_QSPI_LINEAR
+
+  # Exclude Address Segments
+  create_bd_addr_seg -range 0x00400000 -offset 0xE0000000 [get_bd_addr_spaces sad_cost_0/Data_m_axi_DATA_BUS] [get_bd_addr_segs processing_system7_0/S_AXI_ACP/ACP_IOP] SEG_processing_system7_0_ACP_IOP
+  exclude_bd_addr_seg [get_bd_addr_segs sad_cost_0/Data_m_axi_DATA_BUS/SEG_processing_system7_0_ACP_IOP]
+
+  create_bd_addr_seg -range 0x40000000 -offset 0x40000000 [get_bd_addr_spaces sad_cost_0/Data_m_axi_DATA_BUS] [get_bd_addr_segs processing_system7_0/S_AXI_ACP/ACP_M_AXI_GP0] SEG_processing_system7_0_ACP_M_AXI_GP0
+  exclude_bd_addr_seg [get_bd_addr_segs sad_cost_0/Data_m_axi_DATA_BUS/SEG_processing_system7_0_ACP_M_AXI_GP0]
+
 
 
   # Restore current instance

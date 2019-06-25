@@ -20,14 +20,14 @@ namespace comms
         uint32_t remSize = size;
 
         std::cout << "Sending image command..." << std::endl;
-        SendCommand(Command::CmdSendImg);
+        SendCommand(Command::CmdReqSendImg);
 
         std::cout << "Sending image size..." << std::endl;
         m_socket.Send((const char*) dims, sizeof(dims));
 
         Command recv_cmd;
         m_socket.Recv((char*) &recv_cmd, sizeof(recv_cmd));
-        if (recv_cmd != Command::CmdReadyToRecv)
+        if (recv_cmd != Command::CmdRespRecvImgSize)
             throw ImageException("Error occurred: cannot send image fragments");
 
         for (uint32_t i = 0; i < size; i += m_fragSize)
@@ -38,7 +38,7 @@ namespace comms
             //std::cout << "Sending image fragment " << i << " of size "<< sendSize << "..." << std::endl;
             m_socket.Send(buf, sendSize);
             m_socket.Recv((char*)& recv_cmd, sizeof(recv_cmd));
-            if (recv_cmd != Command::CmdRecvFrag)
+            if (recv_cmd != Command::CmdRespRecvFrag)
                 throw ImageException("Did not receive acknowledgment");
         }
 
@@ -46,21 +46,20 @@ namespace comms
 
         m_socket.Recv((char*) &recv_cmd, sizeof(recv_cmd));
 
-        if (recv_cmd != Command::CmdRecvImg)
+        if (recv_cmd != Command::CmdRespRecvImg)
             throw ImageException("Did not receive acknowledgment command");
 
         std::cout << "Image was successfully transmitted" << std::endl;
     }
 
-    void ImageTransmitter::ComputeDepthMap(const int32_t P1, const int32_t P2, const int32_t MaxDisp)
+    void ImageTransmitter::ComputeDepthMap(const int16_t P1, const int16_t P2, const int16_t MaxDisp)
     {
         // send compute depth map command
-        SendCommand(comms::Command::CmdCompDepthMap);
+        SendCommand(comms::Command::CmdReqCompDepthMapHw);
 
         // send parameters
-        SendInt(P1);
-        SendInt(P2);
-        SendInt(MaxDisp);
+        SendInt16(P1);
+        SendInt16(P2);
     }
 
     cv::Mat ImageTransmitter::ReceiveImage(uint32_t H, uint32_t W)
@@ -69,7 +68,7 @@ namespace comms
 
         std::cout << "Waiting to receive image command..." << std::endl;
         m_socket.Recv((char*)&cmd, sizeof(cmd));
-        if (cmd != Command::CmdSendImg)
+        if (cmd != Command::CmdReqSendImg)
             throw ImageException("Did not receive image command");
 
         uint32_t dims[2] = { H, W };
@@ -80,6 +79,8 @@ namespace comms
         Mat img = Mat::zeros(dims[0], dims[1], CV_8UC1);
 
         auto size = dims[0] * dims[1];
+
+        //SendCommand(comms::Command::CmdRespRecvImgSize);
 
         std::cout << "Waiting for image of size " << size << std::endl;
         uint32_t remSize = size;
@@ -92,14 +93,21 @@ namespace comms
 
             m_socket.Recv(buf, (int)recvSize);
 
-            SendCommand(comms::Command::CmdRecvFrag);
+            SendCommand(comms::Command::CmdRespRecvFrag);
         }
 
-        SendCommand(comms::Command::CmdRecvImg);
+        SendCommand(comms::Command::CmdRespRecvImg);
 
-        SendCommand(comms::Command::CmdStop);
+        ReceiveTimeStats();
+
+        SendCommand(comms::Command::CmdReqStop);
 
         return img;
+    }
+
+    Stats ImageTransmitter::GetTimeStats()
+    {
+        return m_timeStats;
     }
 
     void ImageTransmitter::SendCommand(const Command& Cmd)
@@ -107,8 +115,13 @@ namespace comms
         m_socket.Send((const char*)& Cmd, sizeof(Cmd));
     }
 
-    void ImageTransmitter::SendInt(const int32_t X)
+    void ImageTransmitter::SendInt16(const int16_t X)
     {
-        m_socket.Send((const char*)& X, sizeof(int32_t));
+        m_socket.Send((const char*)& X, sizeof(int16_t));
+    }
+
+    void ImageTransmitter::ReceiveTimeStats()
+    {
+        m_socket.Recv((char*)&m_timeStats, sizeof(Stats));
     }
 }

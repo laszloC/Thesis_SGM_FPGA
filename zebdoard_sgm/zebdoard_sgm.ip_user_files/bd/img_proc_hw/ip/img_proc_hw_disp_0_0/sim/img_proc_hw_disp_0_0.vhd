@@ -46,8 +46,8 @@
 -- 
 -- DO NOT MODIFY THIS FILE.
 
--- IP VLNV: Ciople:sgm:disp:1.1
--- IP Revision: 1906121102
+-- IP VLNV: Ciople:sgm:disp:2.1
+-- IP Revision: 1906221732
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -55,7 +55,7 @@ USE ieee.numeric_std.ALL;
 
 ENTITY img_proc_hw_disp_0_0 IS
   PORT (
-    s_axi_DATA_BUS_AWADDR : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+    s_axi_DATA_BUS_AWADDR : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
     s_axi_DATA_BUS_AWVALID : IN STD_LOGIC;
     s_axi_DATA_BUS_AWREADY : OUT STD_LOGIC;
     s_axi_DATA_BUS_WDATA : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -65,7 +65,7 @@ ENTITY img_proc_hw_disp_0_0 IS
     s_axi_DATA_BUS_BRESP : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
     s_axi_DATA_BUS_BVALID : OUT STD_LOGIC;
     s_axi_DATA_BUS_BREADY : IN STD_LOGIC;
-    s_axi_DATA_BUS_ARADDR : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+    s_axi_DATA_BUS_ARADDR : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
     s_axi_DATA_BUS_ARVALID : IN STD_LOGIC;
     s_axi_DATA_BUS_ARREADY : OUT STD_LOGIC;
     s_axi_DATA_BUS_RDATA : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -109,9 +109,7 @@ ENTITY img_proc_hw_disp_0_0 IS
     m_axi_DATA_BUS_RRESP : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
     m_axi_DATA_BUS_RLAST : IN STD_LOGIC;
     m_axi_DATA_BUS_RVALID : IN STD_LOGIC;
-    m_axi_DATA_BUS_RREADY : OUT STD_LOGIC;
-    cost_in : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-    disp_out : IN STD_LOGIC_VECTOR(31 DOWNTO 0)
+    m_axi_DATA_BUS_RREADY : OUT STD_LOGIC
   );
 END img_proc_hw_disp_0_0;
 
@@ -135,7 +133,7 @@ ARCHITECTURE img_proc_hw_disp_0_0_arch OF img_proc_hw_disp_0_0 IS
       C_M_AXI_DATA_BUS_CACHE_VALUE : INTEGER
     );
     PORT (
-      s_axi_DATA_BUS_AWADDR : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+      s_axi_DATA_BUS_AWADDR : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
       s_axi_DATA_BUS_AWVALID : IN STD_LOGIC;
       s_axi_DATA_BUS_AWREADY : OUT STD_LOGIC;
       s_axi_DATA_BUS_WDATA : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -145,7 +143,7 @@ ARCHITECTURE img_proc_hw_disp_0_0_arch OF img_proc_hw_disp_0_0 IS
       s_axi_DATA_BUS_BRESP : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
       s_axi_DATA_BUS_BVALID : OUT STD_LOGIC;
       s_axi_DATA_BUS_BREADY : IN STD_LOGIC;
-      s_axi_DATA_BUS_ARADDR : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+      s_axi_DATA_BUS_ARADDR : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
       s_axi_DATA_BUS_ARVALID : IN STD_LOGIC;
       s_axi_DATA_BUS_ARREADY : OUT STD_LOGIC;
       s_axi_DATA_BUS_RDATA : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -199,19 +197,13 @@ ARCHITECTURE img_proc_hw_disp_0_0_arch OF img_proc_hw_disp_0_0 IS
       m_axi_DATA_BUS_RLAST : IN STD_LOGIC;
       m_axi_DATA_BUS_RUSER : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
       m_axi_DATA_BUS_RVALID : IN STD_LOGIC;
-      m_axi_DATA_BUS_RREADY : OUT STD_LOGIC;
-      cost_in : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-      disp_out : IN STD_LOGIC_VECTOR(31 DOWNTO 0)
+      m_axi_DATA_BUS_RREADY : OUT STD_LOGIC
     );
   END COMPONENT disp;
   ATTRIBUTE IP_DEFINITION_SOURCE : STRING;
   ATTRIBUTE IP_DEFINITION_SOURCE OF img_proc_hw_disp_0_0_arch: ARCHITECTURE IS "HLS";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
-  ATTRIBUTE X_INTERFACE_PARAMETER OF disp_out: SIGNAL IS "XIL_INTERFACENAME disp_out, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 32} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}";
-  ATTRIBUTE X_INTERFACE_INFO OF disp_out: SIGNAL IS "xilinx.com:signal:data:1.0 disp_out DATA";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF cost_in: SIGNAL IS "XIL_INTERFACENAME cost_in, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 32} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}";
-  ATTRIBUTE X_INTERFACE_INFO OF cost_in: SIGNAL IS "xilinx.com:signal:data:1.0 cost_in DATA";
   ATTRIBUTE X_INTERFACE_INFO OF m_axi_DATA_BUS_RREADY: SIGNAL IS "xilinx.com:interface:aximm:1.0 m_axi_DATA_BUS RREADY";
   ATTRIBUTE X_INTERFACE_INFO OF m_axi_DATA_BUS_RVALID: SIGNAL IS "xilinx.com:interface:aximm:1.0 m_axi_DATA_BUS RVALID";
   ATTRIBUTE X_INTERFACE_INFO OF m_axi_DATA_BUS_RLAST: SIGNAL IS "xilinx.com:interface:aximm:1.0 m_axi_DATA_BUS RLAST";
@@ -272,13 +264,13 @@ ARCHITECTURE img_proc_hw_disp_0_0_arch OF img_proc_hw_disp_0_0 IS
   ATTRIBUTE X_INTERFACE_INFO OF s_axi_DATA_BUS_WDATA: SIGNAL IS "xilinx.com:interface:aximm:1.0 s_axi_DATA_BUS WDATA";
   ATTRIBUTE X_INTERFACE_INFO OF s_axi_DATA_BUS_AWREADY: SIGNAL IS "xilinx.com:interface:aximm:1.0 s_axi_DATA_BUS AWREADY";
   ATTRIBUTE X_INTERFACE_INFO OF s_axi_DATA_BUS_AWVALID: SIGNAL IS "xilinx.com:interface:aximm:1.0 s_axi_DATA_BUS AWVALID";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF s_axi_DATA_BUS_AWADDR: SIGNAL IS "XIL_INTERFACENAME s_axi_DATA_BUS, ADDR_WIDTH 4, DATA_WIDTH 32, PROTOCOL AXI4LITE, READ_WRITE_MODE READ_WRITE, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}, FREQ_HZ 100000000," & 
+  ATTRIBUTE X_INTERFACE_PARAMETER OF s_axi_DATA_BUS_AWADDR: SIGNAL IS "XIL_INTERFACENAME s_axi_DATA_BUS, ADDR_WIDTH 5, DATA_WIDTH 32, PROTOCOL AXI4LITE, READ_WRITE_MODE READ_WRITE, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}, FREQ_HZ 100000000," & 
 " ID_WIDTH 0, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 0, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 1, NUM_WRITE_OUTSTANDING 1, MAX_BURST_LENGTH 1, PHASE 0.000, CLK_DOMAIN img_proc_hw_processing_system7_0_0_FCLK_CLK0, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF s_axi_DATA_BUS_AWADDR: SIGNAL IS "xilinx.com:interface:aximm:1.0 s_axi_DATA_BUS AWADDR";
 BEGIN
   U0 : disp
     GENERIC MAP (
-      C_S_AXI_DATA_BUS_ADDR_WIDTH => 4,
+      C_S_AXI_DATA_BUS_ADDR_WIDTH => 5,
       C_S_AXI_DATA_BUS_DATA_WIDTH => 32,
       C_M_AXI_DATA_BUS_ID_WIDTH => 1,
       C_M_AXI_DATA_BUS_ADDR_WIDTH => 32,
@@ -351,8 +343,6 @@ BEGIN
       m_axi_DATA_BUS_RLAST => m_axi_DATA_BUS_RLAST,
       m_axi_DATA_BUS_RUSER => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 1)),
       m_axi_DATA_BUS_RVALID => m_axi_DATA_BUS_RVALID,
-      m_axi_DATA_BUS_RREADY => m_axi_DATA_BUS_RREADY,
-      cost_in => cost_in,
-      disp_out => disp_out
+      m_axi_DATA_BUS_RREADY => m_axi_DATA_BUS_RREADY
     );
 END img_proc_hw_disp_0_0_arch;

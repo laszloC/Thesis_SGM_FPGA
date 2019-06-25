@@ -16,7 +16,7 @@ int main(int arc, char** argv)
 
 	Mat cost_out(IMG_SIZE, MAX_DISP, CV_32SC1);
 
-	aggr((int32_t*)cost_in.data, 15, 40, (int32_t*)cost_out.data);
+	aggr((cost_t*)cost_in.data, 15, 40, (cost_t*)cost_out.data);
 
 	std::cout << "Aggregated cost" << std::endl;
 

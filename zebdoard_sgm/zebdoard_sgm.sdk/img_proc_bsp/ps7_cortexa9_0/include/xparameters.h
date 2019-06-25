@@ -27,25 +27,6 @@
 
 /******************************************************************/
 
-/* Definitions for driver AGGR */
-#define XPAR_XAGGR_NUM_INSTANCES 1
-
-/* Definitions for peripheral AGGR_0 */
-#define XPAR_AGGR_0_DEVICE_ID 0
-#define XPAR_AGGR_0_S_AXI_DATA_BUS_BASEADDR 0x43C20000
-#define XPAR_AGGR_0_S_AXI_DATA_BUS_HIGHADDR 0x43C2FFFF
-
-
-/******************************************************************/
-
-/* Canonical definitions for peripheral AGGR_0 */
-#define XPAR_XAGGR_0_DEVICE_ID XPAR_AGGR_0_DEVICE_ID
-#define XPAR_XAGGR_0_S_AXI_DATA_BUS_BASEADDR 0x43C20000
-#define XPAR_XAGGR_0_S_AXI_DATA_BUS_HIGHADDR 0x43C2FFFF
-
-
-/******************************************************************/
-
 
 /* Definitions for peripheral PS7_DDR_0 */
 #define XPAR_PS7_DDR_0_S_AXI_BASEADDR 0x00100000
@@ -303,16 +284,16 @@
 
 /* Definitions for peripheral SAD_COST_0 */
 #define XPAR_SAD_COST_0_DEVICE_ID 0
-#define XPAR_SAD_COST_0_S_AXI_DATA_BUS_BASEADDR 0x43C00000
-#define XPAR_SAD_COST_0_S_AXI_DATA_BUS_HIGHADDR 0x43C0FFFF
+#define XPAR_SAD_COST_0_S_AXI_CTRL_BUS_BASEADDR 0x43C00000
+#define XPAR_SAD_COST_0_S_AXI_CTRL_BUS_HIGHADDR 0x43C0FFFF
 
 
 /******************************************************************/
 
 /* Canonical definitions for peripheral SAD_COST_0 */
 #define XPAR_XSAD_COST_0_DEVICE_ID XPAR_SAD_COST_0_DEVICE_ID
-#define XPAR_XSAD_COST_0_S_AXI_DATA_BUS_BASEADDR 0x43C00000
-#define XPAR_XSAD_COST_0_S_AXI_DATA_BUS_HIGHADDR 0x43C0FFFF
+#define XPAR_XSAD_COST_0_S_AXI_CTRL_BUS_BASEADDR 0x43C00000
+#define XPAR_XSAD_COST_0_S_AXI_CTRL_BUS_HIGHADDR 0x43C0FFFF
 
 
 /******************************************************************/
