@@ -122,12 +122,11 @@ namespace PerformanceAnalyzer
                 var swArgs = CreateSwProcessArgs();
                 var swPath = GetSwAppPath();
 
-                var swProcessTimer = new ProcessTimer(swPath, swArgs, false);
-                var ellapsedMs = swProcessTimer.RunProcess();
+                var swProcessTimer = new ProcessRunner(swPath, swArgs, false, GetSwTimePath());
 
                 // set time
-                results.ResultSWTime = TimeSpan.FromMilliseconds(ellapsedMs);
-                SWTime.Text = results.ResultSWTime.ToString("g");
+                results.ResultSWTime = swProcessTimer.RunProcess();
+                SWTime.Text = results.ResultSWTime.TotalTime.ToString("g");
 
                 // set output image
                 var swImage = new BitmapImage(new Uri(results.ResultSWDepthMapPath));
@@ -164,12 +163,11 @@ namespace PerformanceAnalyzer
                 var hwArgs = CreateHwProcessArgs();
                 var hwPath = GetHwAppPath();
 
-                var hwProcessTimer = new ProcessTimer(hwPath, hwArgs, false);
-                var ellapsedMs = hwProcessTimer.RunProcess();
+                var hwProcessRunner = new ProcessRunner(hwPath, hwArgs, false, GetHwTimePath());
 
                 // set time
-                results.ResultHWTime = TimeSpan.FromMilliseconds(ellapsedMs);
-                HWTime.Text = results.ResultHWTime.ToString("g");
+                results.ResultHWTime = hwProcessRunner.RunProcess();
+                HWTime.Text = results.ResultHWTime.TotalTime.ToString("g");
 
                 // set output image
                 var hwImage = new BitmapImage(new Uri(results.ResultHWDepthMapPath));
@@ -188,7 +186,7 @@ namespace PerformanceAnalyzer
                 HWBadMatches.Text = results.ResultHWBadMatches.ToString("F3");
 
                 // compute speedup
-                results.ResultHWSpeedup = results.ResultSWTime.TotalMilliseconds / results.ResultHWTime.TotalMilliseconds;
+                results.ResultHWSpeedup = results.ResultSWTime.TotalTime.TotalMilliseconds / results.ResultHWTime.TotalTime.TotalMilliseconds;
                 HWSpeedup.Text = results.ResultHWSpeedup.ToString("F3");
 
                 HwResultsGrid.Visibility = Visibility.Visible;
@@ -291,6 +289,7 @@ namespace PerformanceAnalyzer
             return "\"" + results.InputLeftPath + "\" " +
                 "\"" + results.InputRightPath + "\" " +
                 "\"" + results.ResultSWDepthMapPath + "\" " +
+                "\"" + GetSwTimePath() + "\" " +
                 "sad " +
                 results.P1.ToString() + " " +
                 results.P2.ToString() + " " +
@@ -302,6 +301,7 @@ namespace PerformanceAnalyzer
             return "\"" + results.InputLeftPath + "\" " +
                 "\"" + results.InputRightPath + "\" " +
                 "\"" + results.ResultHWDepthMapPath + "\" " +
+                "\"" + GetHwTimePath() + "\" " +
                 "sad " +
                 results.P1.ToString() + " " +
                 results.P2.ToString() + " " +
@@ -316,6 +316,16 @@ namespace PerformanceAnalyzer
         private string GetHwAppPath()
         {
             return ConfigurationManager.AppSettings["HwAppPath"];
+        }
+
+        private string GetSwTimePath()
+        {
+            return System.IO.Path.Combine(saveFolder, "swtime.json");
+        }
+
+        private string GetHwTimePath()
+        {
+            return System.IO.Path.Combine(saveFolder, "hwtime.json");
         }
     }
 }

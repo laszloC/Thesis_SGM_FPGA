@@ -72,7 +72,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ProcessTimer.cs" />
+    <Compile Include="SgmTime.cs" />
+    <Compile Include="ProcessRunner.cs" />
     <Compile Include="ResultAnalyzer.cs" />
     <Compile Include="RunResults.cs" />
     <Compile Include="WaitWindow.xaml.cs">

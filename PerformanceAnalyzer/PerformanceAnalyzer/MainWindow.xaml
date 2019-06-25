@@ -32,7 +32,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Content="Max Disparity:" Grid.Column="0" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
-                    <TextBox x:Name="MaxDisp" IsReadOnly="True" Text="30" PreviewTextInput="IntPreviewTextInput" Grid.Column="1" VerticalContentAlignment="Center" MaxLength="3"/>
+                    <TextBox x:Name="MaxDisp" IsReadOnly="True" Text="32" PreviewTextInput="IntPreviewTextInput" Grid.Column="1" VerticalContentAlignment="Center" MaxLength="3"/>
                 </Grid>
             </StackPanel>
 

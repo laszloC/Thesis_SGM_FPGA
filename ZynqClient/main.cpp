@@ -13,10 +13,10 @@ void WriteTimeStats(const std::string& FileName, const Stats& TimeStats)
     std::stringstream ssTime;
 
     ssTime << "{" << std::endl
-        << "\t\"cost_time\": " << TimeStats.CostTime << std::endl
-        << "\t\"aggr_time\": " << TimeStats.AggrTime << std::endl
-        << "\t\"disp_time\": " << TimeStats.DispTime << std::endl
-        << "\t\"total_time\": " << TimeStats.TotalTime << std::endl
+        << "\t\"cost_time\": " << TimeStats.CostTime << "," << std::endl
+        << "\t\"aggr_time\": " << TimeStats.AggrTime << "," << std::endl
+        << "\t\"disp_time\": " << TimeStats.DispTime << "," << std::endl
+        << "\t\"total_time\": " << TimeStats.TotalTime << "," << std::endl
         << "}" << std::endl;
 
     if (std::ofstream outFile{ FileName })

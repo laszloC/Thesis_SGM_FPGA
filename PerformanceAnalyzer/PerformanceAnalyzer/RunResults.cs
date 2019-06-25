@@ -20,13 +20,13 @@ namespace PerformanceAnalyzer
 
         public int P2 { get; set; }
 
-        public TimeSpan ResultSWTime { get; set; }
+        public SgmTime ResultSWTime { get; set; }
 
         public double ResultSWRms { get; set; }
 
         public double ResultSWBadMatches { get; set; }
 
-        public TimeSpan ResultHWTime { get; set; }
+        public SgmTime ResultHWTime { get; set; }
 
         public double ResultHWRms { get; set; }
 
