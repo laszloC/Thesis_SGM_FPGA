@@ -39,11 +39,12 @@ int main(int argc, char** argv)
     int iP1 = 6;
     int iP2 = 7;
     int iMaxDisp = 8;
+    int iHwAccel = 9;
 
-    if (argc != 9)
+    if (argc != 10)
     {
         std::cerr << "Usage:" << std::endl
-            << argv[0] << " <left_img_path> <right_img_path> <depth_map_path> <time_res_path> <cost_fn> <p1> <p2> <max_disp>" << std::endl;
+            << argv[0] << " <left_img_path> <right_img_path> <depth_map_path> <time_res_path> <cost_fn> <p1> <p2> <max_disp> <hw_accel>" << std::endl;
         return -1;
     }
 
@@ -58,6 +59,7 @@ int main(int argc, char** argv)
         auto p1 = (int16_t)std::atoi(argv[iP1]);
         auto p2 = (int16_t)::atoi(argv[iP2]);
         auto maxDisp = (int16_t)std::atoi(argv[iMaxDisp]);
+        auto hwAccel = (std::atoi(argv[iHwAccel]) != 0);
 
         std::cout << "Running SGM with parameters: " << std::endl
             << "\tLeft image: " << argv[iLeftImg] << std::endl
@@ -67,15 +69,17 @@ int main(int argc, char** argv)
             << "\tCost function: " << argv[iCostFn] << std::endl
             << "\tP1: " << argv[iP1] << std::endl
             << "\tP2: " << argv[iP2] << std::endl
-            << "\tMax Disparity: " << argv[iMaxDisp] << std::endl;
+            << "\tMax Disparity: " << argv[iMaxDisp] 
+            << "\tAccelerated" << argv[iHwAccel]
+            << std::endl;
 
         // send images
         comms::ImageTransmitter transmitter;
         transmitter.SendImage(leftImg);
         transmitter.SendImage(rightImg);
 
-        // compute depth map on hw
-        transmitter.ComputeDepthMap(p1, p2, maxDisp);
+        // compute depth map
+        transmitter.ComputeDepthMap(p1, p2, maxDisp, hwAccel);
 
         // get result
         Mat depthMap = transmitter.ReceiveImage(leftImg.rows, leftImg.cols);

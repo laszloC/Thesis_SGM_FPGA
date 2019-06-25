@@ -52,10 +52,13 @@ namespace comms
         std::cout << "Image was successfully transmitted" << std::endl;
     }
 
-    void ImageTransmitter::ComputeDepthMap(const int16_t P1, const int16_t P2, const int16_t MaxDisp)
+    void ImageTransmitter::ComputeDepthMap(const int16_t P1, const int16_t P2, const int16_t MaxDisp, const bool HwAccelerated)
     {
         // send compute depth map command
-        SendCommand(comms::Command::CmdReqCompDepthMapHw);
+        if (HwAccelerated) 
+            SendCommand(comms::Command::CmdReqCompDepthMapHw);
+        else
+            SendCommand(comms::Command::CmdReqCompDepthMapSw);
 
         // send parameters
         SendInt16(P1);

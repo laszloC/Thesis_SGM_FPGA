@@ -30,8 +30,7 @@ void sad_cost(img_t *rows_left, img_t *rows_right, cost_t *cost_out)
 
 void compute_cost()
 {
-	cj_loop: for (index_t cj = 0; cj < IMG_COLS; cj++)
-	{
+	cj_loop: for (index_t cj = 0; cj < IMG_COLS; cj++) {
 		cost[cj] = sad_block_cost(cj);
 	}
 }

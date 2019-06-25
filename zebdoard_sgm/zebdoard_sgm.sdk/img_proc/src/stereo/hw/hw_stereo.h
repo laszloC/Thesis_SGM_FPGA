@@ -11,10 +11,10 @@
 #include "../../common/common.h"
 #include "../../common/sgm_types.h"
 
-status_t init_stereo();
+status_t init_hw_stereo();
 
 status_t compute_disparity_hw(img_t *left, img_t *right, img_t *disp, cost_t p1, cost_t p2, stats_t *time_stats);
 
-status_t uninit_stereo();
+status_t uninit_hw_stereo();
 
 #endif /* SRC_STEREO_HW_STEREO_H_ */

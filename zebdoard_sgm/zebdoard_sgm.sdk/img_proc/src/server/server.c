@@ -14,7 +14,7 @@
 #include "server_internal.h"
 
 #include "../stereo/hw/hw_stereo.h"
-//#include "../stereo/sw/sw_stereo.h"
+#include "../stereo/sw/sw_stereo.h"
 #include "../common/common.h"
 #include "../common/constants.h"
 
@@ -39,7 +39,7 @@ status_t server_init()
     g_img_r = NULL;
     g_img_r_recv = 0;
 
-    if (init_stereo() != SRV_STATUS_SUCCESS) {
+    if (init_hw_stereo() != SRV_STATUS_SUCCESS) {
         status = SRV_STATUS_INIT_FAILED;
         goto cleanup;
     }
@@ -220,11 +220,11 @@ status_t compute_and_send_depth_map(int sd, int accelerated)
             goto cleanup;
         }
     } else { // compute in sw
-//        if (status = compute_disparity_sw(g_img_l, g_img_r, depth_map, p1, p2) != SRV_STATUS_SUCCES)
-//        {
-//            status = SRV_STATUS_IMG_PROC_FAILED;
-//            goto cleanup;
-//        }
+        if (compute_disparity_sw(g_img_l, g_img_r, depth_map, p1, p2, &time_stats) != SRV_STATUS_SUCCESS)
+        {
+            status = SRV_STATUS_IMG_PROC_FAILED;
+            goto cleanup;
+        }
     }
 
     scale(depth_map, dm_bytes, 0, MAX_DISP - 1, 0, 255);

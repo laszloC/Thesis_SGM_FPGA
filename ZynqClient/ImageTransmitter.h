@@ -23,7 +23,7 @@ public:
 
     void SendImage(const cv::Mat& Img);
 
-    void ComputeDepthMap(const int16_t P1, const int16_t P2, const int16_t MaxDisp);
+    void ComputeDepthMap(const int16_t P1, const int16_t P2, const int16_t MaxDisp, const bool HwAccelerated);
 
     cv::Mat ReceiveImage(uint32_t H, uint32_t W);
 

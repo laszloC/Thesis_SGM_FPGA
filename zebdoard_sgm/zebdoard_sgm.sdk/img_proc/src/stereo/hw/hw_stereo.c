@@ -1,8 +1,7 @@
-#include <stdlib.h>
-
 #include "hw_stereo.h"
 #include "hw_stereo_internal.h"
 
+#include <stdlib.h>
 #include "xparameters.h"
 #include "../../common/common.h"
 #include "../../common/constants.h"
@@ -12,7 +11,7 @@ XSad_cost	g_sad_cost_hw;
 //XAggr		g_aggr_hw;
 XDisp		g_disp_hw;
 
-status_t init_stereo()
+status_t init_hw_stereo()
 {
 	status_t status = 0;
 
@@ -62,14 +61,14 @@ status_t compute_disparity_hw(img_t *left, img_t *right, img_t *disp, cost_t p1,
     // compute sad cost
     xil_printf("Will compute sad cost\r\n");
     XTime_GetTime(&t_start);
-    compute_sad_cost(left, right, cost_matrix);
+    compute_sad_cost_hw(left, right, cost_matrix);
     XTime_GetTime(&t_end);
     time_stats->cost_time = (t_end - t_start) / (COUNTS_PER_SECOND / 1000000);
 
     // aggregate cost
 //    xil_printf("Will aggregate cost\r\n");
     XTime_GetTime(&t_start);
-//    compute_aggr(cost_matrix, p1, p2, aggr_matrix);
+//    compute_aggr_hw(cost_matrix, p1, p2, aggr_matrix);
     XTime_GetTime(&t_end);
     time_stats->aggr_time = (t_end - t_start) / (COUNTS_PER_SECOND / 1000000);
 
@@ -77,7 +76,7 @@ status_t compute_disparity_hw(img_t *left, img_t *right, img_t *disp, cost_t p1,
     xil_printf("Will compute disparity map\r\n");
     XTime_GetTime(&t_start);
 //    compute_disp(aggr_matrix, disp);
-    compute_disp(cost_matrix, disp);
+    compute_disp_hw(cost_matrix, disp);
     XTime_GetTime(&t_end);
     time_stats->disp_time = (t_end - t_start) / (COUNTS_PER_SECOND / 1000000);
 
@@ -97,7 +96,7 @@ cleanup:
     return status;
 }
 
-status_t uninit_stereo()
+status_t uninit_hw_stereo()
 {
 	return 0;
 }
@@ -162,7 +161,7 @@ status_t init_disp(XDisp *instance)
 	return status;
 }
 
-void compute_sad_cost(img_t *left, img_t *right, cost_t *cost)
+void compute_sad_cost_hw(img_t *left, img_t *right, cost_t *cost)
 {
 	img_t rows_l[BLOCK_SIZE];
 	img_t rows_r[BLOCK_SIZE];
@@ -210,7 +209,7 @@ void compute_sad_cost(img_t *left, img_t *right, cost_t *cost)
 	}
 }
 
-//void compute_aggr(s32* cost_in, s32 p1, s32 p2, s32* cost_out)
+//void compute_aggr_hw(s32* cost_in, s32 p1, s32 p2, s32* cost_out)
 //{
 //	XAggr_Set_cost_in(&g_aggr_hw, (u32)cost_in);
 //	XAggr_Set_p1(&g_aggr_hw, (u32)p1);
@@ -222,7 +221,7 @@ void compute_sad_cost(img_t *left, img_t *right, cost_t *cost)
 //	while (!XAggr_IsDone(&g_aggr_hw));
 //}
 
-void compute_disp(cost_t *cost, img_t *disp)
+void compute_disp_hw(cost_t *cost, img_t *disp)
 {
 	cost_t *cost_trans = malloc(COST_SIZE * sizeof(cost_t));
 	if (cost_trans == NULL) {
@@ -230,8 +229,7 @@ void compute_disp(cost_t *cost, img_t *disp)
 	}
 
 	// transpose matrix
-	for (index_t i = 0; i < COST_ROWS; i++)
-	{
+	for (index_t i = 0; i < COST_ROWS; i++) {
 		for (index_t j = 0; j < COST_COLS; j++) {
 			cost_trans[j * COST_ROWS + i] = cost[i * COST_COLS + j];
 		}
